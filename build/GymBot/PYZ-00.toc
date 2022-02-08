@@ -116,14 +116,6 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\util.py',
    'PYMODULE'),
-  ('_py_abc',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
-   'PYMODULE'),
-  ('typing',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
-   'PYMODULE'),
   ('tracemalloc',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tracemalloc.py',
@@ -527,6 +519,14 @@
   ('fnmatch',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
+   'PYMODULE'),
+  ('typing',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
    'PYMODULE'),
   ('stringprep',
    'c:\\users\\lukas '
