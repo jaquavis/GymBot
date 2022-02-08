@@ -7,7 +7,10 @@ import numpy as np
 #TODO version control
 #TODO put on github
 
-def login(username, password):
+login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
+default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
+
+def login(username, password): #Returns True if successful, else returns False
     #TODO detect login errors
     un_field = driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_UserName")
     pw_field = driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_Password")
@@ -15,14 +18,29 @@ def login(username, password):
     un_field.send_keys(username)
     pw_field.send_keys(password)
     login_btn.click()
-    print("Logged in")
-    return
+
+    status = login_status()
+    if status == True:
+        print("Logged in")
+    else:
+        print("Could not log in")
+    return status
+
+def login_status():  #returns True if logged in, False if logged out
+    status = driver.find_element('id', "ctl00_hyLogin")
+    if status.text == "LOGOUT":
+        return True
+    if status.text == "LOGIN":
+        return False
 
 def logout():
     logout_btn = driver.find_element('id', "ctl00_hyLogin")
-    if logout_btn.text == "LOGOUT":
+    if login_status() == True:
         logout_btn.click()
         print("Logged out")
+    if login_status() == False:
+        print("Already logged out")
+    return
 
 print("Ensure you do not currently have a booking. Apointments will be booked day-of only.")
 username = input("Input your username:")
