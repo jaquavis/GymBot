@@ -31,9 +31,9 @@ nums = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', 
 time_available = False
 
 #Define webdriver
-#TODO run headless
 ser = Service("C:/Users/Lukas Morrison/OneDrive - University of Calgary/chromedriver.exe")
 op = webdriver.ChromeOptions()
+op.add_argument("--headless")
 driver = webdriver.Chrome(service=ser, options=op)
 
 while time_available == False:
