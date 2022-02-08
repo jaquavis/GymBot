@@ -4,9 +4,6 @@ from selenium.webdriver.chrome.service import Service
 import time
 import numpy as np
 
-#TODO version control
-#TODO put on github
-
 def login(username, password):
     #TODO detect login errors
     un_field = driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_UserName")
