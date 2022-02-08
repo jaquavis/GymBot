@@ -53,7 +53,7 @@ driver = webdriver.Chrome(service=ser, options=op)
 
 driver.get(default_url)
 creds_good = False
-while creds_good == False:
+while creds_good == False:  #check credentials
     username = input("Input your username:")
     password = input("Input your password:")
     login(username, password)
@@ -62,7 +62,7 @@ while creds_good == False:
     else:
         print("Invalid credentials try again")
 
-while time_available == False:
+while time_available == False:  #main loop
     #Refresh / login if timed out
     logged_in = login_status()
     if logged_in:
