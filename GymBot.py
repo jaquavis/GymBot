@@ -8,7 +8,6 @@ login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 
 def login(username, password): #Returns True if successful, else returns False
-    #TODO detect login errors
     un_field = driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_UserName")
     pw_field = driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_Password")
     login_btn = driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_LoginButton")
@@ -40,10 +39,8 @@ def logout():
     return
 
 print("Ensure you do not currently have a booking. Apointments will be booked day-of only.")
-username = input("Input your username:")
-password = input("Input your password:")
-time_temp = input("Input 2-digit 24hr number of desired appointment start time (i.e., 09, 13, 18):")
-desired_time = time_temp + ":00 to " + str(int(time_temp)+1) + ":00"
+time_input = input("Input 2-digit 24hr number of desired appointment start time (i.e., 09, 13, 18):") #TODO check input validity
+desired_time = time_input + ":00 to " + str(int(time_input)+1) + ":00"
 #desired_date = input("Input desired date (i.e., January 28):")
 nums = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15']
 time_available = False
@@ -54,14 +51,25 @@ op = webdriver.ChromeOptions()
 op.add_argument("--headless")
 driver = webdriver.Chrome(service=ser, options=op)
 
-while time_available == False:
-    #Login
-    #TODO refresh only (check login status everytime)
-    time.sleep(0.1)
-    driver.get("https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx")
-    time.sleep(0.1)
+driver.get(default_url)
+creds_good = False
+while creds_good == False:
+    username = input("Input your username:")
+    password = input("Input your password:")
     login(username, password)
-    time.sleep(0.3)
+    if login_status() == True:
+        creds_good = True
+    else:
+        print("Invalid credentials try again")
+
+while time_available == False:
+    #Refresh / login if timed out
+    logged_in = login_status()
+    if logged_in:
+        driver.refresh()
+    else:
+        driver.get(login_url)
+        login(username, password)
 
     #Get available slots / Check if desired slot is available
     slots_array = []
