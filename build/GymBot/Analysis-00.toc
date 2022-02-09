@@ -32,37 +32,85 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
    'PYSOURCE'),
+  ('pyi_rth_win32api',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_win32api.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('pyi_rth_win32comgenpy',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_win32comgenpy.py',
+   'PYSOURCE'),
   ('GymBot',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\GymBot.py',
    'PYSOURCE')],
- [('os',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\os.py',
+ [('win32com',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\__init__.py',
    'PYMODULE'),
-  ('subprocess',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\subprocess.py',
+  ('win32com.server.util',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\server\\util.py',
    'PYMODULE'),
-  ('selectors',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\selectors.py',
+  ('win32com.server.dispatcher',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\server\\dispatcher.py',
    'PYMODULE'),
-  ('threading',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\threading.py',
+  ('win32traceutil',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\lib\\win32traceutil.py',
    'PYMODULE'),
-  ('_threading_local',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_threading_local.py',
+  ('win32com.util',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\util.py',
    'PYMODULE'),
-  ('contextlib',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\contextlib.py',
+  ('win32con',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\lib\\win32con.py',
    'PYMODULE'),
-  ('signal',
+  ('win32com.server.exception',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\server\\exception.py',
+   'PYMODULE'),
+  ('winerror',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\lib\\winerror.py',
+   'PYMODULE'),
+  ('win32com.server.policy',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\server\\policy.py',
+   'PYMODULE'),
+  ('win32com.client',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\__init__.py',
+   'PYMODULE'),
+  ('win32com.client.makepy',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\makepy.py',
+   'PYMODULE'),
+  ('getopt',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\signal.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\getopt.py',
+   'PYMODULE'),
+  ('gettext',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\gettext.py',
+   'PYMODULE'),
+  ('copy',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\copy.py',
+   'PYMODULE'),
+  ('struct',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\struct.py',
+   'PYMODULE'),
+  ('pywin.dialogs.status',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\dialogs\\status.py',
    'PYMODULE'),
   ('_strptime',
    'c:\\users\\lukas '
@@ -84,17 +132,77 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\textwrap.py',
    'PYMODULE'),
-  ('copy',
+  ('threading',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\copy.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\threading.py',
    'PYMODULE'),
-  ('gettext',
+  ('_threading_local',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\gettext.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_threading_local.py',
    'PYMODULE'),
-  ('struct',
+  ('contextlib',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\struct.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\contextlib.py',
+   'PYMODULE'),
+  ('pywin.mfc.thread',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\thread.py',
+   'PYMODULE'),
+  ('pywin.mfc.object',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\object.py',
+   'PYMODULE'),
+  ('pywin.mfc.dialog',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\dialog.py',
+   'PYMODULE'),
+  ('pywin.mfc.window',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\window.py',
+   'PYMODULE'),
+  ('pywin.mfc',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\mfc\\__init__.py',
+   'PYMODULE'),
+  ('pywin.dialogs',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\dialogs\\__init__.py',
+   'PYMODULE'),
+  ('pywin',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\__init__.py',
+   'PYMODULE'),
+  ('importlib',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\__init__.py',
+   'PYMODULE'),
+  ('importlib.abc',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\abc.py',
+   'PYMODULE'),
+  ('importlib.machinery',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\machinery.py',
+   'PYMODULE'),
+  ('importlib._bootstrap_external',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\_bootstrap_external.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('win32com.client.gencache',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\gencache.py',
+   'PYMODULE'),
+  ('zipfile',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\zipfile.py',
+   'PYMODULE'),
+  ('py_compile',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\py_compile.py',
    'PYMODULE'),
   ('ntpath',
    'c:\\users\\lukas '
@@ -108,93 +216,25 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\genericpath.py',
    'PYMODULE'),
-  ('posixpath',
+  ('lzma',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\posixpath.py',
-   'PYMODULE'),
-  ('stat',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\stat.py',
-   'PYMODULE'),
-  ('inspect',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\inspect.py',
-   'PYMODULE'),
-  ('importlib',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\__init__.py',
-   'PYMODULE'),
-  ('importlib.abc',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\abc.py',
-   'PYMODULE'),
-  ('importlib._bootstrap_external',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\_bootstrap_external.py',
-   'PYMODULE'),
-  ('importlib._bootstrap',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\_bootstrap.py',
-   'PYMODULE'),
-  ('ast',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ast.py',
-   'PYMODULE'),
-  ('token',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\token.py',
-   'PYMODULE'),
-  ('importlib.machinery',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\machinery.py',
-   'PYMODULE'),
-  ('dis',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\dis.py',
-   'PYMODULE'),
-  ('opcode',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\opcode.py',
-   'PYMODULE'),
-  ('pkgutil',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\pkgutil.py',
-   'PYMODULE'),
-  ('importlib.util',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\util.py',
-   'PYMODULE'),
-  ('typing',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
-   'PYMODULE'),
-  ('quopri',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\quopri.py',
-   'PYMODULE'),
-  ('getopt',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\getopt.py',
-   'PYMODULE'),
-  ('base64',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\base64.py',
-   'PYMODULE'),
-  ('bz2',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\bz2.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\lzma.py',
    'PYMODULE'),
   ('_compression',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_compression.py',
    'PYMODULE'),
-  ('stringprep',
+  ('bz2',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\bz2.py',
    'PYMODULE'),
-  ('tracemalloc',
+  ('stat',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tracemalloc.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\stat.py',
+   'PYMODULE'),
+  ('importlib.util',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\util.py',
    'PYMODULE'),
   ('pickle',
    'c:\\users\\lukas '
@@ -216,6 +256,10 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\unittest\\signals.py',
    'PYMODULE'),
+  ('signal',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\signal.py',
+   'PYMODULE'),
   ('unittest.main',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\unittest\\main.py',
@@ -227,6 +271,14 @@
   ('unittest.loader',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\unittest\\loader.py',
+   'PYMODULE'),
+  ('fnmatch',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
+   'PYMODULE'),
+  ('posixpath',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\posixpath.py',
    'PYMODULE'),
   ('unittest.suite',
    'c:\\users\\lukas '
@@ -264,29 +316,9 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\socket.py',
    'PYMODULE'),
-  ('shutil',
+  ('selectors',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\shutil.py',
-   'PYMODULE'),
-  ('zipfile',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\zipfile.py',
-   'PYMODULE'),
-  ('py_compile',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\py_compile.py',
-   'PYMODULE'),
-  ('tarfile',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tarfile.py',
-   'PYMODULE'),
-  ('gzip',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\gzip.py',
-   'PYMODULE'),
-  ('lzma',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\lzma.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\selectors.py',
    'PYMODULE'),
   ('email.message',
    'c:\\users\\lukas '
@@ -380,6 +412,10 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\bisect.py',
    'PYMODULE'),
+  ('base64',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\base64.py',
+   'PYMODULE'),
   ('email.iterators',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\email\\iterators.py',
@@ -432,6 +468,10 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\email\\__init__.py',
    'PYMODULE'),
+  ('quopri',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\quopri.py',
+   'PYMODULE'),
   ('uu',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\uu.py',
@@ -468,9 +508,9 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tty.py',
    'PYMODULE'),
-  ('tempfile',
+  ('subprocess',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tempfile.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\subprocess.py',
    'PYMODULE'),
   ('urllib.parse',
    'c:\\users\\lukas '
@@ -520,6 +560,10 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\xml\\sax\\xmlreader.py',
    'PYMODULE'),
+  ('pkgutil',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\pkgutil.py',
+   'PYMODULE'),
   ('runpy',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\runpy.py',
@@ -527,10 +571,6 @@
   ('shlex',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\shlex.py',
-   'PYMODULE'),
-  ('glob',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\glob.py',
    'PYMODULE'),
   ('code',
    'c:\\users\\lukas '
@@ -540,6 +580,14 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\codeop.py',
    'PYMODULE'),
+  ('dis',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\dis.py',
+   'PYMODULE'),
+  ('opcode',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\opcode.py',
+   'PYMODULE'),
   ('bdb',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\bdb.py',
@@ -547,6 +595,18 @@
   ('cmd',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\cmd.py',
+   'PYMODULE'),
+  ('inspect',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\inspect.py',
+   'PYMODULE'),
+  ('ast',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ast.py',
+   'PYMODULE'),
+  ('token',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\token.py',
    'PYMODULE'),
   ('difflib',
    'c:\\users\\lukas '
@@ -560,13 +620,273 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_compat_pickle.py',
    'PYMODULE'),
-  ('fnmatch',
+  ('glob',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\glob.py',
+   'PYMODULE'),
+  ('win32com.client.selecttlb',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\selecttlb.py',
+   'PYMODULE'),
+  ('pywin.dialogs.list',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\pywin\\dialogs\\list.py',
+   'PYMODULE'),
+  ('commctrl',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\lib\\commctrl.py',
+   'PYMODULE'),
+  ('win32com.client.genpy',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\genpy.py',
+   'PYMODULE'),
+  ('win32com.client.CLSIDToClass',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\CLSIDToClass.py',
+   'PYMODULE'),
+  ('win32com.client.dynamic',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\dynamic.py',
+   'PYMODULE'),
+  ('win32com.client.build',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\build.py',
+   'PYMODULE'),
+  ('pywintypes',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\lib\\pywintypes.py',
+   'PYMODULE'),
+  ('sysconfig',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\sysconfig.py',
+   'PYMODULE'),
+  ('_osx_support',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_osx_support.py',
+   'PYMODULE'),
+  ('distutils.log',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\log.py',
+   'PYMODULE'),
+  ('distutils',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\__init__.py',
+   'PYMODULE'),
+  ('distutils.archive_util',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\archive_util.py',
+   'PYMODULE'),
+  ('tarfile',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tarfile.py',
+   'PYMODULE'),
+  ('gzip',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\gzip.py',
+   'PYMODULE'),
+  ('distutils.dir_util',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\dir_util.py',
+   'PYMODULE'),
+  ('distutils.file_util',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\file_util.py',
+   'PYMODULE'),
+  ('distutils.dep_util',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\dep_util.py',
+   'PYMODULE'),
+  ('distutils.spawn',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\spawn.py',
+   'PYMODULE'),
+  ('distutils.debug',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\debug.py',
+   'PYMODULE'),
+  ('distutils.errors',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\errors.py',
+   'PYMODULE'),
+  ('distutils.sysconfig',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\sysconfig.py',
+   'PYMODULE'),
+  ('distutils.text_file',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\distutils\\text_file.py',
+   'PYMODULE'),
+  ('site',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\PyInstaller\\fake-modules\\site.py',
+   'PYMODULE'),
+  ('win32com.server',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\server\\__init__.py',
+   'PYMODULE'),
+  ('win32com.universal',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\universal.py',
+   'PYMODULE'),
+  ('win32com.client.util',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32com\\client\\util.py',
+   'PYMODULE'),
+  ('pythoncom',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pythoncom.py',
+   'PYMODULE'),
+  ('tempfile',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tempfile.py',
+   'PYMODULE'),
+  ('shutil',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\shutil.py',
+   'PYMODULE'),
+  ('os',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\os.py',
+   'PYMODULE'),
+  ('pkg_resources',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._structures',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('typing',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.version',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.specifiers',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.utils',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.appdirs',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
+   'PYMODULE'),
+  ('ctypes',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('win32com.shell.shellcon',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32comext\\shell\\shellcon.py',
+   'PYMODULE'),
+  ('win32com.shell',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32comext\\shell\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._musllinux',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.requirements',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('uuid',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\uuid.py',
+   'PYMODULE'),
+  ('ctypes.util',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\util.py',
+   'PYMODULE'),
+  ('ctypes._aix',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_aix.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dyld',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\dyld.py',
+   'PYMODULE'),
+  ('ctypes.macholib',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\__init__.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dylib',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\dylib.py',
+   'PYMODULE'),
+  ('ctypes.macholib.framework',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\framework.py',
+   'PYMODULE'),
+  ('netbios',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\lib\\netbios.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.tags',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._manylinux',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('pkg_resources.extern',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\extern\\__init__.py',
+   'PYMODULE'),
+  ('imp',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\imp.py',
+   'PYMODULE'),
+  ('pathlib',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\pathlib.py',
+   'PYMODULE'),
+  ('stringprep',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
    'PYMODULE'),
   ('_py_abc',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
+   'PYMODULE'),
+  ('tracemalloc',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('win10toast',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win10toast\\__init__.py',
    'PYMODULE'),
   ('selenium.webdriver.chrome.service',
    'C:\\Users\\Lukas '
@@ -679,42 +999,6 @@
   ('selenium.webdriver.common.actions.input_device',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\actions\\input_device.py',
-   'PYMODULE'),
-  ('uuid',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\uuid.py',
-   'PYMODULE'),
-  ('ctypes.util',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\util.py',
-   'PYMODULE'),
-  ('ctypes._aix',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_aix.py',
-   'PYMODULE'),
-  ('ctypes.macholib.dyld',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\dyld.py',
-   'PYMODULE'),
-  ('ctypes.macholib',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\__init__.py',
-   'PYMODULE'),
-  ('ctypes.macholib.dylib',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\dylib.py',
-   'PYMODULE'),
-  ('ctypes.macholib.framework',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\framework.py',
-   'PYMODULE'),
-  ('ctypes',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\__init__.py',
-   'PYMODULE'),
-  ('ctypes._endian',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_endian.py',
    'PYMODULE'),
   ('selenium.webdriver.common.actions.pointer_actions',
    'C:\\Users\\Lukas '
@@ -976,10 +1260,6 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\resources.py',
    'PYMODULE'),
-  ('pathlib',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\pathlib.py',
-   'PYMODULE'),
   ('selenium.webdriver.remote.mobile',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\mobile.py',
@@ -1164,25 +1444,37 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\Scripts\\python37.dll',
    'BINARY'),
-  ('select',
+  ('pywintypes37.dll',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pywin32_system32\\pywintypes37.dll',
+   'BINARY'),
+  ('pythoncom37.dll',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pywin32_system32\\pythoncom37.dll',
+   'BINARY'),
+  ('win32trace',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\win32trace.pyd',
+   'EXTENSION'),
+  ('win32ui',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\win32ui.pyd',
+   'EXTENSION'),
+  ('_lzma',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\select.pyd',
+   'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_lzma.pyd',
    'EXTENSION'),
   ('_bz2',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_bz2.pyd',
    'EXTENSION'),
-  ('unicodedata',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\unicodedata.pyd',
-   'EXTENSION'),
   ('_socket',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_socket.pyd',
    'EXTENSION'),
-  ('_lzma',
+  ('select',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_lzma.pyd',
+   'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\select.pyd',
    'EXTENSION'),
   ('_ssl',
    'c:\\users\\lukas '
@@ -1196,14 +1488,42 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\pyexpat.pyd',
    'EXTENSION'),
+  ('_win32sysloader',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\_win32sysloader.pyd',
+   'EXTENSION'),
+  ('win32api',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\win32api.pyd',
+   'EXTENSION'),
   ('_ctypes',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_ctypes.pyd',
+   'EXTENSION'),
+  ('win32com.shell.shell',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32comext\\shell\\shell.pyd',
+   'EXTENSION'),
+  ('win32wnet',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\win32wnet.pyd',
+   'EXTENSION'),
+  ('unicodedata',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('win32gui',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\win32gui.pyd',
    'EXTENSION'),
   ('_queue',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_queue.pyd',
    'EXTENSION'),
+  ('mfc140u.dll',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\Pythonwin\\mfc140u.dll',
+   'BINARY'),
   ('libssl-1_1-x64.dll',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\libssl-1_1-x64.dll',
@@ -1218,21 +1538,17 @@
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\build\\GymBot\\base_library.zip',
    'DATA'),
+  ('selenium\\webdriver\\firefox\\webdriver_prefs.json',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver_prefs.json',
+   'DATA'),
   ('selenium\\webdriver\\remote\\getAttribute.js',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\getAttribute.js',
    'DATA'),
-  ('certifi\\cacert.pem',
+  ('selenium\\webdriver\\common\\mutation-listener.js',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\certifi\\cacert.pem',
-   'DATA'),
-  ('selenium\\webdriver\\common\\devtools\\v85\\py.typed',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v85\\py.typed',
-   'DATA'),
-  ('selenium\\webdriver\\common\\devtools\\v95\\py.typed',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v95\\py.typed',
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\mutation-listener.js',
    'DATA'),
   ('selenium\\webdriver\\remote\\findElements.js',
    'C:\\Users\\Lukas '
@@ -1242,20 +1558,140 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v94\\py.typed',
    'DATA'),
-  ('selenium\\webdriver\\common\\mutation-listener.js',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\mutation-listener.js',
-   'DATA'),
   ('selenium\\webdriver\\common\\devtools\\v96\\py.typed',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v96\\py.typed',
    'DATA'),
-  ('selenium\\webdriver\\firefox\\webdriver_prefs.json',
+  ('selenium\\webdriver\\common\\devtools\\v95\\py.typed',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver_prefs.json',
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v95\\py.typed',
+   'DATA'),
+  ('selenium\\webdriver\\common\\devtools\\v85\\py.typed',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v85\\py.typed',
+   'DATA'),
+  ('certifi\\cacert.pem',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\certifi\\cacert.pem',
    'DATA'),
   ('selenium\\webdriver\\remote\\isDisplayed.js',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\isDisplayed.js',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\INSTALLER',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\INSTALLER',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\WHEEL',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\INSTALLER',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\METADATA',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\METADATA',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\top_level.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\top_level.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\top_level.txt',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\LICENSE.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\LICENSE.txt',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\RECORD',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\RECORD',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\entry_points.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\entry_points.txt',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\COPYING.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\COPYING.txt',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\RECORD',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\RECORD',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\METADATA',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\LICENSE',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\LICENSE',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\INSTALLER',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\INSTALLER',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\entry_points.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\entry_points.txt',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\INSTALLER',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\WHEEL',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\WHEEL',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\REQUESTED',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\REQUESTED',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\METADATA',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\WHEEL',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\RECORD',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\METADATA',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\METADATA',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\LICENSE',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\LICENSE',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\top_level.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\top_level.txt',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\zip-safe',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\zip-safe',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\RECORD',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\entry_points.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\entry_points.txt',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\top_level.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\top_level.txt',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\WHEEL',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\WHEEL',
    'DATA')],
  [])

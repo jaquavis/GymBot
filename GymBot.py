@@ -1,6 +1,7 @@
 # pyinstaller .\GymBot.py -F
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from win10toast import ToastNotifier
 
 # import time
 # import numpy as np
@@ -41,7 +42,7 @@ def logout():
         logout_btn.click()
         print("Logged out")
 
-
+print("GymBot v0.5")
 print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
 
 # Check validity of input time
@@ -68,6 +69,7 @@ op.add_argument("--headless")
 op.add_argument('--log-level=3')
 op.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(service=ser, options=op)
+toaster = ToastNotifier()
 
 driver.get(default_url)
 creds_good = False
@@ -118,5 +120,6 @@ if time_available:
     slot = driver.find_element('id', slot_id)
     slot.click()
     print("Booked")
+    toaster.show_toast("GymBot", "Your appointment has been booked!")
 
 driver.quit()
