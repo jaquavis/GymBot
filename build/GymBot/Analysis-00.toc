@@ -64,6 +64,38 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\signal.py',
    'PYMODULE'),
+  ('_strptime',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_strptime.py',
+   'PYMODULE'),
+  ('datetime',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\datetime.py',
+   'PYMODULE'),
+  ('calendar',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\calendar.py',
+   'PYMODULE'),
+  ('argparse',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\argparse.py',
+   'PYMODULE'),
+  ('textwrap',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\textwrap.py',
+   'PYMODULE'),
+  ('copy',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\copy.py',
+   'PYMODULE'),
+  ('gettext',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\gettext.py',
+   'PYMODULE'),
+  ('struct',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\struct.py',
+   'PYMODULE'),
   ('ntpath',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ntpath.py',
@@ -104,26 +136,6 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\_bootstrap.py',
    'PYMODULE'),
-  ('argparse',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\argparse.py',
-   'PYMODULE'),
-  ('textwrap',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\textwrap.py',
-   'PYMODULE'),
-  ('copy',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\copy.py',
-   'PYMODULE'),
-  ('gettext',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\gettext.py',
-   'PYMODULE'),
-  ('struct',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\struct.py',
-   'PYMODULE'),
   ('ast',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ast.py',
@@ -152,6 +164,10 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\util.py',
    'PYMODULE'),
+  ('typing',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
+   'PYMODULE'),
   ('quopri',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\quopri.py',
@@ -175,14 +191,6 @@
   ('stringprep',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
-   'PYMODULE'),
-  ('typing',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
-   'PYMODULE'),
-  ('_py_abc',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
    'PYMODULE'),
   ('tracemalloc',
    'c:\\users\\lukas '
@@ -339,18 +347,6 @@
   ('http',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\http\\__init__.py',
-   'PYMODULE'),
-  ('calendar',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\calendar.py',
-   'PYMODULE'),
-  ('datetime',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\datetime.py',
-   'PYMODULE'),
-  ('_strptime',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_strptime.py',
    'PYMODULE'),
   ('ssl',
    'c:\\users\\lukas '
@@ -568,397 +564,9 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
    'PYMODULE'),
-  ('numpy',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\__init__.py',
-   'PYMODULE'),
-  ('numpy.core._dtype_ctypes',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_dtype_ctypes.py',
-   'PYMODULE'),
-  ('ctypes',
+  ('_py_abc',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\__init__.py',
-   'PYMODULE'),
-  ('ctypes._endian',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_endian.py',
-   'PYMODULE'),
-  ('numpy._pytesttester',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\_pytesttester.py',
-   'PYMODULE'),
-  ('numpy.testing',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\testing\\__init__.py',
-   'PYMODULE'),
-  ('numpy.testing._private.nosetester',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\testing\\_private\\nosetester.py',
-   'PYMODULE'),
-  ('numpy.testing._private.noseclasses',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\testing\\_private\\noseclasses.py',
-   'PYMODULE'),
-  ('numpy.testing._private.decorators',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\testing\\_private\\decorators.py',
-   'PYMODULE'),
-  ('numpy.testing._private.parameterized',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\testing\\_private\\parameterized.py',
-   'PYMODULE'),
-  ('numpy.testing._private',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\testing\\_private\\__init__.py',
-   'PYMODULE'),
-  ('numpy.testing._private.utils',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\testing\\_private\\utils.py',
-   'PYMODULE'),
-  ('numpy.core.fromnumeric',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\fromnumeric.py',
-   'PYMODULE'),
-  ('numpy.core._methods',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_methods.py',
-   'PYMODULE'),
-  ('numpy.lib.stride_tricks',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\stride_tricks.py',
-   'PYMODULE'),
-  ('numpy.core.numeric',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\numeric.py',
-   'PYMODULE'),
-  ('numpy.core._asarray',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_asarray.py',
-   'PYMODULE'),
-  ('numpy.core.arrayprint',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\arrayprint.py',
-   'PYMODULE'),
-  ('_dummy_thread',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_dummy_thread.py',
-   'PYMODULE'),
-  ('numpy.core._ufunc_config',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_ufunc_config.py',
-   'PYMODULE'),
-  ('numpy.core.shape_base',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\shape_base.py',
-   'PYMODULE'),
-  ('numbers',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\numbers.py',
-   'PYMODULE'),
-  ('numpy.core._exceptions',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_exceptions.py',
-   'PYMODULE'),
-  ('numpy.core.umath',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\umath.py',
-   'PYMODULE'),
-  ('numpy.core.overrides',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\overrides.py',
-   'PYMODULE'),
-  ('numpy.compat._inspect',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\compat\\_inspect.py',
-   'PYMODULE'),
-  ('numpy.core.multiarray',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\multiarray.py',
-   'PYMODULE'),
-  ('numpy.core.numerictypes',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\numerictypes.py',
-   'PYMODULE'),
-  ('numpy.core._dtype',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_dtype.py',
-   'PYMODULE'),
-  ('numpy.core._type_aliases',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_type_aliases.py',
-   'PYMODULE'),
-  ('numpy.core._string_helpers',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_string_helpers.py',
-   'PYMODULE'),
-  ('numpy.matrixlib',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\matrixlib\\__init__.py',
-   'PYMODULE'),
-  ('numpy.matrixlib.defmatrix',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\matrixlib\\defmatrix.py',
-   'PYMODULE'),
-  ('numpy.ma',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\ma\\__init__.py',
-   'PYMODULE'),
-  ('numpy.ma.extras',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\ma\\extras.py',
-   'PYMODULE'),
-  ('numpy.lib.index_tricks',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\index_tricks.py',
-   'PYMODULE'),
-  ('numpy.lib.function_base',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\function_base.py',
-   'PYMODULE'),
-  ('numpy.lib.histograms',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\histograms.py',
-   'PYMODULE'),
-  ('numpy.lib.twodim_base',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\twodim_base.py',
-   'PYMODULE'),
-  ('numpy.core.function_base',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\function_base.py',
-   'PYMODULE'),
-  ('numpy.ma.core',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\ma\\core.py',
-   'PYMODULE'),
-  ('numpy.core._internal',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_internal.py',
-   'PYMODULE'),
-  ('numpy.ctypeslib',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\ctypeslib.py',
-   'PYMODULE'),
-  ('numpy.random',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\__init__.py',
-   'PYMODULE'),
-  ('numpy.random._pickle',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\_pickle.py',
-   'PYMODULE'),
-  ('numpy.polynomial',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\__init__.py',
-   'PYMODULE'),
-  ('numpy.polynomial._polybase',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\_polybase.py',
-   'PYMODULE'),
-  ('numpy.polynomial.laguerre',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\laguerre.py',
-   'PYMODULE'),
-  ('numpy.polynomial.hermite_e',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\hermite_e.py',
-   'PYMODULE'),
-  ('numpy.polynomial.hermite',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\hermite.py',
-   'PYMODULE'),
-  ('numpy.polynomial.legendre',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\legendre.py',
-   'PYMODULE'),
-  ('numpy.polynomial.chebyshev',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\chebyshev.py',
-   'PYMODULE'),
-  ('numpy.polynomial.polynomial',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\polynomial.py',
-   'PYMODULE'),
-  ('numpy.polynomial.polyutils',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\polynomial\\polyutils.py',
-   'PYMODULE'),
-  ('numpy.fft',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\fft\\__init__.py',
-   'PYMODULE'),
-  ('numpy.fft.helper',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\fft\\helper.py',
-   'PYMODULE'),
-  ('numpy.fft._pocketfft',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\fft\\_pocketfft.py',
-   'PYMODULE'),
-  ('numpy.linalg',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\linalg\\__init__.py',
-   'PYMODULE'),
-  ('numpy.linalg.linalg',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\linalg\\linalg.py',
-   'PYMODULE'),
-  ('numpy.lib',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\__init__.py',
-   'PYMODULE'),
-  ('numpy.lib._version',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\_version.py',
-   'PYMODULE'),
-  ('numpy.lib.arraypad',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\arraypad.py',
-   'PYMODULE'),
-  ('numpy.lib.arrayterator',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\arrayterator.py',
-   'PYMODULE'),
-  ('numpy.lib.npyio',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\npyio.py',
-   'PYMODULE'),
-  ('numpy.ma.mrecords',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\ma\\mrecords.py',
-   'PYMODULE'),
-  ('numpy.core.records',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\records.py',
-   'PYMODULE'),
-  ('numpy.lib._iotools',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\_iotools.py',
-   'PYMODULE'),
-  ('numpy.lib._datasource',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\_datasource.py',
-   'PYMODULE'),
-  ('numpy.lib.format',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\format.py',
-   'PYMODULE'),
-  ('numpy.lib.arraysetops',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\arraysetops.py',
-   'PYMODULE'),
-  ('numpy.lib.utils',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\utils.py',
-   'PYMODULE'),
-  ('numpy.lib.polynomial',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\polynomial.py',
-   'PYMODULE'),
-  ('numpy.lib.ufunclike',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\ufunclike.py',
-   'PYMODULE'),
-  ('numpy.lib.shape_base',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\shape_base.py',
-   'PYMODULE'),
-  ('numpy.lib.nanfunctions',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\nanfunctions.py',
-   'PYMODULE'),
-  ('numpy.lib.type_check',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\type_check.py',
-   'PYMODULE'),
-  ('numpy.core.getlimits',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\getlimits.py',
-   'PYMODULE'),
-  ('numpy.core.machar',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\machar.py',
-   'PYMODULE'),
-  ('numpy.lib.scimath',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\scimath.py',
-   'PYMODULE'),
-  ('numpy.lib.mixins',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\lib\\mixins.py',
-   'PYMODULE'),
-  ('numpy.version',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\version.py',
-   'PYMODULE'),
-  ('numpy.compat',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\compat\\__init__.py',
-   'PYMODULE'),
-  ('numpy.compat.py3k',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\compat\\py3k.py',
-   'PYMODULE'),
-  ('pathlib',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\pathlib.py',
-   'PYMODULE'),
-  ('numpy.core',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\__init__.py',
-   'PYMODULE'),
-  ('numpy.core._add_newdocs_scalars',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_add_newdocs_scalars.py',
-   'PYMODULE'),
-  ('numpy.core._add_newdocs',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_add_newdocs.py',
-   'PYMODULE'),
-  ('numpy.core.einsumfunc',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\einsumfunc.py',
-   'PYMODULE'),
-  ('numpy.core.memmap',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\memmap.py',
-   'PYMODULE'),
-  ('numpy.core.defchararray',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\defchararray.py',
-   'PYMODULE'),
-  ('numpy._distributor_init',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\_distributor_init.py',
-   'PYMODULE'),
-  ('numpy._version',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\_version.py',
-   'PYMODULE'),
-  ('json',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\json\\__init__.py',
-   'PYMODULE'),
-  ('json.encoder',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\json\\encoder.py',
-   'PYMODULE'),
-  ('json.decoder',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\json\\decoder.py',
-   'PYMODULE'),
-  ('json.scanner',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\json\\scanner.py',
-   'PYMODULE'),
-  ('numpy.__config__',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\__config__.py',
-   'PYMODULE'),
-  ('numpy._globals',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\_globals.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
    'PYMODULE'),
   ('selenium.webdriver.chrome.service',
    'C:\\Users\\Lukas '
@@ -1028,6 +636,22 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\utils.py',
    'PYMODULE'),
+  ('json',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\json\\scanner.py',
+   'PYMODULE'),
   ('selenium.webdriver.common.action_chains',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\action_chains.py',
@@ -1083,6 +707,14 @@
   ('ctypes.macholib.framework',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\framework.py',
+   'PYMODULE'),
+  ('ctypes',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_endian.py',
    'PYMODULE'),
   ('selenium.webdriver.common.actions.pointer_actions',
    'C:\\Users\\Lukas '
@@ -1344,6 +976,10 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\resources.py',
    'PYMODULE'),
+  ('pathlib',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\pathlib.py',
+   'PYMODULE'),
   ('selenium.webdriver.remote.mobile',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\mobile.py',
@@ -1520,17 +1156,13 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\__init__.py',
    'PYMODULE')],
- [('python37.dll',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\Scripts\\python37.dll',
-   'BINARY'),
-  ('VCRUNTIME140.dll',
+ [('VCRUNTIME140.dll',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\Scripts\\VCRUNTIME140.dll',
    'BINARY'),
-  ('libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll',
+  ('python37.dll',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\.libs\\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll',
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\Scripts\\python37.dll',
    'BINARY'),
   ('select',
    'c:\\users\\lukas '
@@ -1568,62 +1200,6 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_ctypes.pyd',
    'EXTENSION'),
-  ('numpy.core._multiarray_tests',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_multiarray_tests.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.core._multiarray_umath',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\core\\_multiarray_umath.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.linalg.lapack_lite',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\linalg\\lapack_lite.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random.mtrand',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\mtrand.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random._sfc64',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\_sfc64.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random._philox',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\_philox.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random._pcg64',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\_pcg64.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random._mt19937',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\_mt19937.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random.bit_generator',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\bit_generator.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random._generator',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\_generator.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random._bounded_integers',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\_bounded_integers.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.random._common',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\random\\_common.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.fft._pocketfft_internal',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\fft\\_pocketfft_internal.cp37-win_amd64.pyd',
-   'EXTENSION'),
-  ('numpy.linalg._umath_linalg',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\numpy\\linalg\\_umath_linalg.cp37-win_amd64.pyd',
-   'EXTENSION'),
   ('_queue',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_queue.pyd',
@@ -1650,6 +1226,10 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\certifi\\cacert.pem',
    'DATA'),
+  ('selenium\\webdriver\\common\\devtools\\v85\\py.typed',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v85\\py.typed',
+   'DATA'),
   ('selenium\\webdriver\\common\\devtools\\v95\\py.typed',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v95\\py.typed',
@@ -1658,144 +1238,24 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\findElements.js',
    'DATA'),
-  ('selenium\\webdriver\\common\\devtools\\v85\\py.typed',
+  ('selenium\\webdriver\\common\\devtools\\v94\\py.typed',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v85\\py.typed',
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v94\\py.typed',
    'DATA'),
   ('selenium\\webdriver\\common\\mutation-listener.js',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\mutation-listener.js',
    'DATA'),
-  ('selenium\\webdriver\\common\\devtools\\v94\\py.typed',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v94\\py.typed',
-   'DATA'),
   ('selenium\\webdriver\\common\\devtools\\v96\\py.typed',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v96\\py.typed',
-   'DATA'),
-  ('selenium\\webdriver\\remote\\isDisplayed.js',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\isDisplayed.js',
    'DATA'),
   ('selenium\\webdriver\\firefox\\webdriver_prefs.json',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver_prefs.json',
    'DATA'),
-  ('pyinstaller-4.9.dist-info\\REQUESTED',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\REQUESTED',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\LICENSE.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\LICENSE.txt',
-   'DATA'),
-  ('setuptools-60.2.0.dist-info\\RECORD',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\RECORD',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\top_level.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\top_level.txt',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\WHEEL',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\WHEEL',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\zip-safe',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\zip-safe',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\METADATA',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\METADATA',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\RECORD',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\RECORD',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\top_level.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\top_level.txt',
-   'DATA'),
-  ('setuptools-60.2.0.dist-info\\top_level.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\top_level.txt',
-   'DATA'),
-  ('setuptools-60.2.0.dist-info\\LICENSE',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\LICENSE',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\COPYING.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\COPYING.txt',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\entry_points.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\entry_points.txt',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\entry_points.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\entry_points.txt',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\RECORD',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\RECORD',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\INSTALLER',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\LICENSE',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\LICENSE',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\RECORD',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\RECORD',
-   'DATA'),
-  ('setuptools-60.2.0.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\INSTALLER',
-   'DATA'),
-  ('setuptools-60.2.0.dist-info\\WHEEL',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\WHEEL',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\METADATA',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\METADATA',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\INSTALLER',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\WHEEL',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\WHEEL',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\WHEEL',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\WHEEL',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\top_level.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\top_level.txt',
-   'DATA'),
-  ('setuptools-60.2.0.dist-info\\METADATA',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\METADATA',
-   'DATA'),
-  ('setuptools-60.2.0.dist-info\\entry_points.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\entry_points.txt',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\METADATA',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\METADATA',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\INSTALLER',
+  ('selenium\\webdriver\\remote\\isDisplayed.js',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\isDisplayed.js',
    'DATA')],
  [])
