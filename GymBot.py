@@ -39,16 +39,29 @@ def logout():
     return
 
 print("Ensure you do not currently have a booking. Apointments will be booked day-of only.")
-time_input = input("Input 2-digit 24hr number of desired appointment start time (i.e., 09, 13, 18):") #TODO check input validity
+
+#Check validity of input time
+valid_time = False
+while valid_time == False:
+    time_input = input("Input 2-digit 24hr number of desired appointment start time (i.e., 09, 13, 18):")
+    if time_input not in ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']:
+        print("Invalid input (hint: use 2 digits, i.e., 09)")
+        print()
+    else:
+        valid_time = True
+
 desired_time = time_input + ":00 to " + str(int(time_input)+1) + ":00"
 #desired_date = input("Input desired date (i.e., January 28):")
 nums = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15']
 time_available = False
+wheel_index = 0
 
 #Define webdriver
 ser = Service("C:/Users/Lukas Morrison/OneDrive - University of Calgary/chromedriver.exe")
 op = webdriver.ChromeOptions()
 op.add_argument("--headless")
+op.add_argument('--log-level=3')
+op.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(service=ser, options=op)
 
 driver.get(default_url)
@@ -61,6 +74,7 @@ while creds_good == False:  #check credentials
         creds_good = True
     else:
         print("Invalid credentials try again")
+        print()
 
 while time_available == False:  #main loop
     #Refresh / login if timed out
@@ -86,7 +100,11 @@ while time_available == False:  #main loop
         except:
             pass
     if time_available == False:
-        print('not available - trying again')
+        loading_wheel = ['/', '-', "\\", '|', '/', '-', '\\', '|']
+        print('not available - trying again   ' + loading_wheel[wheel_index])
+        wheel_index = wheel_index + 1
+        if wheel_index == 8:
+            wheel_index = 0
 
 #Check for an existing booking - do later
 
@@ -96,5 +114,4 @@ if time_available == True:
     slot.click()
     print("Booked")
 
-time.sleep(10)
 driver.quit()

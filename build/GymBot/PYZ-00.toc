@@ -116,10 +116,6 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\importlib\\util.py',
    'PYMODULE'),
-  ('stringprep',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
-   'PYMODULE'),
   ('quopri',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\quopri.py',
@@ -127,6 +123,10 @@
   ('getopt',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\getopt.py',
+   'PYMODULE'),
+  ('base64',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\base64.py',
    'PYMODULE'),
   ('bz2',
    'c:\\users\\lukas '
@@ -136,9 +136,13 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_compression.py',
    'PYMODULE'),
-  ('base64',
+  ('stringprep',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\base64.py',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
+   'PYMODULE'),
+  ('typing',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
    'PYMODULE'),
   ('_py_abc',
    'c:\\users\\lukas '
@@ -527,10 +531,6 @@
   ('fnmatch',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
-   'PYMODULE'),
-  ('typing',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
    'PYMODULE'),
   ('numpy',
    'C:\\Users\\Lukas '
