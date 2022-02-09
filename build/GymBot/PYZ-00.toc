@@ -128,6 +128,10 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\getopt.py',
    'PYMODULE'),
+  ('base64',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\base64.py',
+   'PYMODULE'),
   ('bz2',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\bz2.py',
@@ -135,10 +139,6 @@
   ('_compression',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_compression.py',
-   'PYMODULE'),
-  ('base64',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\base64.py',
    'PYMODULE'),
   ('_py_abc',
    'c:\\users\\lukas '
