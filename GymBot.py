@@ -120,6 +120,6 @@ if time_available:
     slot = driver.find_element('id', slot_id)
     slot.click()
     print("Booked")
-    toaster.show_toast("GymBot", "Your appointment has been booked!")
+    toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path='')
 
 driver.quit()
