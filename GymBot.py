@@ -19,11 +19,11 @@ if __name__ == "__main__":
     login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
     default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 
-    print("GymBot v0.6")
+    print("GymBot v0.7")
     print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
 
     # Define webdriver
-    ser = Service("C:/Users/Lukas Morrison/OneDrive - University of Calgary/chromedriver.exe")
+    ser = Service("./chromedriver.exe")
     op = webdriver.ChromeOptions()
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
