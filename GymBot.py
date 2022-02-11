@@ -7,10 +7,8 @@ from iac01bot import iac01bot
 import signal
 import sys
 
-#Test
 # TODO logging levels
 # TODO hide passwords
-# Master test
 
 def signal_handler(sig, frame):
     print('\nExiting')
@@ -23,7 +21,6 @@ else:
 
 iconFileName = running_dir + "GymBot.ico"
 driverFileName = running_dir + "chromedriver.exe"
-
 
 if __name__ == "__main__":
 
