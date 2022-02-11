@@ -102,6 +102,6 @@ if __name__ == "__main__":
         slot = driver.find_element('id', slot_id)
         slot.click()
         print(f"\nBooked{' '*26}")
-        toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path='GymBot.ico')
+        toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path='')
 
     driver.quit()
