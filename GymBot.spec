@@ -6,7 +6,7 @@ block_cipher = None
 
 a = Analysis(['GymBot.py'],
              pathex=[],
-             binaries=[],
+             binaries=[('GymBot.ico', 'files'), ('chromedriver.exe', 'files')],
              datas=[],
              hiddenimports=[],
              hookspath=[],
@@ -37,4 +37,4 @@ exe = EXE(pyz,
           disable_windowed_traceback=False,
           target_arch=None,
           codesign_identity=None,
-          entitlements_file=None )
+          entitlements_file=None , icon='GymBot.ico')

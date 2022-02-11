@@ -16,6 +16,14 @@ def signal_handler(sig, frame):
     driver.quit()
 
 
+if getattr(sys, 'frozen', False): # Running as compiled
+    running_dir = sys._MEIPASS + "/files/" # Same path name than pyinstaller option
+else:
+    running_dir = "./" # Path name when run with Python interpreter
+iconFileName = running_dir + "GymBot.ico"
+driverFileName = running_dir + "chromedriver.exe"
+
+
 if __name__ == "__main__":
 
     login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
@@ -25,7 +33,7 @@ if __name__ == "__main__":
     print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
 
     # Define objects
-    ser = Service("chromedriver.exe")
+    ser = Service(driverFileName)
     op = webdriver.ChromeOptions()
     op.add_argument("--headless")
     op.add_argument('--log-level=3')

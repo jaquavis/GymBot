@@ -696,9 +696,25 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.__about__',
+  ('pkg_resources._vendor.appdirs',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
+   'PYMODULE'),
+  ('ctypes',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('win32com.shell.shellcon',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32comext\\shell\\shellcon.py',
+   'PYMODULE'),
+  ('win32com.shell',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32comext\\shell\\__init__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging._musllinux',
    'C:\\Users\\Lukas '
@@ -707,14 +723,6 @@
   ('typing',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
    'PYMODULE'),
   ('pkg_resources._vendor.pyparsing',
    'C:\\Users\\Lukas '
@@ -752,21 +760,33 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\lib\\netbios.py',
    'PYMODULE'),
-  ('ctypes',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\__init__.py',
+  ('pkg_resources._vendor.packaging._structures',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
    'PYMODULE'),
-  ('ctypes._endian',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_endian.py',
+  ('pkg_resources._vendor.packaging.tags',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging.specifiers',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
+  ('pkg_resources._vendor.packaging.version',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
   ('pkg_resources._vendor.packaging.requirements',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.utils',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging._manylinux',
    'C:\\Users\\Lukas '
@@ -776,33 +796,13 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.utils',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
   ('pkg_resources._vendor.packaging',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.tags',
+  ('pkg_resources._vendor.packaging.__about__',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.appdirs',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
-   'PYMODULE'),
-  ('win32com.shell.shellcon',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32comext\\shell\\shellcon.py',
-   'PYMODULE'),
-  ('win32com.shell',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32comext\\shell\\__init__.py',
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
    'PYMODULE'),
   ('pkg_resources.extern',
    'C:\\Users\\Lukas '
@@ -816,13 +816,13 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\pathlib.py',
    'PYMODULE'),
-  ('_py_abc',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
-   'PYMODULE'),
   ('tracemalloc',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
    'PYMODULE'),
   ('stringprep',
    'c:\\users\\lukas '
