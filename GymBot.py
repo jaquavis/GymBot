@@ -9,7 +9,7 @@ import sys
 
 
 # TODO logging levels
-# Dan sucks
+# TODO hide passwords
 
 def signal_handler(sig, frame):
     print('\nExiting')
