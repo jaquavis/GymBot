@@ -10,7 +10,6 @@ import sys
 
 # TODO logging levels
 
-
 def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
