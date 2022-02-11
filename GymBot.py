@@ -9,7 +9,6 @@ import sys
 
 
 # TODO logging levels
-# TODO add notification icon
 
 
 def signal_handler(sig, frame):
@@ -31,7 +30,7 @@ if __name__ == "__main__":
     login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
     default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 
-    print("GymBot v0.7")
+    print("GymBot v0.8")
     print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
 
     # Define objects
@@ -98,7 +97,7 @@ if __name__ == "__main__":
                 pass
         if not time_available:
             loading_wheel = ['/', '─', "\\", '|']
-            print(f'\rnot available - trying again   {loading_wheel[wheel_index]}', end="")
+            print(f'\rNot available - trying again   {loading_wheel[wheel_index]}', end="")
             wheel_index = wheel_index + 1
             if wheel_index == 4:
                 wheel_index = 0
