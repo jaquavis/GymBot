@@ -5,6 +5,8 @@ from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
 from iac01bot import iac01bot
 import signal
+import sys
+import os
 
 # TODO logging levels
 
@@ -23,7 +25,7 @@ if __name__ == "__main__":
     print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
 
     # Define webdriver
-    ser = Service("./chromedriver.exe")
+    ser = Service("chromedriver.exe")
     op = webdriver.ChromeOptions()
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
