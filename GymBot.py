@@ -9,7 +9,7 @@ import sys
 
 # TODO logging levels
 # TODO hide passwords
-
+#3:56
 def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
