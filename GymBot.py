@@ -9,6 +9,8 @@ import sys
 
 #Test
 # TODO logging levels
+# TODO hide passwords
+# Master test
 
 def signal_handler(sig, frame):
     print('\nExiting')
