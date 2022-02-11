@@ -128,13 +128,13 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\_ctypes.pyd',
    'EXTENSION'),
-  ('win32wnet',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\win32wnet.pyd',
-   'EXTENSION'),
   ('win32com.shell.shell',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32comext\\shell\\shell.pyd',
+   'EXTENSION'),
+  ('win32wnet',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\win32\\win32wnet.pyd',
    'EXTENSION'),
   ('unicodedata',
    'c:\\users\\lukas '
@@ -160,93 +160,93 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\DLLs\\libssl-1_1-x64.dll',
    'BINARY'),
-  ('files\\chromedriver.exe',
-   'C:\\Users\\Lukas Morrison\\OneDrive - University of '
-   'Calgary\\pycharm\\GymBot\\chromedriver.exe',
-   'BINARY'),
   ('files\\GymBot.ico',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\GymBot.ico',
+   'BINARY'),
+  ('files\\chromedriver.exe',
+   'C:\\Users\\Lukas Morrison\\OneDrive - University of '
+   'Calgary\\pycharm\\GymBot\\chromedriver.exe',
    'BINARY'),
   ('base_library.zip',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\build\\GymBot\\base_library.zip',
    'DATA'),
-  ('selenium\\webdriver\\remote\\getAttribute.js',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\getAttribute.js',
-   'DATA'),
-  ('selenium\\webdriver\\common\\devtools\\v94\\py.typed',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v94\\py.typed',
-   'DATA'),
   ('selenium\\webdriver\\common\\mutation-listener.js',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\mutation-listener.js',
-   'DATA'),
-  ('selenium\\webdriver\\remote\\findElements.js',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\findElements.js',
-   'DATA'),
-  ('selenium\\webdriver\\firefox\\webdriver_prefs.json',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver_prefs.json',
    'DATA'),
   ('selenium\\webdriver\\remote\\isDisplayed.js',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\isDisplayed.js',
    'DATA'),
-  ('selenium\\webdriver\\common\\devtools\\v95\\py.typed',
+  ('selenium\\webdriver\\common\\devtools\\v94\\py.typed',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v95\\py.typed',
-   'DATA'),
-  ('certifi\\cacert.pem',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\certifi\\cacert.pem',
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v94\\py.typed',
    'DATA'),
   ('selenium\\webdriver\\common\\devtools\\v85\\py.typed',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v85\\py.typed',
    'DATA'),
+  ('selenium\\webdriver\\firefox\\webdriver_prefs.json',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver_prefs.json',
+   'DATA'),
+  ('selenium\\webdriver\\remote\\getAttribute.js',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\getAttribute.js',
+   'DATA'),
+  ('selenium\\webdriver\\remote\\findElements.js',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\remote\\findElements.js',
+   'DATA'),
+  ('certifi\\cacert.pem',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\certifi\\cacert.pem',
+   'DATA'),
+  ('selenium\\webdriver\\common\\devtools\\v95\\py.typed',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v95\\py.typed',
+   'DATA'),
   ('selenium\\webdriver\\common\\devtools\\v96\\py.typed',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot-r--cpauE\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v96\\py.typed',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\METADATA',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\METADATA',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\entry_points.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\entry_points.txt',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\WHEEL',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\WHEEL',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\METADATA',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\METADATA',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\entry_points.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\entry_points.txt',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\top_level.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\top_level.txt',
    'DATA'),
   ('setuptools-60.2.0.dist-info\\top_level.txt',
    'c:\\users\\lukas '
    'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\top_level.txt',
    'DATA'),
+  ('setuptools-60.2.0.dist-info\\LICENSE',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\LICENSE',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\top_level.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\top_level.txt',
+   'DATA'),
   ('altgraph-0.17.2.dist-info\\WHEEL',
    'c:\\users\\lukas '
    'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\WHEEL',
    'DATA'),
-  ('setuptools-60.2.0.dist-info\\LICENSE',
+  ('altgraph-0.17.2.dist-info\\zip-safe',
    'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\LICENSE',
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\zip-safe',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\LICENSE.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\LICENSE.txt',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\REQUESTED',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\REQUESTED',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\INSTALLER',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\INSTALLER',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\WHEEL',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\WHEEL',
    'DATA'),
   ('pyinstaller-4.9.dist-info\\RECORD',
    'c:\\users\\lukas '
@@ -256,77 +256,77 @@
    'c:\\users\\lukas '
    'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\METADATA',
    'DATA'),
-  ('pyinstaller-4.9.dist-info\\WHEEL',
+  ('setuptools-60.2.0.dist-info\\WHEEL',
    'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\WHEEL',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\LICENSE.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\LICENSE.txt',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\COPYING.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\COPYING.txt',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\REQUESTED',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\REQUESTED',
-   'DATA'),
-  ('setuptools-60.2.0.dist-info\\entry_points.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\entry_points.txt',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\INSTALLER',
-   'DATA'),
-  ('wheel-0.37.1.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\INSTALLER',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\zip-safe',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\zip-safe',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\top_level.txt',
-   'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\top_level.txt',
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\WHEEL',
    'DATA'),
   ('wheel-0.37.1.dist-info\\RECORD',
    'c:\\users\\lukas '
    'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\RECORD',
    'DATA'),
-  ('setuptools-60.2.0.dist-info\\RECORD',
+  ('pyinstaller-4.9.dist-info\\top_level.txt',
    'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\RECORD',
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\top_level.txt',
    'DATA'),
   ('setuptools-60.2.0.dist-info\\METADATA',
    'c:\\users\\lukas '
    'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\METADATA',
    'DATA'),
-  ('wheel-0.37.1.dist-info\\top_level.txt',
+  ('altgraph-0.17.2.dist-info\\INSTALLER',
    'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\top_level.txt',
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\INSTALLER',
    'DATA'),
-  ('altgraph-0.17.2.dist-info\\RECORD',
+  ('pyinstaller-4.9.dist-info\\COPYING.txt',
    'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\RECORD',
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\COPYING.txt',
    'DATA'),
-  ('altgraph-0.17.2.dist-info\\LICENSE',
+  ('wheel-0.37.1.dist-info\\METADATA',
    'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\LICENSE',
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\METADATA',
    'DATA'),
   ('setuptools-60.2.0.dist-info\\INSTALLER',
    'c:\\users\\lukas '
    'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\INSTALLER',
    'DATA'),
-  ('setuptools-60.2.0.dist-info\\WHEEL',
+  ('altgraph-0.17.2.dist-info\\RECORD',
    'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\WHEEL',
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\RECORD',
    'DATA'),
-  ('pyinstaller-4.9.dist-info\\INSTALLER',
+  ('altgraph-0.17.2.dist-info\\METADATA',
    'c:\\users\\lukas '
-   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\INSTALLER',
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\METADATA',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\LICENSE',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\LICENSE',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\top_level.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\altgraph-0.17.2.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\RECORD',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\RECORD',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\INSTALLER',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools-60.2.0.dist-info\\entry_points.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\setuptools-60.2.0.dist-info\\entry_points.txt',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\WHEEL',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\WHEEL',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\entry_points.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\pyinstaller-4.9.dist-info\\entry_points.txt',
+   'DATA'),
+  ('wheel-0.37.1.dist-info\\entry_points.txt',
+   'c:\\users\\lukas '
+   'morrison\\.virtualenvs\\gymbot-r--cpaue\\lib\\site-packages\\wheel-0.37.1.dist-info\\entry_points.txt',
    'DATA')],
  False,
  False,

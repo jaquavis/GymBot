@@ -21,6 +21,7 @@ if getattr(sys, 'frozen', False): # Running as compiled
     running_dir = sys._MEIPASS + "/files/" # Same path name than pyinstaller option
 else:
     running_dir = "./" # Path name when run with Python interpreter
+
 iconFileName = running_dir + "GymBot.ico"
 driverFileName = running_dir + "chromedriver.exe"
 
@@ -109,6 +110,6 @@ if __name__ == "__main__":
         slot = driver.find_element('id', slot_id)
         slot.click()
         print(f"\nBooked{' '*26}")
-        toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path='')
+        toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path=iconFileName)
 
     driver.quit()
