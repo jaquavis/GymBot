@@ -7,14 +7,12 @@ from iac01bot import iac01bot
 import signal
 import sys
 
-
 # TODO logging levels
 # TODO hide passwords
 
 def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
-
 
 if getattr(sys, 'frozen', False): # Running as compiled
     running_dir = sys._MEIPASS + "/files/" # Same path name than pyinstaller option
@@ -23,7 +21,6 @@ else:
 
 iconFileName = running_dir + "GymBot.ico"
 driverFileName = running_dir + "chromedriver.exe"
-
 
 if __name__ == "__main__":
 
