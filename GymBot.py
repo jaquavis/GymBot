@@ -1,4 +1,4 @@
-# pyinstaller --onefile --add-binary "GymBot.ico;files" -i GymBot.ico GymBot.py
+# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" -i GymBot.ico GymBot.py
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
@@ -22,6 +22,7 @@ if getattr(sys, 'frozen', False): # Running as compiled
 else:
     running_dir = "./" # Path name when run with Python interpreter
 iconFileName = running_dir + "GymBot.ico"
+driverFileName = running_dir + "chromedriver.exe"
 
 
 if __name__ == "__main__":
@@ -33,7 +34,7 @@ if __name__ == "__main__":
     print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
 
     # Define items
-    ser = Service("C:\\Users\\Lukas Morrison\\OneDrive - University of Calgary\\pycharm\\GymBot\\chromedriver.exe")
+    ser = Service(driverFileName)
     op = webdriver.ChromeOptions()
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
