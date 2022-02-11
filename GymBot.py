@@ -1,10 +1,13 @@
-# pyinstaller .\GymBot.py -F
+# pyinstaller --onefile --add-binary "GymBot.ico;files" -i GymBot.ico GymBot.py
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
 from iac01bot import iac01bot
 import signal
+import os
+import sys
+
 
 # TODO logging levels
 
@@ -12,6 +15,13 @@ import signal
 def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
+
+
+if getattr(sys, 'frozen', False): # Running as compiled
+    running_dir = sys._MEIPASS + "/files/" # Same path name than pyinstaller option
+else:
+    running_dir = "./" # Path name when run with Python interpreter
+iconFileName = running_dir + "GymBot.ico"
 
 
 if __name__ == "__main__":
@@ -22,19 +32,15 @@ if __name__ == "__main__":
     print("GymBot v0.7")
     print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
 
-    # Define webdriver
-    ser = Service("./chromedriver.exe")
+    # Define items
+    ser = Service("C:\\Users\\Lukas Morrison\\OneDrive - University of Calgary\\pycharm\\GymBot\\chromedriver.exe")
     op = webdriver.ChromeOptions()
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(service=ser, options=op)
     toaster = ToastNotifier()
-
-    # Define iac01bot
     iac01bot = iac01bot(driver)
-
-    # Define signal handler
     signal.signal(signal.SIGINT, signal_handler)
 
     # Check validity of input time
@@ -102,6 +108,6 @@ if __name__ == "__main__":
         slot = driver.find_element('id', slot_id)
         slot.click()
         print(f"\nBooked{' '*26}")
-        toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path='')
+        toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path=iconFileName)
 
     driver.quit()
