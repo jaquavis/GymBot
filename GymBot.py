@@ -9,7 +9,6 @@ import sys
 
 # TODO logging levels
 # TODO hide passwords
-# Test for nathan
 
 def signal_handler(sig, frame):
     print('\nExiting')
