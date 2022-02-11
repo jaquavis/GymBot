@@ -24,20 +24,16 @@ if __name__ == "__main__":
     print("GymBot v0.7")
     print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
 
-    # Define webdriver
+    # Define objects
     ser = Service("chromedriver.exe")
     op = webdriver.ChromeOptions()
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = webdriver.Chrome(service=ser, options=op)
-    toaster = ToastNotifier()
-
-    # Define iac01bot
-    iac01bot = iac01bot(driver)
-
-    # Define signal handler
-    signal.signal(signal.SIGINT, signal_handler)
+    driver = webdriver.Chrome(service=ser, options=op)  # webdriver
+    toaster = ToastNotifier()                           # notifier
+    iac01bot = iac01bot(driver)                         # iac01bot
+    signal.signal(signal.SIGINT, signal_handler)        # signal handler
 
     # Check validity of input time
     valid_time = False
