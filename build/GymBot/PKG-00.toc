@@ -184,13 +184,13 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libffi-7.dll',
    'BINARY'),
-  ('files\\chromedriver.exe',
-   'C:\\Users\\Lukas Morrison\\OneDrive - University of '
-   'Calgary\\pycharm\\GymBot\\chromedriver.exe',
-   'BINARY'),
   ('files\\GymBot.ico',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\GymBot.ico',
+   'BINARY'),
+  ('files\\chromedriver.exe',
+   'C:\\Users\\Lukas Morrison\\OneDrive - University of '
+   'Calgary\\pycharm\\GymBot\\chromedriver.exe',
    'BINARY'),
   ('base_library.zip',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
