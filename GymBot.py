@@ -5,8 +5,6 @@ from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
 from iac01bot import iac01bot
 import signal
-import sys
-import os
 
 # TODO logging levels
 
