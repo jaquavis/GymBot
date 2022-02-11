@@ -4,12 +4,13 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
 from iac01bot import iac01bot
+from pwinput import pwinput
 import signal
 import sys
 
 # TODO logging levels
 # TODO hide passwords
-#3:56
+
 def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
@@ -60,7 +61,8 @@ if __name__ == "__main__":
     creds_good = False
     while not creds_good:  # check credentials
         username = input("Input your username:")
-        password = input("Input your password:")
+        password = pwinput(prompt="Input your password:", mask='*')
+        print(password)
         driver.get(login_url)
         iac01bot.login(username, password)
         if iac01bot.login_status():
