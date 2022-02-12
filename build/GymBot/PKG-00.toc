@@ -172,6 +172,26 @@
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\build\\GymBot\\base_library.zip',
    'DATA'),
+  ('selenium\\webdriver\\remote\\isDisplayed.js',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\remote\\isDisplayed.js',
+   'DATA'),
+  ('selenium\\webdriver\\common\\devtools\\v96\\py.typed',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v96\\py.typed',
+   'DATA'),
+  ('certifi\\cacert.pem',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Roaming\\Python\\Python37\\site-packages\\certifi\\cacert.pem',
+   'DATA'),
+  ('selenium\\webdriver\\common\\devtools\\v85\\py.typed',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v85\\py.typed',
+   'DATA'),
+  ('selenium\\webdriver\\remote\\findElements.js',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\remote\\findElements.js',
+   'DATA'),
   ('selenium\\webdriver\\common\\devtools\\v95\\py.typed',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v95\\py.typed',
@@ -184,137 +204,117 @@
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\common\\mutation-listener.js',
    'DATA'),
-  ('selenium\\webdriver\\remote\\isDisplayed.js',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\remote\\isDisplayed.js',
-   'DATA'),
-  ('certifi\\cacert.pem',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Roaming\\Python\\Python37\\site-packages\\certifi\\cacert.pem',
-   'DATA'),
   ('selenium\\webdriver\\common\\devtools\\v94\\py.typed',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v94\\py.typed',
-   'DATA'),
-  ('selenium\\webdriver\\common\\devtools\\v85\\py.typed',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v85\\py.typed',
    'DATA'),
   ('selenium\\webdriver\\firefox\\webdriver_prefs.json',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver_prefs.json',
    'DATA'),
-  ('selenium\\webdriver\\common\\devtools\\v96\\py.typed',
+  ('setuptools-39.0.1.dist-info\\LICENSE.txt',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\common\\devtools\\v96\\py.typed',
-   'DATA'),
-  ('selenium\\webdriver\\remote\\findElements.js',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\selenium\\webdriver\\remote\\findElements.js',
-   'DATA'),
-  ('setuptools-39.0.1.dist-info\\top_level.txt',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\top_level.txt',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\METADATA',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\METADATA',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\WHEEL',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\WHEEL',
-   'DATA'),
-  ('setuptools-39.0.1.dist-info\\metadata.json',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\metadata.json',
-   'DATA'),
-  ('setuptools-39.0.1.dist-info\\RECORD',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\RECORD',
-   'DATA'),
-  ('pyinstaller-4.9.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\INSTALLER',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\top_level.txt',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\top_level.txt',
-   'DATA'),
-  ('setuptools-39.0.1.dist-info\\dependency_links.txt',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\dependency_links.txt',
-   'DATA'),
-  ('setuptools-39.0.1.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\INSTALLER',
-   'DATA'),
-  ('setuptools-39.0.1.dist-info\\METADATA',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\METADATA',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\LICENSE.txt',
    'DATA'),
   ('setuptools-39.0.1.dist-info\\WHEEL',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\WHEEL',
    'DATA'),
-  ('altgraph-0.17.2.dist-info\\zip-safe',
+  ('pyinstaller-4.9.dist-info\\top_level.txt',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\zip-safe',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\top_level.txt',
    'DATA'),
   ('setuptools-39.0.1.dist-info\\DESCRIPTION.rst',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\DESCRIPTION.rst',
    'DATA'),
-  ('altgraph-0.17.2.dist-info\\METADATA',
+  ('pyinstaller-4.9.dist-info\\METADATA',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\METADATA',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\METADATA',
    'DATA'),
-  ('pyinstaller-4.9.dist-info\\WHEEL',
+  ('pyinstaller-4.9.dist-info\\INSTALLER',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\WHEEL',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\INSTALLER',
    'DATA'),
   ('pyinstaller-4.9.dist-info\\entry_points.txt',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\entry_points.txt',
    'DATA'),
+  ('setuptools-39.0.1.dist-info\\entry_points.txt',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\entry_points.txt',
+   'DATA'),
+  ('pyinstaller-4.9.dist-info\\WHEEL',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools-39.0.1.dist-info\\METADATA',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools-39.0.1.dist-info\\INSTALLER',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\top_level.txt',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\top_level.txt',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\zip-safe',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\zip-safe',
+   'DATA'),
   ('pyinstaller-4.9.dist-info\\COPYING.txt',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\COPYING.txt',
    'DATA'),
-  ('altgraph-0.17.2.dist-info\\LICENSE',
+  ('setuptools-39.0.1.dist-info\\dependency_links.txt',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\LICENSE',
-   'DATA'),
-  ('altgraph-0.17.2.dist-info\\INSTALLER',
-   'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\INSTALLER',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\dependency_links.txt',
    'DATA'),
   ('setuptools-39.0.1.dist-info\\zip-safe',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\zip-safe',
    'DATA'),
-  ('pyinstaller-4.9.dist-info\\REQUESTED',
+  ('altgraph-0.17.2.dist-info\\RECORD',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\REQUESTED',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\RECORD',
    'DATA'),
-  ('setuptools-39.0.1.dist-info\\LICENSE.txt',
+  ('setuptools-39.0.1.dist-info\\RECORD',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\LICENSE.txt',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\RECORD',
    'DATA'),
-  ('setuptools-39.0.1.dist-info\\entry_points.txt',
+  ('altgraph-0.17.2.dist-info\\INSTALLER',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\entry_points.txt',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools-39.0.1.dist-info\\metadata.json',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\metadata.json',
    'DATA'),
   ('pyinstaller-4.9.dist-info\\RECORD',
    'c:\\users\\lukas '
    'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\RECORD',
    'DATA'),
-  ('pyinstaller-4.9.dist-info\\top_level.txt',
+  ('pyinstaller-4.9.dist-info\\REQUESTED',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\top_level.txt',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pyinstaller-4.9.dist-info\\REQUESTED',
    'DATA'),
-  ('altgraph-0.17.2.dist-info\\RECORD',
+  ('altgraph-0.17.2.dist-info\\WHEEL',
    'c:\\users\\lukas '
-   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\RECORD',
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\WHEEL',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\LICENSE',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\LICENSE',
+   'DATA'),
+  ('altgraph-0.17.2.dist-info\\METADATA',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\altgraph-0.17.2.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools-39.0.1.dist-info\\top_level.txt',
+   'c:\\users\\lukas '
+   'morrison\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools-39.0.1.dist-info\\top_level.txt',
    'DATA')],
  False,
  False,
