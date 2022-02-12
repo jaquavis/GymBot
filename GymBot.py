@@ -61,7 +61,6 @@ if __name__ == "__main__":
     while not creds_good:  # check credentials
         username = input("Input your username:")
         password = pwinput(prompt="Input your password:", mask='*')
-        print(password)
         driver.get(login_url)
         iac01bot.login(username, password)
         if iac01bot.login_status():
