@@ -17,14 +17,13 @@ def signal_handler(sig, frame):
     driver.quit()
 
 
-if getattr(sys, 'frozen', False): # Running as compiled
-    running_dir = sys._MEIPASS + "/files/" # Same path name than pyinstaller option
+if getattr(sys, 'frozen', False):  # Running as compiled
+    running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
 else:
-    running_dir = "./" # Path name when run with Python interpreter
+    running_dir = "./"  # Path name when run with Python interpreter
 
 iconFileName = running_dir + "GymBot.ico"
 driverFileName = running_dir + "chromedriver.exe"
-
 
 if __name__ == "__main__":
 
@@ -41,15 +40,16 @@ if __name__ == "__main__":
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
-    toaster = ToastNotifier()                           # notifier
-    iac01bot = iac01bot(driver)                         # iac01bot
-    signal.signal(signal.SIGINT, signal_handler)        # signal handler
+    toaster = ToastNotifier()  # notifier
+    iac01bot = iac01bot(driver)  # iac01bot
+    signal.signal(signal.SIGINT, signal_handler)  # signal handler
 
     # Check validity of input time
     valid_time = False
     while not valid_time:
         time_input = input("Input 2-digit 24hr number of desired appointment start time (i.e., 09, 13, 18):")
-        if time_input not in ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']:
+        if time_input not in ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                              '21']:
             print("Invalid input (hint: use 2 digits, i.e., 09)")
             print()
         else:
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     if time_available:
         slot = driver.find_element('id', slot_id)
         slot.click()
-        print(f"\nBooked{' '*26}")
+        print(f"\nBooked{' ' * 26}")
         toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path=iconFileName)
 
     driver.quit()
