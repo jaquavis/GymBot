@@ -7,15 +7,12 @@ from iac01bot import iac01bot
 from pwinput import pwinput
 import signal
 import sys
-#11:25
-
+#SB11:28
 # TODO logging levels
-
 
 def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
-
 
 if getattr(sys, 'frozen', False): # Running as compiled
     running_dir = sys._MEIPASS + "/files/" # Same path name than pyinstaller option
@@ -24,7 +21,6 @@ else:
 
 iconFileName = running_dir + "GymBot.ico"
 driverFileName = running_dir + "chromedriver.exe"
-
 
 if __name__ == "__main__":
 
@@ -65,7 +61,6 @@ if __name__ == "__main__":
     while not creds_good:  # check credentials
         username = input("Input your username:")
         password = pwinput(prompt="Input your password:", mask='*')
-        print(password)
         driver.get(login_url)
         iac01bot.login(username, password)
         if iac01bot.login_status():
