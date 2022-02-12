@@ -7,13 +7,13 @@ from iac01bot import iac01bot
 from pwinput import pwinput
 import signal
 import sys
-#Carbide Test
+
 # TODO logging levels
 
 def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
-
+#Carbide Test
 if getattr(sys, 'frozen', False): # Running as compiled
     running_dir = sys._MEIPASS + "/files/" # Same path name than pyinstaller option
 else:
