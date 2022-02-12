@@ -7,7 +7,7 @@ from iac01bot import iac01bot
 from pwinput import pwinput
 import signal
 import sys
-#SB11:28
+
 # TODO logging levels
 
 def signal_handler(sig, frame):
