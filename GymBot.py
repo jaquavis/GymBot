@@ -1,4 +1,4 @@
-# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" -i GymBot.ico GymBot.py
+# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" -i GymBot.ico GymBot.pypyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" -i GymBot.ico GymBot.py
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
