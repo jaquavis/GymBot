@@ -1,8 +1,10 @@
 class Iac01Bot:
     def __init__(self, driver):
         self.driver = driver
+        self.url = None
 
     def login(self, un, pw):  # Returns True if successful, else returns False
+        self.driver.get(self.url)
         un_field = self.driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_UserName")
         pw_field = self.driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_Password")
         login_btn = self.driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_LoginButton")
