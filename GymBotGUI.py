@@ -11,15 +11,12 @@ class GymBotGUI:
         self.username_login = StringVar()
         self.password_login = StringVar()
         self.time_clicked = StringVar()
-        self.time_entry = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']
+        self.time_entry = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                           '21']
         self.username_entry = None
         self.password_entry = None
-        self.window2 = None
         self.username = None
         self.password = None
-
-    #def onclick(self):  # Allow us to use 'return' to submit (Return key requires positional argument)
-    # self.get_creds()
 
     def create_main_window(self):
         self.window.geometry("500x250")
@@ -40,10 +37,8 @@ class GymBotGUI:
         tk.Label(self.window, text="").pack()
         button1 = tk.Button(self.window, text="Login", command=self.get_creds)
         button1.pack()
-        #self.window.bind('<Return>', self.onclick)  # Allow us to use 'return' to submit
+        #self.window.bind('<Return>', self.get_creds())  # Allow us to use 'return' to submit
         self.window.mainloop()
-
-    # def get_creds(self):
 
     def get_creds(self):
         self.username = self.username_login.get()
@@ -51,21 +46,17 @@ class GymBotGUI:
         self.username_entry.delete(0, END)
         self.password_entry.delete(0, END)
 
-        # while not creds_good:  # check credentials
         login_success = self.iac01bot.login(self.username, self.password)
         if login_success:
             self.get_gym_time()
         else:
             self.invalid_user()
 
-    def delete2(self):  # Can we delete this method
-        self.window2.destroy()
-
     def invalid_user(self):
-        self.window2 = Toplevel(self.window)
-        self.window2.title("Invalid User")
-        Label(self.window2, text="Invalid credentials, please try again").pack()
-        Button(self.window2, text="Retry", command=self.delete2).pack()
+        invalid_usr_win = Toplevel(self.window)
+        invalid_usr_win.title("Invalid User")
+        Label(invalid_usr_win, text="Invalid credentials, please try again").pack()
+        Button(invalid_usr_win, text="Retry", command=invalid_usr_win.destroy).pack()
 
     def get_gym_time(self):
         time_available = False
@@ -81,8 +72,7 @@ class GymBotGUI:
             if logged_in:
                 self.iac01bot.driver.refresh()
             else:
-                pass    # fix this part by getting __init__ to hold login creds
-                # self.iac01bot.login(username, password)
+                self.iac01bot.login(self.username, self.password)
 
             # Get available slots / Check if desired slot is available
             slots_array = []
@@ -114,4 +104,4 @@ class GymBotGUI:
             slot = self.iac01bot.driver.find_element('id', slot_id)
             slot.click()
             print(f"\nBooked{' ' * 26}")
-            # toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path=iconFileName) # fix this
+            #toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path=iconFileName)
