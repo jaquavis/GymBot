@@ -3,7 +3,7 @@ from tkinter import *
 from selenium.common.exceptions import NoSuchElementException
 
 
-class GymBotGUI(tk.Tk):
+class GymBotGUI:
     def __init__(self, iac01bot):
         super().__init__()
         self.iac01bot = iac01bot
@@ -15,20 +15,22 @@ class GymBotGUI(tk.Tk):
         self.username_entry = None
         self.password_entry = None
         self.window2 = None
+        self.username = None
+        self.password = None
 
-    def onclick(self):  # Allow us to use 'return' to submit (Return key requires positional argument)
-        self.login()
+    #def onclick(self):  # Allow us to use 'return' to submit (Return key requires positional argument)
+    # self.get_creds()
 
     def create_main_window(self):
         self.window.geometry("500x250")
-        self.window.title("JimBot")
-        tk.Label(text="Welcome to JimBot!").pack()
+        self.window.title("GymBot")
+        tk.Label(text="Welcome to GymBot!").pack()
         tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.").pack()
         tk.Label(text="Select the hour of desired appointment start time (24 hour clock):").pack()
         self.time_clicked.set("06")
         OptionMenu(self.window, self.time_clicked, *self.time_entry).pack()
 
-        tk.Label(text="Please enter U of C credentials below to login").pack()
+        tk.Label(text="Please enter U of C credentials below to login:").pack()
         tk.Label(self.window, text="Username *").pack()
         self.username_entry = tk.Entry(self.window, textvariable=self.username_login)
         self.username_entry.pack()
@@ -36,20 +38,21 @@ class GymBotGUI(tk.Tk):
         self.password_entry = tk.Entry(self.window, textvariable=self.password_login, show="*")
         self.password_entry.pack()
         tk.Label(self.window, text="").pack()
-        button1 = tk.Button(self.window, text="Next", command=self.login)
+        button1 = tk.Button(self.window, text="Login", command=self.get_creds)
         button1.pack()
-        self.window.bind('<Return>', self.onclick)  # Allow us to use 'return' to submit
+        #self.window.bind('<Return>', self.onclick)  # Allow us to use 'return' to submit
+        self.window.mainloop()
 
     # def get_creds(self):
 
-    def login(self):
-        username = self.username_login.get()
-        password = self.password_login.get()  # Mask??????
+    def get_creds(self):
+        self.username = self.username_login.get()
+        self.password = self.password_login.get()  # Mask??????
         self.username_entry.delete(0, END)
         self.password_entry.delete(0, END)
 
         # while not creds_good:  # check credentials
-        login_success = self.iac01bot.login(username, password)
+        login_success = self.iac01bot.login(self.username, self.password)
         if login_success:
             self.get_gym_time()
         else:

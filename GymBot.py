@@ -20,10 +20,6 @@ def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
 
-
-
-
-
 if getattr(sys, 'frozen', False):  # Running as compiled
     running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
 else:
@@ -56,7 +52,6 @@ if __name__ == "__main__":
 
     # Start process
     GUI.create_main_window()
-    GUI.mainloop()
 
     # Cleanup
     driver.quit()
