@@ -30,7 +30,7 @@ driverFileName = running_dir + "chromedriver.exe"
 if __name__ == "__main__":
 
     login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
-    default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
+    default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
     print("GymBot v0.9")
     print("Ensure you do not currently have a booking. Appointments will be booked day-of only.")
