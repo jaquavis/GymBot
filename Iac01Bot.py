@@ -1,7 +1,7 @@
 class Iac01Bot:
-    def __init__(self, driver, url):
+    def __init__(self, driver):
         self.driver = driver
-        self.url = url
+        self.url = None
 
     def login(self, un, pw):  # Returns True if successful, else returns False
         self.driver.get(self.url)

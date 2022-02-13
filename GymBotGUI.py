@@ -4,9 +4,10 @@ from selenium.common.exceptions import NoSuchElementException
 
 
 class GymBotGUI:
-    def __init__(self, iac01bot):
+    def __init__(self, iac01bot, toaster):
         super().__init__()
         self.iac01bot = iac01bot
+        self.toaster = toaster
         self.window = tk.Tk()
         self.username_login = StringVar()
         self.password_login = StringVar()
@@ -104,4 +105,4 @@ class GymBotGUI:
             slot = self.iac01bot.driver.find_element('id', slot_id)
             slot.click()
             print(f"\nBooked{' ' * 26}")
-            #toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path=iconFileName)
+            self.toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path=self.toaster.icon)

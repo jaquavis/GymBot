@@ -12,7 +12,6 @@ from GymBotGUI import GymBotGUI
 # TODO calendar linking
 # TODO fix return key support
 # TODO fix hangup while in loop
-# TODO fix notifications
 
 
 def signal_handler(sig, frame):
@@ -39,10 +38,12 @@ if __name__ == "__main__":
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
-    toaster = ToastNotifier()  # notifier
-    iac01bot = Iac01Bot(driver, login_url)  # iac01bot
-    signal.signal(signal.SIGINT, signal_handler)  # signal handler
-    GUI = GymBotGUI(iac01bot)  # interface app
+    toaster = ToastNotifier()                           # notifier
+    toaster.icon = iconFileName                         # notifier: icon
+    iac01bot = Iac01Bot(driver)                         # iac01bot
+    iac01bot.url = login_url                            # iac01bot: url
+    signal.signal(signal.SIGINT, signal_handler)        # signal handler
+    GUI = GymBotGUI(iac01bot, toaster)                  # interface app
 
     # Start process
     GUI.create_main_window()
