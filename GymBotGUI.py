@@ -21,8 +21,8 @@ class GymBotGUI:
 
     def create_main_window(self):
         self.window.geometry("500x250")
-        self.window.title("GymBot")
-        tk.Label(text="Welcome to GymBot!").pack()
+        self.window.title("GymBot®")
+        tk.Label(text="Welcome to GymBot®!").pack()
         tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.").pack()
         tk.Label(text="Select the hour of desired appointment start time (24 hour clock):").pack()
         self.time_clicked.set("06")
@@ -56,7 +56,7 @@ class GymBotGUI:
     def invalid_user(self):
         invalid_usr_win = Toplevel(self.window)
         invalid_usr_win.title("Invalid User")
-        Label(invalid_usr_win, text="Invalid credentials, please try again").pack()
+        Label(invalid_usr_win, text="Invalid credentials, please try again.").pack()
         Button(invalid_usr_win, text="Retry", command=invalid_usr_win.destroy).pack()
 
     def get_gym_time(self):
@@ -105,4 +105,4 @@ class GymBotGUI:
             slot = self.iac01bot.driver.find_element('id', slot_id)
             slot.click()
             print(f"\nBooked{' ' * 26}")
-            self.toaster.show_toast("GymBot", "Your appointment has been booked!", icon_path=self.toaster.icon)
+            self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
