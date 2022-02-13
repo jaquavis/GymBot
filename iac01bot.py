@@ -1,8 +1,10 @@
-class iac01bot():
+class Iac01Bot:
     def __init__(self, driver):
         self.driver = driver
+        self.login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 
     def login(self, un, pw):  # Returns True if successful, else returns False
+        self.driver.get(self.login_url)
         un_field = self.driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_UserName")
         pw_field = self.driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_Password")
         login_btn = self.driver.find_element('id', "ctl00_ContentPlaceHolder1_logCamRec_LoginButton")
