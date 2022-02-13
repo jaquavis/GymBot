@@ -1,12 +1,8 @@
 # pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" -i GymBot.ico GymBot.py
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
 from Iac01Bot import Iac01Bot
-from pwinput import pwinput
-import tkinter as tk
-from tkinter import *
 import signal
 import sys
 import os
