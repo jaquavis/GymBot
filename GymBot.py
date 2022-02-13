@@ -5,7 +5,6 @@ from win10toast import ToastNotifier
 from Iac01Bot import Iac01Bot
 import signal
 import sys
-import os
 from GymBotGUI import GymBotGUI
 
 
