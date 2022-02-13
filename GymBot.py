@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
-from iac01bot import iac01bot
+from Iac01Bot import Iac01Bot
 from pwinput import pwinput
 import signal
 import sys
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
     toaster = ToastNotifier()                           # notifier
-    iac01bot = iac01bot(driver)                         # iac01bot
+    iac01bot = Iac01Bot(driver)                         # iac01bot
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
 
     # Check validity of input time
