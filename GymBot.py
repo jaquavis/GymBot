@@ -17,6 +17,7 @@ def signal_handler(sig, frame):
     driver.quit()
 
 
+# for compiling to .exe
 if getattr(sys, 'frozen', False):  # Running as compiled
     running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
 else:
