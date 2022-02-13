@@ -12,6 +12,7 @@ from GymBotGUI import GymBotGUI
 # TODO calendar linking
 # TODO fix return key support
 # TODO fix hangup while in loop
+# TODO Exit cleanup
 
 
 def signal_handler(sig, frame):
