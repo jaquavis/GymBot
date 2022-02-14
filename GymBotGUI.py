@@ -19,6 +19,7 @@ class GymBotGUI:
         self.password_entry = None
         self.username = None
         self.password = None
+        self.time_slot_text = None
 
     def create_main_window(self):
         self.window.geometry("500x250")
@@ -51,6 +52,7 @@ class GymBotGUI:
         login_success = self.iac01bot.login(self.username, self.password)
         if login_success:
             threading.Thread(target=self.get_gym_time).start()
+            # threading.Thread(target=self.get_gym_time, daemon=True).start()
         else:
             self.invalid_user()
 
@@ -83,12 +85,10 @@ class GymBotGUI:
                     slot_id = f"ctl00_ContentPlaceHolder1_ctl00_repAvailFitness_ctl{nums[i]}_lnkBtnFitness"
                     time_slot = self.iac01bot.driver.find_element('id', slot_id)
                     text = time_slot.text
-                    # print("Available times:")
-                    # print(text)
                     slots_array.append(text)
                     if desired_time in slots_array[i]:
                         time_available = True
-                        print(time_available)
+                        self.time_slot_text = text
                         break
                 except NoSuchElementException:
                     pass
@@ -105,5 +105,6 @@ class GymBotGUI:
         if time_available:
             slot = self.iac01bot.driver.find_element('id', slot_id)
             slot.click()
-            print(f"\nBooked{' ' * 26}")
+            print(f"\nBooked {self.time_slot_text[5:24]}{' ' * 6}")
             self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
+            self.window.destroy()
