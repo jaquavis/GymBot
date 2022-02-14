@@ -23,6 +23,7 @@ from googleapiclient.errors import HttpError
 # TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
 # TODO Disable calendar alert reminders
 # TODO Daemonic thread
+# TODO Splash Screen
 
 
 def signal_handler(sig, frame):
