@@ -11,7 +11,6 @@ from GymBotGUI import GymBotGUI
 # TODO logging levels
 # TODO calendar linking
 # TODO fix return key support
-# TODO fix hangup while in loop
 # TODO Exit cleanup
 
 

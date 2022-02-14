@@ -1,3 +1,4 @@
+import threading
 import tkinter as tk
 from tkinter import *
 from selenium.common.exceptions import NoSuchElementException
@@ -36,8 +37,8 @@ class GymBotGUI:
         self.password_entry = tk.Entry(self.window, textvariable=self.password_login, show="*")
         self.password_entry.pack()
         tk.Label(self.window, text="").pack()
-        button1 = tk.Button(self.window, text="Login", command=self.get_creds)
-        button1.pack()
+        login_button = tk.Button(self.window, text="Login", command=self.get_creds)
+        login_button.pack()
         #self.window.bind('<Return>', self.get_creds())  # Allow us to use 'return' to submit
         self.window.mainloop()
 
@@ -49,7 +50,7 @@ class GymBotGUI:
 
         login_success = self.iac01bot.login(self.username, self.password)
         if login_success:
-            self.get_gym_time()
+            threading.Thread(target=self.get_gym_time).start()
         else:
             self.invalid_user()
 
