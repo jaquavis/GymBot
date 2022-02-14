@@ -22,6 +22,7 @@ from googleapiclient.errors import HttpError
 # TODO Exit cleanup
 # TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
 # TODO Disable calendar alert reminders
+# TODO Daemonic thread
 
 
 def signal_handler(sig, frame):
