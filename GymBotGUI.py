@@ -127,8 +127,8 @@ class GymBotGUI:
             slot = self.iac01bot.driver.find_element('id', slot_id)
             slot.click()
             print(f"\nBooked {self.time_slot_text[5:24]}{' ' * 6}")
+            self.loading_window.destroy()
             self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
-            self.window.destroy()
 
     def loading_page(self):
 
@@ -137,18 +137,19 @@ class GymBotGUI:
         self.instance_loading_window.withdraw()
 
         self.loading_window = tk.Toplevel(self.instance_loading_window)
-        self.loading_window.geometry("500x200")
+        self.loading_window.geometry("500x100")
         self.loading_window.title("GymBot®")
         # Progress bar
         self.bar = Progressbar(self.loading_window, orient=HORIZONTAL, length=400, mode='indeterminate')
         self.bar.pack(pady=20)
         self.bar.start()
 
-        loading_wheel = 0
+        # maybe put desired time
+        # maybe put loading wheel
+        # loading_text = StringVar()
+        # loading_text = "We are currently looking for your gym time"
 
-        tk.Label(self.loading_window, textvariable=self.print_time).pack()
         tk.Label(self.loading_window, text="We are currently looking for your gym time").pack()
-        tk.Label(self.loading_window, textvariable=loading_wheel).pack()
 
         # while not self.time_available:
         #     print("TEST")
@@ -156,4 +157,3 @@ class GymBotGUI:
         #     self.loading_window.update_idletasks()
 
         self.instance_loading_window.mainloop()
-
