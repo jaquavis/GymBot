@@ -1,4 +1,5 @@
-# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" --add-binary "token.json;files" -i GymBot.ico GymBot.py
+# GymBot
+# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
 from __future__ import print_function
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -44,7 +45,7 @@ login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
 if __name__ == "__main__":
-    print("GymBot® v0.10")
+    print("GymBot® v0.11")
 
     # Authenticate calendar credentials
     SCOPES = ['https://www.googleapis.com/auth/calendar']  # If modifying these scopes, delete the file token.json
