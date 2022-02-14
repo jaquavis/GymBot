@@ -216,6 +216,10 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\tcl86t.dll',
    'BINARY'),
+  ('files\\chromedriver.exe',
+   'C:\\Users\\Lukas Morrison\\OneDrive - University of '
+   'Calgary\\pycharm\\GymBot\\chromedriver.exe',
+   'BINARY'),
   ('files\\GymBot.ico',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\GymBot.ico',
@@ -223,14 +227,6 @@
   ('files\\credentials.json',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\credentials.json',
-   'BINARY'),
-  ('files\\chromedriver.exe',
-   'C:\\Users\\Lukas Morrison\\OneDrive - University of '
-   'Calgary\\pycharm\\GymBot\\chromedriver.exe',
-   'BINARY'),
-  ('files\\token.json',
-   'C:\\Users\\Lukas Morrison\\OneDrive - University of '
-   'Calgary\\pycharm\\GymBot\\token.json',
    'BINARY'),
   ('base_library.zip',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
