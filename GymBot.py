@@ -18,12 +18,12 @@ from googleapiclient.errors import HttpError
 
 
 # TODO logging levels
-# TODO calendar linking
 # TODO fix return key support
 # TODO Exit cleanup
 # TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
 # TODO Disable calendar alert reminders
 # TODO Daemonic thread
+# TODO OOP calendar
 
 
 def signal_handler(sig, frame):
