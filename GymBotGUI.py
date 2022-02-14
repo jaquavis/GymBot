@@ -156,3 +156,4 @@ class GymBotGUI:
         #     self.loading_window.update_idletasks()
 
         self.instance_loading_window.mainloop()
+
