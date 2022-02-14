@@ -4,12 +4,10 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
 from iac01bot import iac01bot
-from pwinput import pwinput
 import tkinter as tk
 from tkinter import *
 import signal
 import sys
-import os
 
 
 # TODO logging levels
@@ -97,9 +95,11 @@ def login():
     driver.get(login_url)
     iac01bot.login(username, password)
     if iac01bot.login_status():
+        #tk.Label(window, text="Logged in").pack()<-------------------------------------------------------------------------------
         getgymtime()
     else:
         invaliduser()
+
 
 def window():
     global window
@@ -129,7 +129,7 @@ def window():
     time_clicked.set("06")
     OptionMenu(window, time_clicked, *time_entry).pack()
 
-    tk.Label(text="Please enter U of C credentials below to login").pack()
+    tk.Label(window, text="Please enter U of C credentials below to login").pack()
     tk.Label(window, text="Username *").pack()
     username_entry = tk.Entry(window, textvariable=username_login)
     username_entry.pack()
