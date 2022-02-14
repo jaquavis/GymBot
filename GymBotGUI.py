@@ -155,5 +155,5 @@ class GymBotGUI:
         #     print("TEST")
         #     #loading_wheel += 1
         #     self.loading_window.update_idletasks()
-        #test
+
         self.instance_loading_window.mainloop()
