@@ -10,7 +10,6 @@ import sys
 from GymBotGUI import GymBotGUI
 import datetime
 from Calendar import Calendar
-import threading
 
 
 # Lukas:
