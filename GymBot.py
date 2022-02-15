@@ -16,6 +16,7 @@ from os import path
 # Lukas:
 # TODO logging levels
 # TODO Exit cleanup (daemonic thread?)
+# TODO restructure main loop
 
 # Nathan:
 # TODO End threads
