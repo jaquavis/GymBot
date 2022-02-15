@@ -11,7 +11,7 @@ from GymBotGUI import GymBotGUI
 import datetime
 from Calendar import Calendar
 
-
+# Lukas:
 # TODO logging levels
 # TODO calendar linking
 # TODO fix return key support
@@ -21,6 +21,11 @@ from Calendar import Calendar
 # TODO Daemonic thread
 # TODO Splash Screen
 # TODO Put Calendar on new thread
+# Nathan:
+# TODO End threads
+# TODO Find out how to use return to enter login
+# TODO change font, font size, taskbar colours, text entry colour, button colour
+# TODO change window icon
 
 
 def signal_handler(sig, frame):
@@ -62,7 +67,7 @@ if __name__ == "__main__":
     calendar.credsFileName = credsFileName
 
     # Authenticate calendar credentials
-    calendar.authenticate()
+    #calendar.authenticate()
 
     # Start process
     gui.create_main_window()
