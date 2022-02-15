@@ -20,6 +20,7 @@ from Calendar import Calendar
 # TODO Disable calendar alert reminders
 # TODO Daemonic thread
 # TODO Splash Screen
+# TODO Put Calendar on new thread
 
 
 def signal_handler(sig, frame):
