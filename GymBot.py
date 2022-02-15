@@ -43,7 +43,6 @@ else:
 iconFileName = running_dir + 'GymBot.ico'
 driverFileName = running_dir + 'chromedriver.exe'
 credsFileName = running_dir + 'credentials.json'
-tokenFileName = running_dir + 'token.json'
 login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
@@ -62,13 +61,9 @@ if __name__ == "__main__":
     iac01bot = Iac01Bot(driver)                         # iac01bot
     iac01bot.url = login_url                            # iac01bot: url
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
-    gui = GymBotGUI(iac01bot, toaster)                  # interface app
     calendar = Calendar()                               # calendar
-    calendar.tokenFileName = tokenFileName              # calendar: credentials
-    calendar.credsFileName = credsFileName              # calendar: token
-
-    # Authenticate calendar credentials
-    calendar.authenticate()
+    calendar.credsFileName = credsFileName              # calendar: credentials
+    gui = GymBotGUI(iac01bot, toaster, calendar)        # interface app
 
     # Start process
     gui.set_colour_mode()
@@ -79,7 +74,8 @@ if __name__ == "__main__":
         today = datetime.datetime.now().isoformat()
         start_time = f"{today[0:11]}{gui.time_slot_text[10:15]}:00.000"
         end_time = f"{today[0:11]}{gui.time_slot_text[19:24]}:00.000"
-        calendar.book_event(start_time, end_time)
+        if gui.add_to_cal:
+            calendar.book_event(start_time, end_time)
 
     except TypeError:
         print("Could not find event times")

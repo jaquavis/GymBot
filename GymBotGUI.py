@@ -10,8 +10,12 @@ from datetime import date
 
 
 class GymBotGUI:
-    def __init__(self, iac01bot, toaster):
+    def __init__(self, iac01bot, toaster, calendar):
         super().__init__()
+        self.iac01bot = iac01bot
+        self.toaster = toaster
+        self.calendar = calendar
+
         self.print_time = StringVar
         self.login_success = None
         self.backend_thread = None
@@ -20,8 +24,6 @@ class GymBotGUI:
         self.invalid_usr_win = None
         self.bar = None
         self.time_available = False
-        self.iac01bot = iac01bot
-        self.toaster = toaster
         self.window = tk.Tk()
         self.loading_window = None
         self.username_login = StringVar()
@@ -35,11 +37,14 @@ class GymBotGUI:
         self.password = None
         self.time_slot_text = None
 
+        self.toggle_button = None
+        self.add_to_cal = False
+
         self.background_colour = None
         self.font_colour = None
 
     def create_main_window(self):
-        self.window.geometry("500x250")
+        self.window.geometry("500x310")
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour).pack()
@@ -59,6 +64,10 @@ class GymBotGUI:
         # self.window.bind('<Return>', self.enter())  # Allow us to use 'return' to submit
         login_button = tk.Button(self.window, text="Login", command=lambda: self.threading())
         login_button.pack(pady=5)
+
+        tk.Label(self.window, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour).pack()
+        self.toggle_button = Button(text="OFF", width=10, command=self.toggle)
+        self.toggle_button.pack(pady=10)
 
         tk.Label(text="Created lovingly by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour).pack()
         self.window.mainloop()
@@ -188,3 +197,12 @@ class GymBotGUI:
         else:
             self.background_colour = '#323437'
             self.font_colour = '#d1d0c5'
+
+    def toggle(self):
+        if self.toggle_button.config('text')[-1] == 'ON':
+            self.toggle_button.config(text='OFF')
+            self.add_to_cal = False
+            self.calendar.authenticate()
+        else:
+            self.toggle_button.config(text='ON')
+            self.add_to_cal = True
