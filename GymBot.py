@@ -16,7 +16,6 @@ from os import path
 # Lukas:
 # TODO logging levels
 # TODO Exit cleanup (daemonic thread?)
-# TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
 
 # Nathan:
 # TODO End threads

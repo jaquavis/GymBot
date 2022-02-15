@@ -16,7 +16,6 @@ class GymBotGUI:
         self.toaster = toaster
         self.calendar = calendar
 
-        self.print_time = StringVar
         self.login_success = None
         self.backend_thread = None
         self.instance_loading_window = None
@@ -108,9 +107,12 @@ class GymBotGUI:
     def get_gym_time(self):
         wheel_index = 0
 
-        desired_time = self.time_clicked.get() + ":00 to " + str(int(self.time_clicked.get()) + 1) + ":00"
-        self.print_time = "Desired Time:" + desired_time
-        print(self.print_time)
+        if int(self.time_clicked.get()) < 10:
+            desired_time = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
+        else:
+            desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
+        print(f"Desired Time: {desired_time}")
+
         nums = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15']
 
         while not self.time_available:  # main loop
