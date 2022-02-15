@@ -178,7 +178,7 @@ class GymBotGUI:
         # loading_text = StringVar()
         # loading_text = "We are currently looking for your gym time"
 
-        tk.Label(self.loading_window, text="We are currently looking for your gym time", bg=self.background_colour, fg=self.font_colour).pack()
+        tk.Label(self.loading_window, text="We are currently looking for your gym time.", bg=self.background_colour, fg=self.font_colour).pack()
         tk.Label(self.loading_window,
                  text="Feel free to minimize this window, we will notify you when its booked!", bg=self.background_colour, fg=self.font_colour).pack()
 
