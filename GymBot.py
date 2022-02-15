@@ -13,12 +13,13 @@ from Calendar import Calendar
 
 
 # TODO logging levels
+# TODO calendar linking
 # TODO fix return key support
 # TODO Exit cleanup
 # TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
 # TODO Disable calendar alert reminders
 # TODO Daemonic thread
-# TODO OOP calendar
+# TODO Splash Screen
 
 
 def signal_handler(sig, frame):
