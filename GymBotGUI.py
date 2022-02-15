@@ -69,7 +69,7 @@ class GymBotGUI:
         self.toggle_button = Button(text="OFF", width=10, command=self.toggle)
         self.toggle_button.pack(pady=10)
 
-        tk.Label(text="Created lovingly by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour).pack()
+        tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour).pack()
         self.window.mainloop()
 
     def enter(self):
