@@ -2,8 +2,11 @@ import threading
 import tkinter as tk
 from tkinter import *
 from tkinter.ttk import *
-import time
 from selenium.common.exceptions import NoSuchElementException
+import datetime
+from astral import LocationInfo
+from astral.sun import sun
+from datetime import date
 
 
 class GymBotGUI:
@@ -32,8 +35,8 @@ class GymBotGUI:
         self.password = None
         self.time_slot_text = None
 
-        self.background_colour = '#323437'
-        self.font_colour = '#d1d0c5'
+        self.background_colour = None
+        self.font_colour = None
 
     def create_main_window(self):
         self.window.geometry("500x250")
@@ -170,3 +173,17 @@ class GymBotGUI:
         #     self.loading_window.update_idletasks()
 
         self.instance_loading_window.mainloop()
+
+    def set_colour_mode(self):
+        loc = LocationInfo(name='Calgary', region='AB, Canada', timezone='Canada/Mountain',
+                           latitude=51.048615, longitude=-114.070847)
+        s = sun(loc.observer, date=date.today(), tzinfo=loc.timezone)
+        sunrise = s["sunrise"].replace(tzinfo=None)
+        sunset = s["sunset"].replace(tzinfo=None)
+        current = datetime.datetime.now()
+        if (sunrise < current) & (current < sunset):
+            self.background_colour = '#dddddd'
+            self.font_colour = '#000000'
+        else:
+            self.background_colour = '#323437'
+            self.font_colour = '#d1d0c5'

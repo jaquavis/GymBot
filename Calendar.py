@@ -15,7 +15,7 @@ class Calendar:
 
     def authenticate(self):
         if os.path.exists(self.tokenFileName):
-            creds = Credentials.from_authorized_user_file(self.tokenFileName, self.SCOPES)
+            self.creds = Credentials.from_authorized_user_file(self.tokenFileName, self.SCOPES)
         # If there are no (valid) credentials available, let the user log in.
         if not self.creds or not self.creds.valid:
             if self.creds and self.creds.expired and self.creds.refresh_token:

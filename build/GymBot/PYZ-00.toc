@@ -16,14 +16,6 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\contextlib.py',
    'PYMODULE'),
-  ('threading',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\threading.py',
-   'PYMODULE'),
-  ('_threading_local',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_threading_local.py',
-   'PYMODULE'),
   ('_strptime',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py',
@@ -1012,6 +1004,46 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._structures',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.specifiers',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('uuid',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\uuid.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.tags',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._musllinux',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.requirements',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
   ('pkg_resources._vendor.appdirs',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
@@ -1024,61 +1056,21 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\win32comext\\shell\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.tags',
+  ('pkg_resources._vendor.packaging.utils',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._musllinux',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_musllinux.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.__about__',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.requirements',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.pyparsing',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
-   'PYMODULE'),
-  ('uuid',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\uuid.py',
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging._manylinux',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_manylinux.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.utils',
+  ('pkg_resources._vendor.packaging.version',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.specifiers',
+  ('pkg_resources._vendor',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
    'PYMODULE'),
   ('pkg_resources.extern',
    'C:\\Users\\Lukas '
@@ -1088,10 +1080,6 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\imp.py',
    'PYMODULE'),
-  ('tracemalloc',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\tracemalloc.py',
-   'PYMODULE'),
   ('stringprep',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stringprep.py',
@@ -1099,6 +1087,18 @@
   ('_py_abc',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_py_abc.py',
+   'PYMODULE'),
+  ('tracemalloc',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('threading',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\threading.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_threading_local.py',
    'PYMODULE'),
   ('Calendar',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
@@ -1460,17 +1460,17 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\cryptography\\__init__.py',
    'PYMODULE'),
-  ('cryptography.hazmat.backends.openssl.encode_asn1',
+  ('cryptography.hazmat.backends.openssl.x509',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\cryptography\\hazmat\\backends\\openssl\\encode_asn1.py',
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\cryptography\\hazmat\\backends\\openssl\\x509.py',
    'PYMODULE'),
   ('cryptography.hazmat.backends.openssl.decode_asn1',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\cryptography\\hazmat\\backends\\openssl\\decode_asn1.py',
    'PYMODULE'),
-  ('cryptography.hazmat.backends.openssl.x509',
+  ('cryptography.hazmat.backends.openssl.encode_asn1',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\cryptography\\hazmat\\backends\\openssl\\x509.py',
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\cryptography\\hazmat\\backends\\openssl\\encode_asn1.py',
    'PYMODULE'),
   ('cryptography.__about__',
    'C:\\Users\\Lukas '
@@ -2504,6 +2504,34 @@
   ('GymBotGUI',
    'C:\\Users\\Lukas Morrison\\OneDrive - University of '
    'Calgary\\pycharm\\GymBot\\GymBotGUI.py',
+   'PYMODULE'),
+  ('astral.sun',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\astral\\sun.py',
+   'PYMODULE'),
+  ('pytz',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pytz\\__init__.py',
+   'PYMODULE'),
+  ('pytz.tzfile',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pytz\\tzfile.py',
+   'PYMODULE'),
+  ('pytz.tzinfo',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pytz\\tzinfo.py',
+   'PYMODULE'),
+  ('pytz.lazy',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pytz\\lazy.py',
+   'PYMODULE'),
+  ('pytz.exceptions',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pytz\\exceptions.py',
+   'PYMODULE'),
+  ('astral',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\astral\\__init__.py',
    'PYMODULE'),
   ('selenium.common.exceptions',
    'C:\\Users\\Lukas '

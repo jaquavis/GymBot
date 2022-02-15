@@ -10,22 +10,24 @@ import sys
 from GymBotGUI import GymBotGUI
 import datetime
 from Calendar import Calendar
+import threading
+
 
 # Lukas:
 # TODO logging levels
-# TODO calendar linking
-# TODO fix return key support
-# TODO Exit cleanup
+# TODO fix calendar linking
+# TODO Exit cleanup (daemonic thread?)
 # TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
 # TODO Disable calendar alert reminders
-# TODO Daemonic thread
-# TODO Splash Screen
-# TODO Put Calendar on new thread
+# TODO Put Calendar authentication on new thread
+
 # Nathan:
 # TODO End threads
 # TODO Find out how to use return to enter login
 # TODO change font, font size, taskbar colours, text entry colour, button colour
 # TODO change window icon
+# TODO Splash Screen
+# TODO fix return key support
 
 
 def signal_handler(sig, frame):
@@ -47,7 +49,7 @@ login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
 if __name__ == "__main__":
-    print("GymBot® v0.12")
+    print("GymBot® v0.13")
 
     # Define objects
     ser = Service(driverFileName)
@@ -63,21 +65,25 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
     gui = GymBotGUI(iac01bot, toaster)                  # interface app
     calendar = Calendar()                               # calendar
-    calendar.tokenFileName = tokenFileName
-    calendar.credsFileName = credsFileName
+    calendar.tokenFileName = tokenFileName              # calendar: credentials
+    calendar.credsFileName = credsFileName              # calendar: token
 
     # Authenticate calendar credentials
     #calendar.authenticate()
 
     # Start process
+    gui.set_colour_mode()
     gui.create_main_window()
 
     # Calendar booking
-    today = datetime.datetime.now().isoformat()
-    start_time = f"{today[0:11]}{gui.time_slot_text[10:15]}:00.000"
-    end_time = f"{today[0:11]}{gui.time_slot_text[19:24]}:00.000"
+    try:
+        today = datetime.datetime.now().isoformat()
+        start_time = f"{today[0:11]}{gui.time_slot_text[10:15]}:00.000"
+        end_time = f"{today[0:11]}{gui.time_slot_text[19:24]}:00.000"
+        #calendar.book_event(start_time, end_time)
 
-    calendar.book_event(start_time, end_time)
+    except TypeError:
+        print("Could not find event times")
 
     # Cleanup
     print('\nExiting')
