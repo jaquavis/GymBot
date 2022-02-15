@@ -60,7 +60,7 @@ class GymBotGUI:
         login_button = tk.Button(self.window, text="Login", command=lambda: self.threading())
         login_button.pack(pady=5)
 
-        tk.Label(text="Created lovingly by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour).pack()
+        tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour).pack()
         self.window.mainloop()
 
     def enter(self):

@@ -19,6 +19,7 @@ from Calendar import Calendar
 # TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
 # TODO Disable calendar alert reminders
 # TODO Put Calendar authentication on new thread
+# TODO save token on C: drive
 
 # Nathan:
 # TODO End threads
@@ -30,7 +31,7 @@ from Calendar import Calendar
 
 
 def signal_handler(sig, frame):
-    print('\nExiting')
+    print('\nExiting: You may now close this window')
     driver.quit()
 
 
@@ -85,5 +86,5 @@ if __name__ == "__main__":
         print("Could not find event times")
 
     # Cleanup
-    print('\nExiting')
+    print('\nExiting: You may now close this window')
     driver.quit()
