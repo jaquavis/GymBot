@@ -1,4 +1,4 @@
-# GymBot
+# GymBot®
 # pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
 from __future__ import print_function
 from selenium import webdriver
