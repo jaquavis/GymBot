@@ -17,7 +17,6 @@ from os import path
 # TODO logging levels
 # TODO Exit cleanup (daemonic thread?)
 # TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
-# TODO Disable calendar alert reminders
 
 # Nathan:
 # TODO End threads

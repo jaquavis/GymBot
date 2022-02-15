@@ -42,6 +42,9 @@ class Calendar:
                     'dateTime': end_time,
                     'timeZone': 'Canada/Mountain',
                 },
+                "reminders": {
+                    "useDefault": False,
+                }
             }
             calendar.events().insert(calendarId='primary', body=event).execute()
             print('Calendar event created')
