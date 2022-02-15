@@ -10,7 +10,7 @@ class Calendar:
     def __init__(self):
         self.SCOPES = ['https://www.googleapis.com/auth/calendar']  # If modifying these scopes, delete the file token.json
         self.creds = None
-        self.tokenFileName = "C:/GymBotToken.json"
+        self.tokenFileName = None
         self.credsFileName = None
 
     def authenticate(self):

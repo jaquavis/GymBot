@@ -10,16 +10,14 @@ import sys
 from GymBotGUI import GymBotGUI
 import datetime
 from Calendar import Calendar
+from os import path
 
 
 # Lukas:
 # TODO logging levels
-# TODO fix calendar linking
 # TODO Exit cleanup (daemonic thread?)
 # TODO Bug: fix time inputs single digits numbers don't work (i.e., 06)
 # TODO Disable calendar alert reminders
-# TODO Put Calendar authentication on new thread
-# TODO save token on C: drive
 
 # Nathan:
 # TODO End threads
@@ -44,11 +42,12 @@ else:
 iconFileName = running_dir + 'GymBot.ico'
 driverFileName = running_dir + 'chromedriver.exe'
 credsFileName = running_dir + 'credentials.json'
+tokenFileName = path.expandvars(r'%LOCALAPPDATA%\GymBotToken.json')
 login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
 if __name__ == "__main__":
-    print("GymBot® v0.13")
+    print("GymBot® v0.14")
 
     # Define objects
     ser = Service(driverFileName)
@@ -64,6 +63,7 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
     calendar = Calendar()                               # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
+    calendar.tokenFileName = tokenFileName              # calendar: token
     gui = GymBotGUI(iac01bot, toaster, calendar)        # interface app
 
     # Start process

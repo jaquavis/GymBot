@@ -202,7 +202,7 @@ class GymBotGUI:
         if self.toggle_button.config('text')[-1] == 'ON':
             self.toggle_button.config(text='OFF')
             self.add_to_cal = False
-            self.calendar.authenticate()
         else:
             self.toggle_button.config(text='ON')
             self.add_to_cal = True
+            threading.Thread(target=self.calendar.authenticate()).start()
