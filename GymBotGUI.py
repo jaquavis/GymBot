@@ -7,6 +7,7 @@ import datetime
 from astral import LocationInfo
 from astral.sun import sun
 from datetime import date
+import logging
 
 
 class GymBotGUI:
@@ -15,6 +16,7 @@ class GymBotGUI:
         self.iac01bot = iac01bot
         self.toaster = toaster
         self.calendar = calendar
+        self.logger = logging.getLogger(__name__)
 
         self.login_success = None
         self.backend_thread = None
@@ -91,6 +93,7 @@ class GymBotGUI:
             self.invalid_user()
 
     def invalid_user(self):
+        self.logger.warning("Invalid User")
         self.instance_invalid_usr_win = tk.Tk()
         self.instance_invalid_usr_win.withdraw()
 

@@ -280,9 +280,121 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\hashlib.py',
    'PYMODULE'),
-  ('logging',
+  ('bisect',
    'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\logging\\__init__.py',
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\bisect.py',
+   'PYMODULE'),
+  ('email._encoded_words',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\_encoded_words.py',
+   'PYMODULE'),
+  ('base64',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\base64.py',
+   'PYMODULE'),
+  ('email.charset',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\charset.py',
+   'PYMODULE'),
+  ('email.encoders',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\encoders.py',
+   'PYMODULE'),
+  ('email.base64mime',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\base64mime.py',
+   'PYMODULE'),
+  ('email._policybase',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\_policybase.py',
+   'PYMODULE'),
+  ('email.header',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\header.py',
+   'PYMODULE'),
+  ('email.errors',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\errors.py',
+   'PYMODULE'),
+  ('email.utils',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\utils.py',
+   'PYMODULE'),
+  ('email._parseaddr',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\_parseaddr.py',
+   'PYMODULE'),
+  ('socket',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\socket.py',
+   'PYMODULE'),
+  ('selectors',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\selectors.py',
+   'PYMODULE'),
+  ('quopri',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\quopri.py',
+   'PYMODULE'),
+  ('uu',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\uu.py',
+   'PYMODULE'),
+  ('optparse',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\optparse.py',
+   'PYMODULE'),
+  ('zipfile',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\zipfile.py',
+   'PYMODULE'),
+  ('py_compile',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\py_compile.py',
+   'PYMODULE'),
+  ('lzma',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\lzma.py',
+   'PYMODULE'),
+  ('_compression',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_compression.py',
+   'PYMODULE'),
+  ('bz2',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\bz2.py',
+   'PYMODULE'),
+  ('importlib.util',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\importlib\\util.py',
+   'PYMODULE'),
+  ('email',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\__init__.py',
+   'PYMODULE'),
+  ('email.parser',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\parser.py',
+   'PYMODULE'),
+  ('email.feedparser',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\feedparser.py',
+   'PYMODULE'),
+  ('csv',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\csv.py',
+   'PYMODULE'),
+  ('importlib.readers',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\importlib\\readers.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('win32com.client.gencache',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\win32com\\client\\gencache.py',
    'PYMODULE'),
   ('pickle',
    'C:\\Users\\Lukas '
@@ -344,14 +456,6 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\subprocess.py',
    'PYMODULE'),
-  ('socket',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\socket.py',
-   'PYMODULE'),
-  ('selectors',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\selectors.py',
-   'PYMODULE'),
   ('asyncio.windows_events',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\windows_events.py',
@@ -367,10 +471,6 @@
   ('ssl',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ssl.py',
-   'PYMODULE'),
-  ('base64',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\base64.py',
    'PYMODULE'),
   ('asyncio.proactor_events',
    'C:\\Users\\Lukas '
@@ -451,10 +551,6 @@
   ('zipimport',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\zipimport.py',
-   'PYMODULE'),
-  ('importlib.util',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\importlib\\util.py',
    'PYMODULE'),
   ('multiprocessing.util',
    'C:\\Users\\Lukas '
@@ -556,10 +652,6 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\gzip.py',
    'PYMODULE'),
-  ('_compression',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_compression.py',
-   'PYMODULE'),
   ('xml.parsers.expat',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\parsers\\expat.py',
@@ -643,14 +735,6 @@
   ('http.client',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\http\\client.py',
-   'PYMODULE'),
-  ('email.parser',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\parser.py',
-   'PYMODULE'),
-  ('email.feedparser',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\feedparser.py',
    'PYMODULE'),
   ('multiprocessing',
    'C:\\Users\\Lukas '
@@ -824,10 +908,6 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\plistlib.py',
    'PYMODULE'),
-  ('glob',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\glob.py',
-   'PYMODULE'),
   ('code',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\code.py',
@@ -852,93 +932,9 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_compat_pickle.py',
    'PYMODULE'),
-  ('bisect',
+  ('glob',
    'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\bisect.py',
-   'PYMODULE'),
-  ('email._encoded_words',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\_encoded_words.py',
-   'PYMODULE'),
-  ('email.charset',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\charset.py',
-   'PYMODULE'),
-  ('email.encoders',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\encoders.py',
-   'PYMODULE'),
-  ('email.base64mime',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\base64mime.py',
-   'PYMODULE'),
-  ('email._policybase',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\_policybase.py',
-   'PYMODULE'),
-  ('email.header',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\header.py',
-   'PYMODULE'),
-  ('email.errors',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\errors.py',
-   'PYMODULE'),
-  ('email.utils',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\utils.py',
-   'PYMODULE'),
-  ('email._parseaddr',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\_parseaddr.py',
-   'PYMODULE'),
-  ('quopri',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\quopri.py',
-   'PYMODULE'),
-  ('uu',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\uu.py',
-   'PYMODULE'),
-  ('optparse',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\optparse.py',
-   'PYMODULE'),
-  ('zipfile',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\zipfile.py',
-   'PYMODULE'),
-  ('py_compile',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\py_compile.py',
-   'PYMODULE'),
-  ('lzma',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\lzma.py',
-   'PYMODULE'),
-  ('bz2',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\bz2.py',
-   'PYMODULE'),
-  ('email',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\__init__.py',
-   'PYMODULE'),
-  ('csv',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\csv.py',
-   'PYMODULE'),
-  ('importlib.readers',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\importlib\\readers.py',
-   'PYMODULE'),
-  ('importlib._bootstrap',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\importlib\\_bootstrap.py',
-   'PYMODULE'),
-  ('win32com.client.gencache',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\win32com\\client\\gencache.py',
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\glob.py',
    'PYMODULE'),
   ('win32com.client.selecttlb',
    'C:\\Users\\Lukas '
@@ -1008,42 +1004,6 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging._musllinux',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_musllinux.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._manylinux',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_manylinux.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.specifiers',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.pyparsing',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
-   'PYMODULE'),
-  ('uuid',
-   'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\uuid.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.utils',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
   ('pkg_resources._vendor.appdirs',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
@@ -1056,25 +1016,61 @@
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\win32comext\\shell\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.requirements',
+  ('pkg_resources._vendor.packaging._structures',
    'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.__about__',
-   'C:\\Users\\Lukas '
-   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging.tags',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
    'PYMODULE'),
+  ('pkg_resources._vendor.packaging.requirements',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
   ('pkg_resources._vendor.packaging',
    'C:\\Users\\Lukas '
    'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._manylinux',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('uuid',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\uuid.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.utils',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.version',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._musllinux',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.specifiers',
+   'C:\\Users\\Lukas '
+   'Morrison\\.virtualenvs\\GymBot_venv3.10\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
   ('pkg_resources.extern',
    'C:\\Users\\Lukas '
@@ -1084,6 +1080,10 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\imp.py',
    'PYMODULE'),
+  ('tracemalloc',
+   'C:\\Users\\Lukas '
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\tracemalloc.py',
+   'PYMODULE'),
   ('_py_abc',
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_py_abc.py',
@@ -1092,9 +1092,9 @@
    'C:\\Users\\Lukas '
    'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stringprep.py',
    'PYMODULE'),
-  ('tracemalloc',
+  ('logging',
    'C:\\Users\\Lukas '
-   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\tracemalloc.py',
+   'Morrison\\AppData\\Local\\Programs\\Python\\Python310\\lib\\logging\\__init__.py',
    'PYMODULE'),
   ('os',
    'C:\\Users\\Lukas '

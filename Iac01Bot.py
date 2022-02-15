@@ -1,7 +1,11 @@
+import logging
+
+
 class Iac01Bot:
     def __init__(self, driver):
         self.driver = driver
         self.url = None
+        self.logger = logging.getLogger(__name__)
 
     def login(self, un, pw):  # Returns True if successful, else returns False
         self.driver.get(self.url)
@@ -16,7 +20,7 @@ class Iac01Bot:
         if status:
             print("Logged in")
         else:
-            print("Could not log in")
+            self.logger.warning("Could not log in")
         return status
 
     def login_status(self):  # returns True if logged in, False if logged out
@@ -29,7 +33,7 @@ class Iac01Bot:
     def logout(self):
         logout_btn = self.driver.find_element('id', "ctl00_hyLogin")
         if not self.login_status():
-            print("Already logged out")
+            self.logger.warning("Already logged out")
         if self.login_status():
             logout_btn.click()
             print("Logged out")

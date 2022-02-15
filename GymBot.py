@@ -11,11 +11,11 @@ from GymBotGUI import GymBotGUI
 import datetime
 from Calendar import Calendar
 from os import path
+import logging
 
 
 # Lukas:
-# TODO logging levels
-# TODO Exit cleanup (daemonic thread?)
+# TODO Exit cleanup (daemonic threads?)
 # TODO restructure main loop
 
 # Nathan:
@@ -54,6 +54,7 @@ if __name__ == "__main__":
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
+    logger = logging.getLogger(__name__)                # logger
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
     toaster = ToastNotifier()                           # notifier
     toaster.icon = iconFileName                         # notifier: icon
@@ -78,7 +79,7 @@ if __name__ == "__main__":
             calendar.book_event(start_time, end_time)
 
     except TypeError:
-        print("Could not find event times")
+        logger.warning("Could not find event times")
 
     # Cleanup
     print('\nExiting: You may now close this window')
