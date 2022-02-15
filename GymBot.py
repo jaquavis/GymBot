@@ -68,7 +68,7 @@ if __name__ == "__main__":
     calendar.credsFileName = credsFileName              # calendar: token
 
     # Authenticate calendar credentials
-    #calendar.authenticate()
+    calendar.authenticate()
 
     # Start process
     gui.set_colour_mode()
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         today = datetime.datetime.now().isoformat()
         start_time = f"{today[0:11]}{gui.time_slot_text[10:15]}:00.000"
         end_time = f"{today[0:11]}{gui.time_slot_text[19:24]}:00.000"
-        #calendar.book_event(start_time, end_time)
+        calendar.book_event(start_time, end_time)
 
     except TypeError:
         print("Could not find event times")
