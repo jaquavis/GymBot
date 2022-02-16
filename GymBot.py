@@ -72,8 +72,8 @@ if __name__ == "__main__":
     # Calendar booking
     try:
         today = datetime.datetime.now().isoformat()
-        start_time = f"{today[0:11]}{gui.time_slot_text[10:15]}:00.000"
-        end_time = f"{today[0:11]}{gui.time_slot_text[19:24]}:00.000"
+        start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
+        end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
         if gui.add_to_cal:
             calendar.book_event(start_time, end_time)
 
