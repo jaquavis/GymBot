@@ -24,14 +24,13 @@ import logging
 # TODO Find out how to use return to enter login
 # TODO change font, font size, taskbar colours, text entry colour, button colour / per theme
 # TODO change window icon
-# TODO Splash Screen
-# TODO fix return key support
+# TODO Alert if website is down
+# TODO loading wheel (rotating text)
 
 
 def signal_handler(sig, frame):
     print('\nExiting: You may now close this window')
     driver.quit()
-
 
 if getattr(sys, 'frozen', False):  # Running as compiled
     running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
