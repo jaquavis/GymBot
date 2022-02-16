@@ -2,7 +2,6 @@ import threading
 import tkinter as tk
 from tkinter import *
 from tkinter.ttk import *
-from selenium.common.exceptions import NoSuchElementException
 import datetime
 from astral import LocationInfo
 from astral.sun import sun
@@ -36,7 +35,6 @@ class GymBotGUI:
         self.password_entry = None
         self.username = None
         self.password = None
-        self.time_slot_text = None
 
         self.toggle_button = None
         self.add_to_cal = False
@@ -93,29 +91,34 @@ class GymBotGUI:
 
     def invalid_user(self):
         self.logger.warning("Invalid User")
+        if not self.invalid_usr_win:
+            self.create_invalid_usr_win()
+        else:
+            self.destroy_invalid_usr_win()
+            self.create_invalid_usr_win()
+
+    def create_invalid_usr_win(self):
         self.instance_invalid_usr_win = tk.Tk()
         self.instance_invalid_usr_win.withdraw()
-
         self.invalid_usr_win = Toplevel(self.instance_invalid_usr_win)
         self.invalid_usr_win.title("Invalid User")
         self.invalid_usr_win.configure(bg=self.background_colour)
         tk.Label(self.invalid_usr_win, text="Invalid credentials, please try again.", bg=self.background_colour, fg=self.font_colour).pack()
-        tk.Button(self.invalid_usr_win, text="Retry", command=self.destroy_invalid_usr_win).pack()
+        tk.Button(self.invalid_usr_win, text="Ok", command=self.destroy_invalid_usr_win).pack()
 
     def destroy_invalid_usr_win(self):
         self.invalid_usr_win.destroy()
         self.instance_invalid_usr_win.destroy()
+        self.invalid_usr_win = None
+        self.instance_invalid_usr_win = None
 
     def get_gym_time(self):
         wheel_index = 0
-
         if int(self.time_clicked.get()) < 10:
-            desired_time = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
+            self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
         else:
-            desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
-        print(f"Desired Time: {desired_time}")
-
-        nums = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15']
+            self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
+        print(f"Desired Time: {self.iac01bot.desired_time}")
 
         while not self.time_available:  # main loop
             # Refresh / login if timed out
@@ -126,19 +129,9 @@ class GymBotGUI:
                 self.iac01bot.login(self.username, self.password)
 
             # Get available slots / Check if desired slot is available
-            slots_array = []
-            for i in range(16):
-                try:
-                    slot_id = f"ctl00_ContentPlaceHolder1_ctl00_repAvailFitness_ctl{nums[i]}_lnkBtnFitness"
-                    time_slot = self.iac01bot.driver.find_element('id', slot_id)
-                    text = time_slot.text
-                    slots_array.append(text)
-                    if desired_time in slots_array[i]:
-                        self.time_available = True
-                        self.time_slot_text = text
-                        break
-                except NoSuchElementException:
-                    pass
+            self.time_available = self.iac01bot.check_slots()
+
+            # Loading wheel
             if not self.time_available:
                 loading_wheel = ['/', '─', "\\", '|']
                 print(f'\rNot available - trying again   {loading_wheel[wheel_index]}', end="")
@@ -150,9 +143,7 @@ class GymBotGUI:
 
         # Book desired time slot
         if self.time_available:
-            slot = self.iac01bot.driver.find_element('id', slot_id)
-            slot.click()
-            print(f"\nBooked {self.time_slot_text[5:24]}{' ' * 6}")
+            self.iac01bot.book_slot()
             self.loading_window.destroy()
             self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
             self.instance_loading_window.destroy()

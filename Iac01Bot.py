@@ -1,4 +1,5 @@
 import logging
+from selenium.common.exceptions import NoSuchElementException
 
 
 class Iac01Bot:
@@ -6,6 +7,10 @@ class Iac01Bot:
         self.driver = driver
         self.url = None
         self.logger = logging.getLogger(__name__)
+        self.desired_time = None
+        self.nums = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15']
+        self.time_slot_text = None
+        self.slot_id = None
 
     def login(self, un, pw):  # Returns True if successful, else returns False
         self.driver.get(self.url)
@@ -37,3 +42,23 @@ class Iac01Bot:
         if self.login_status():
             logout_btn.click()
             print("Logged out")
+
+    def check_slots(self):  # Returns True when timeslot is found
+        # TODO return a False else
+        slots_array = []
+        for i in range(16):
+            try:
+                self.slot_id = f"ctl00_ContentPlaceHolder1_ctl00_repAvailFitness_ctl{self.nums[i]}_lnkBtnFitness"
+                time_slot = self.driver.find_element('id', self.slot_id)
+                text = time_slot.text
+                slots_array.append(text)
+                if self.desired_time in slots_array[i]:
+                    self.time_slot_text = text
+                    return True
+            except NoSuchElementException:
+                pass
+
+    def book_slot(self):
+        slot = self.driver.find_element('id', self.slot_id)
+        slot.click()
+        print(f"\nBooked {self.time_slot_text[5:24]}{' ' * 6}")
