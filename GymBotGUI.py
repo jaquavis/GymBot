@@ -5,6 +5,7 @@ from tkinter.ttk import *
 import time
 from selenium.common.exceptions import NoSuchElementException
 
+from tkinter import font as tkFont
 
 class GymBotGUI:
     def __init__(self, iac01bot, toaster):
@@ -34,34 +35,47 @@ class GymBotGUI:
 
         self.background_colour = '#323437'
         self.font_colour = '#d1d0c5'
+        self.entry_colour = '#f0f4fc'
+        self.entry_font_colour = '#2b2c2f'
+        self.font_type20 = ("Bahnschrift Light", 20)
+        self.font_type13 = ("Bahnschrift Light", 13)
+        self.font_type10 = ("Bahnschrift Light", 10)
+        self.icon_photo = PhotoImage(file="stonks.png")
+        self.option_menu_font = tkFont.Font(family='Bahnschrift Light', size=13)
+        self.dropdown_font = tkFont.Font(family='Bahnschrift Light', size=13)
 
     def create_main_window(self):
-        self.window.geometry("500x250")
+        self.window.iconphoto(False, self.icon_photo)  # Taskbar icon
+        self.window.geometry("700x360")
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
-        tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour).pack()
-        tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour).pack()
-        tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour).pack()
-        self.time_clicked.set("06")  # For some reason doesn't get saved
-        OptionMenu(self.window, self.time_clicked, *self.time_entry).pack()
+        tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
+        tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour,fg=self.font_colour, font=self.font_type13).pack()
 
-        tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour).pack()
-        tk.Label(self.window, text="Username *", bg=self.background_colour, fg=self.font_colour).pack()
-        self.username_entry = tk.Entry(self.window, textvariable=self.username_login)
+        #no arrow?
+        self.time_clicked.set("06")
+        self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
+        self.time_menu.pack(pady=10)
+        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg="#302c34")  # set the button font
+        menu = self.window.nametowidget(self.time_menu.menuname)
+        menu.config(font=self.dropdown_font, fg=self.font_colour, bg="#302c34")  # Set the dropdown menu's font
+
+        tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour,font=self.font_type13).pack()
+        tk.Label(self.window, text="Username *", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        self.username_entry = tk.Entry(self.window, textvariable=self.username_login,bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13)
         self.username_entry.pack()
-        tk.Label(self.window, text="Password *", bg=self.background_colour, fg=self.font_colour).pack()
-        self.password_entry = tk.Entry(self.window, textvariable=self.password_login, show="*")
+        tk.Label(self.window, text="Password *", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        self.password_entry = tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour,font=self.font_type13)
         self.password_entry.pack()
 
-        # self.window.bind('<Return>', self.enter())  # Allow us to use 'return' to submit
-        login_button = tk.Button(self.window, text="Login", command=lambda: self.threading())
-        login_button.pack(pady=5)
+        login_button = tk.Button(self.window, text="Login", command=lambda: self.threading(), bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
+        login_button.pack(pady=10)
 
-        tk.Label(text="Created lovingly by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour).pack()
+        # self.window.bind('<Return>', on_click())  # Allow us to use 'return' to submit
+
+        tk.Label(text="Created lovingly by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
         self.window.mainloop()
-
-    def enter(self):
-        print("you hit enter")
 
     def threading(self):
         self.backend_thread = threading.Thread(target=self.get_creds())
@@ -86,8 +100,8 @@ class GymBotGUI:
         self.invalid_usr_win = Toplevel(self.instance_invalid_usr_win)
         self.invalid_usr_win.title("Invalid User")
         self.invalid_usr_win.configure(bg=self.background_colour)
-        tk.Label(self.invalid_usr_win, text="Invalid credentials, please try again.", bg=self.background_colour, fg=self.font_colour).pack()
-        tk.Button(self.invalid_usr_win, text="Retry", command=self.destroy_invalid_usr_win).pack()
+        tk.Label(self.invalid_usr_win, text="Invalid credentials, please try again.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Button(self.invalid_usr_win, text="Retry", command=self.destroy_invalid_usr_win, font=self.font_type13).pack(pady=10)
 
     def destroy_invalid_usr_win(self):
         self.invalid_usr_win.destroy()
@@ -147,26 +161,16 @@ class GymBotGUI:
         self.instance_loading_window.withdraw()
 
         self.loading_window = tk.Toplevel(self.instance_loading_window)
-        self.loading_window.geometry("500x150")
+        self.loading_window.geometry("700x150")
         self.loading_window.title("GymBot®")
         self.loading_window.configure(bg=self.background_colour)
+
         # Progress bar
-        self.bar = Progressbar(self.loading_window, orient=HORIZONTAL, length=400, mode='indeterminate')
+        self.bar = Progressbar(self.loading_window, orient=HORIZONTAL, length=600, mode='indeterminate')
         self.bar.pack(pady=20)
         self.bar.start()
 
-        # maybe put desired time
-        # maybe put loading wheel
-        # loading_text = StringVar()
-        # loading_text = "We are currently looking for your gym time"
-
-        tk.Label(self.loading_window, text="We are currently looking for your gym time", bg=self.background_colour, fg=self.font_colour).pack()
-        tk.Label(self.loading_window,
-                 text="Feel free to minimize this window, we will notify you when its booked!", bg=self.background_colour, fg=self.font_colour).pack()
-
-        # while not self.time_available:
-        #     print("TEST")
-        #     #loading_wheel += 1
-        #     self.loading_window.update_idletasks()
+        tk.Label(self.loading_window, text="We are currently looking for your gym time", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
         self.instance_loading_window.mainloop()

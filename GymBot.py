@@ -11,6 +11,7 @@ from GymBotGUI import GymBotGUI
 import datetime
 from Calendar import Calendar
 
+
 # Lukas:
 # TODO logging levels
 # TODO calendar linking
@@ -26,12 +27,13 @@ from Calendar import Calendar
 # TODO Find out how to use return to enter login
 # TODO change font, font size, taskbar colours, text entry colour, button colour
 # TODO change window icon
+# TODO Alert if website is down
+# TODO loading wheel (rotating text)
 
 
 def signal_handler(sig, frame):
     print('\nExiting')
     driver.quit()
-
 
 if getattr(sys, 'frozen', False):  # Running as compiled
     running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
@@ -56,18 +58,18 @@ if __name__ == "__main__":
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
-    toaster = ToastNotifier()                           # notifier
-    toaster.icon = iconFileName                         # notifier: icon
-    iac01bot = Iac01Bot(driver)                         # iac01bot
-    iac01bot.url = login_url                            # iac01bot: url
-    signal.signal(signal.SIGINT, signal_handler)        # signal handler
-    gui = GymBotGUI(iac01bot, toaster)                  # interface app
-    calendar = Calendar()                               # calendar
+    toaster = ToastNotifier()  # notifier
+    toaster.icon = iconFileName  # notifier: icon
+    iac01bot = Iac01Bot(driver)  # iac01bot
+    iac01bot.url = login_url  # iac01bot: url
+    signal.signal(signal.SIGINT, signal_handler)  # signal handler
+    gui = GymBotGUI(iac01bot, toaster)  # interface app
+    calendar = Calendar()  # calendar
     calendar.tokenFileName = tokenFileName
     calendar.credsFileName = credsFileName
 
     # Authenticate calendar credentials
-    #calendar.authenticate()
+    # calendar.authenticate()
 
     # Start process
     gui.create_main_window()
