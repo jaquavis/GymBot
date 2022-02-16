@@ -179,7 +179,7 @@ class GymBotGUI:
 
         self.instance_loading_window.mainloop()
 
-    def set_colour_mode(self):
+    def set_theme_mode(self):
         loc = LocationInfo(name='Calgary', region='AB, Canada', timezone='Canada/Mountain',
                            latitude=51.048615, longitude=-114.070847)
         s = sun(loc.observer, date=date.today(), tzinfo=loc.timezone)

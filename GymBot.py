@@ -22,7 +22,7 @@ import logging
 # Nathan:
 # TODO End threads / destroy all windows
 # TODO Find out how to use return to enter login
-# TODO change font, font size, taskbar colours, text entry colour, button colour
+# TODO change font, font size, taskbar colours, text entry colour, button colour / per theme
 # TODO change window icon
 # TODO Splash Screen
 # TODO fix return key support
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     gui = GymBotGUI(iac01bot, toaster, calendar)        # interface app
 
     # Start process
-    gui.set_colour_mode()
+    gui.set_theme_mode()
     gui.create_main_window()
 
     # Calendar booking
