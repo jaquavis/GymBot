@@ -20,7 +20,7 @@ import logging
 # TODO py2app - mac release
 
 # Nathan:
-# TODO End threads
+# TODO End threads / destroy all windows
 # TODO Find out how to use return to enter login
 # TODO change font, font size, taskbar colours, text entry colour, button colour
 # TODO change window icon

@@ -44,7 +44,6 @@ class Iac01Bot:
             print("Logged out")
 
     def check_slots(self):  # Returns True when timeslot is found
-        # TODO return a False else
         slots_array = []
         for i in range(16):
             try:
@@ -57,6 +56,7 @@ class Iac01Bot:
                     return True
             except NoSuchElementException:
                 pass
+        return False
 
     def book_slot(self):
         slot = self.driver.find_element('id', self.slot_id)
