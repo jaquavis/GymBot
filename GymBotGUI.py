@@ -77,8 +77,7 @@ class GymBotGUI:
         print("you hit enter")
 
     def threading(self):
-        self.backend_thread = threading.Thread(target=self.get_creds())
-        self.backend_thread.start()
+        self.backend_thread = threading.Thread(target=self.get_creds()).start()
         if self.login_success:
             self.loading_page()
 

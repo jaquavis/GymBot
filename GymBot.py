@@ -15,7 +15,7 @@ import logging
 
 
 # Lukas:
-# TODO Exit cleanup (daemonic threads?)
+# TODO Exit cleanup
 # TODO restructure main loop
 
 # Nathan:
