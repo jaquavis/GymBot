@@ -7,7 +7,7 @@ from astral import LocationInfo
 from astral.sun import sun
 from datetime import date
 import logging
-from tkinter import font as tkFont
+from tkinter import font as tk_font
 
 
 class GymBotGUI:
@@ -16,6 +16,7 @@ class GymBotGUI:
         self.iac01bot = iac01bot
         self.toaster = toaster
         self.calendar = calendar
+        self.icon_photo = None
         self.logger = logging.getLogger(__name__)
 
         self.login_success = None
@@ -30,43 +31,41 @@ class GymBotGUI:
         self.username_login = StringVar()
         self.password_login = StringVar()
         self.time_clicked = StringVar()
-        self.time_entry = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-                           '21']
+        self.time_entry = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']
         self.username_entry = None
         self.password_entry = None
         self.username = None
         self.password = None
-
+        self.time_menu = None
         self.toggle_button = None
         self.add_to_cal = False
-
-        self.background_colour = '#323437'
-        self.font_colour = '#d1d0c5'
-        self.entry_colour = '#f0f4fc'
-        self.entry_font_colour = '#2b2c2f'
+        self.background_colour = None
+        self.font_colour = None
+        self.menu_colour = None
+        self.entry_colour = None
+        self.entry_font_colour = None
         self.font_type20 = ("Bahnschrift Light", 20)
         self.font_type13 = ("Bahnschrift Light", 13)
         self.font_type10 = ("Bahnschrift Light", 10)
-        self.icon_photo = PhotoImage(file="stonks.png")
-        self.option_menu_font = tkFont.Font(family='Bahnschrift Light', size=13)
-        self.dropdown_font = tkFont.Font(family='Bahnschrift Light', size=13)
+        self.option_menu_font = tk_font.Font(family='Bahnschrift Light', size=13)
+        self.dropdown_font = tk_font.Font(family='Bahnschrift Light', size=13)
 
     def create_main_window(self):
         self.window.iconphoto(False, self.icon_photo)  # Taskbar icon
-        self.window.geometry("700x360")
+        self.window.geometry("700x437")
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
         tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour,fg=self.font_colour, font=self.font_type13).pack()
 
-        #no arrow?
+        # no arrow?
         self.time_clicked.set("06")
         self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
         self.time_menu.pack(pady=10)
-        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg="#302c34")  # set the button font
+        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour)  # set the button font
         menu = self.window.nametowidget(self.time_menu.menuname)
-        menu.config(font=self.dropdown_font, fg=self.font_colour, bg="#302c34")  # Set the dropdown menu's font
+        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour)  # Set the dropdown menu's font
 
         tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour,font=self.font_type13).pack()
         tk.Label(self.window, text="Username *", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
@@ -76,17 +75,17 @@ class GymBotGUI:
         self.password_entry = tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour,font=self.font_type13)
         self.password_entry.pack()
 
-        login_button = tk.Button(self.window, text="Login", command=lambda: self.threading(), bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
+        login_button = tk.Button(self.window, text="Login", command=lambda: self.cred_thread(), bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5)
         login_button.pack(pady=10)
 
         tk.Label(self.window, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour).pack()
-        self.toggle_button = Button(text="OFF", width=10, command=self.toggle)
+        self.toggle_button = tk.Button(self.window, text="OFF", command=self.toggle, bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5)
         self.toggle_button.pack(pady=10)
 
         tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
         self.window.mainloop()
 
-    def threading(self):
+    def cred_thread(self):
         self.backend_thread = threading.Thread(target=self.get_creds()).start()
         if self.login_success:
             self.loading_page()
@@ -188,12 +187,14 @@ class GymBotGUI:
         sunrise = s["sunrise"].replace(tzinfo=None)
         sunset = s["sunset"].replace(tzinfo=None)
         current = datetime.datetime.now()
-        if (sunrise < current) & (current < sunset):
-            self.background_colour = '#dddddd'
-            self.font_colour = '#000000'
-        else:
+        if (sunrise < current) & (current < sunset):  # Light mode
+            pass
+        else:  # Dark mode
             self.background_colour = '#323437'
             self.font_colour = '#d1d0c5'
+            self.entry_colour = '#f0f4fc'
+            self.entry_font_colour = '#2b2c2f'
+            self.menu_colour = "#302c34"
 
     def toggle(self):
         if self.toggle_button.config('text')[-1] == 'ON':

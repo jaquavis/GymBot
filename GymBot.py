@@ -1,5 +1,5 @@
-# GymBot®
-# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
+# GymBot
+# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
 from __future__ import print_function
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -12,18 +12,18 @@ import datetime
 from Calendar import Calendar
 from os import path
 import logging
+from tkinter import PhotoImage
 
 
 # Lukas:
 # TODO Exit cleanup
 # TODO confirm bookings - running two instances at once wont work
 # TODO py2app - mac release
+# TODO add per/user options for theme
 
 # Nathan:
 # TODO End threads / destroy all windows
 # TODO Find out how to use return to enter login
-# TODO change font, font size, taskbar colours, text entry colour, button colour / per theme
-# TODO change window icon
 # TODO Alert if website is down
 # TODO loading wheel (rotating text)
 
@@ -39,6 +39,7 @@ else:
 
 # Define paths
 iconFileName = running_dir + 'GymBot.ico'
+pngFileName = running_dir + 'GymBot.png'
 driverFileName = running_dir + 'chromedriver.exe'
 credsFileName = running_dir + 'credentials.json'
 tokenFileName = path.expandvars(r'%LOCALAPPDATA%\GymBotToken.json')
@@ -46,7 +47,7 @@ login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
 if __name__ == "__main__":
-    print("GymBot® v0.14")
+    print("GymBot® v0.15")
 
     # Define objects
     ser = Service(driverFileName)
@@ -64,7 +65,8 @@ if __name__ == "__main__":
     calendar = Calendar()                               # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
     calendar.tokenFileName = tokenFileName              # calendar: token
-    gui = GymBotGUI(iac01bot, toaster, calendar)        # interface app
+    gui = GymBotGUI(iac01bot, toaster, calendar)        # interface
+    gui.icon_photo = PhotoImage(file=pngFileName)      # interface: png
 
     # Start process
     gui.set_theme_mode()
