@@ -78,7 +78,7 @@ class GymBotGUI:
         login_button = tk.Button(self.window, text="Login", command=lambda: self.cred_thread(), bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5)
         login_button.pack(pady=10)
 
-        tk.Label(self.window, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour).pack()
+        tk.Label(self.window, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         self.toggle_button = tk.Button(self.window, text="OFF", command=self.toggle, bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5)
         self.toggle_button.pack(pady=10)
 

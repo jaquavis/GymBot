@@ -1,4 +1,4 @@
-# GymBot
+# GymBot®
 # pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
 from __future__ import print_function
 from selenium import webdriver
@@ -31,6 +31,7 @@ from tkinter import PhotoImage
 def signal_handler(sig, frame):
     print('\nExiting: You may now close this window')
     driver.quit()
+
 
 if getattr(sys, 'frozen', False):  # Running as compiled
     running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
