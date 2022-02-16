@@ -17,6 +17,7 @@ import logging
 # Lukas:
 # TODO Exit cleanup
 # TODO test reformat - merge
+# TODO confirm bookings - running two instances at once wont work
 
 # Nathan:
 # TODO End threads
