@@ -32,8 +32,6 @@ class GymBotGUI:
         self.password_login = StringVar()
         self.time_clicked = StringVar()
         self.time_entry = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']
-        self.username_entry = None
-        self.password_entry = None
         self.username = None
         self.password = None
         self.time_menu = None
@@ -69,14 +67,10 @@ class GymBotGUI:
 
         tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour,font=self.font_type13).pack()
         tk.Label(self.window, text="Username *", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        self.username_entry = tk.Entry(self.window, textvariable=self.username_login,bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13)
-        self.username_entry.pack()
+        tk.Entry(self.window, textvariable=self.username_login,bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Password *", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        self.password_entry = tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour,font=self.font_type13)
-        self.password_entry.pack()
-
-        login_button = tk.Button(self.window, text="Login", command=lambda: self.cred_thread(), bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5)
-        login_button.pack(pady=10)
+        tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour,font=self.font_type13).pack()
+        tk.Button(self.window, text="Login", command=lambda: self.cred_thread(), bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5).pack(pady=10)
 
         tk.Label(self.window, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         self.toggle_button = tk.Button(self.window, text="OFF", command=self.toggle, bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5)
@@ -115,7 +109,7 @@ class GymBotGUI:
         self.invalid_usr_win.title("Invalid User")
         self.invalid_usr_win.configure(bg=self.background_colour)
         tk.Label(self.invalid_usr_win, text="Invalid credentials, please try again.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Button(self.invalid_usr_win, text="Ok", command=self.destroy_invalid_usr_win, font=self.font_type13).pack(pady=10)
+        tk.Button(self.invalid_usr_win, text="Ok", command=self.destroy_invalid_usr_win, bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack(pady=10)
 
     def destroy_invalid_usr_win(self):
         self.invalid_usr_win.destroy()

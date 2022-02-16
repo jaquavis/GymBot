@@ -26,6 +26,7 @@ from tkinter import PhotoImage
 # TODO Find out how to use return to enter login
 # TODO Alert if website is down
 # TODO loading wheel (rotating text)
+# TODO maybe colour on button click if its easy
 
 
 def signal_handler(sig, frame):
