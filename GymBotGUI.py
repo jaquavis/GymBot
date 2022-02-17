@@ -17,6 +17,7 @@ class GymBotGUI:
         self.toaster = toaster
         self.calendar = calendar
         self.icon_photo = None
+        self.background_photo = None
         self.logger = logging.getLogger(__name__)
 
         self.login_success = None
@@ -26,6 +27,7 @@ class GymBotGUI:
         self.invalid_usr_win = None
         self.bar = None
         self.time_available = False
+        self.booking_successful = False
         self.window = tk.Tk()
         self.loading_window = None
         self.username_login = StringVar()
@@ -42,6 +44,7 @@ class GymBotGUI:
         self.menu_colour = None
         self.entry_colour = None
         self.entry_font_colour = None
+        self.gymbot_blue = '#245ec8'
         self.font_type20 = ("Bahnschrift Light", 20)
         self.font_type13 = ("Bahnschrift Light", 13)
         self.font_type10 = ("Bahnschrift Light", 10)
@@ -53,6 +56,12 @@ class GymBotGUI:
         self.window.geometry("700x437")
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
+
+        # Background image
+        # canvas = Canvas(bd=10, bg=self.background_colour, width=250, height=141)
+        # canvas.pack(anchor=N)
+        # canvas.create_image(10, 10, anchor=NW, image=self.background_photo)
+
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
         tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour,fg=self.font_colour, font=self.font_type13).pack()
@@ -61,19 +70,19 @@ class GymBotGUI:
         self.time_clicked.set("06")
         self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
         self.time_menu.pack(pady=10)
-        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour)  # set the button font
+        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour)  # set the button font
         menu = self.window.nametowidget(self.time_menu.menuname)
-        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour)  # Set the dropdown menu's font
+        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
-        tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour,font=self.font_type13).pack()
+        tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Username *", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Entry(self.window, textvariable=self.username_login,bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
+        tk.Entry(self.window, textvariable=self.username_login, bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Password *", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour,font=self.font_type13).pack()
-        tk.Button(self.window, text="Login", command=lambda: self.cred_thread(), bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5).pack(pady=10)
+        tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
+        tk.Button(self.window, text="Login", command=lambda: self.cred_thread(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).pack(pady=10)
 
         tk.Label(self.window, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        self.toggle_button = tk.Button(self.window, text="OFF", command=self.toggle, bg=self.background_colour, fg=self.font_colour, font=self.font_type13, width=5)
+        self.toggle_button = tk.Button(self.window, text="OFF", command=self.toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.toggle_button.pack(pady=10)
 
         tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
@@ -111,7 +120,7 @@ class GymBotGUI:
         self.invalid_usr_win.title("Invalid User")
         self.invalid_usr_win.configure(bg=self.background_colour)
         tk.Label(self.invalid_usr_win, text="Invalid credentials, please try again.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Button(self.invalid_usr_win, text="Ok", command=self.destroy_invalid_usr_win, bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack(pady=10)
+        tk.Button(self.invalid_usr_win, text="Ok", command=self.destroy_invalid_usr_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
 
     def destroy_invalid_usr_win(self):
         self.invalid_usr_win.destroy()
@@ -127,10 +136,9 @@ class GymBotGUI:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
         print(f"Desired Time: {self.iac01bot.desired_time}")
 
-        while not self.time_available:  # main loop
+        while not self.time_available and not self.booking_successful:  # main loop
             # Refresh / login if timed out
-            logged_in = self.iac01bot.login_status()
-            if logged_in:
+            if self.iac01bot.login_status():
                 self.iac01bot.driver.refresh()
             else:
                 self.iac01bot.login(self.username, self.password)
@@ -138,22 +146,24 @@ class GymBotGUI:
             # Get available slots / Check if desired slot is available
             self.time_available = self.iac01bot.check_slots()
 
+            # Check for an existing booking - do later
+
+            # Attempt booking
+            if self.time_available:
+                self.iac01bot.book_slot()
+                self.loading_window.destroy()
+                self.instance_loading_window.destroy()
+                self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
+
+            # Check booking
+            self.booking_successful = self.iac01bot.booking_successful()
+
             # Loading wheel
-            if not self.time_available:
-                loading_wheel = ['/', '─', "\\", '|']
-                print(f'\rNot available - trying again   {loading_wheel[wheel_index]}', end="")
-                wheel_index = wheel_index + 1
-                if wheel_index == 4:
-                    wheel_index = 0
-
-        # Check for an existing booking - do later
-
-        # Book desired time slot
-        if self.time_available:
-            self.iac01bot.book_slot()
-            self.loading_window.destroy()
-            self.instance_loading_window.destroy()
-            self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
+            loading_wheel = ['/', '─', "\\", '|']
+            print(f'\rNot available - trying again   {loading_wheel[wheel_index]}', end="")
+            wheel_index = wheel_index + 1
+            if wheel_index == 4:
+                wheel_index = 0
 
     def loading_page(self):
         self.window.destroy()
@@ -168,8 +178,8 @@ class GymBotGUI:
         # Progress bar
         bar_style = Style()
         bar_style.theme_use('default')
-        bar_style.configure("blue.Horizontal.TProgressbar", foreground='#245ec8', background='#245ec8')
-        self.bar = Progressbar(self.loading_window, style="blue.Horizontal.TProgressbar", orient=HORIZONTAL, length=600,mode='indeterminate')
+        bar_style.configure("blue.Horizontal.TProgressbar", foreground=self.gymbot_blue, background=self.gymbot_blue)
+        self.bar = Progressbar(self.loading_window, style="blue.Horizontal.TProgressbar", orient=HORIZONTAL, length=600, mode='indeterminate')
         self.bar.pack(pady=20)
         self.bar.start()
 

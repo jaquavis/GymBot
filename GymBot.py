@@ -17,9 +17,11 @@ from tkinter import PhotoImage
 
 # Lukas:
 # TODO Exit cleanup
-# TODO confirm bookings - running two instances at once wont work
+# TODO test confirmed bookings
 # TODO py2app - mac release
 # TODO add per/user options for theme
+# TODO fix background image
+# TODO increase icon resolution
 
 # Nathan:
 # TODO End threads / destroy all windows
@@ -41,7 +43,8 @@ else:
 
 # Define paths
 iconFileName = running_dir + 'GymBot.ico'
-pngFileName = running_dir + 'GymBot.png'
+pngFileName = running_dir + 'GymBot_small.png'
+backgroundFileName = running_dir + 'GymBot_large.png'
 driverFileName = running_dir + 'chromedriver.exe'
 credsFileName = running_dir + 'credentials.json'
 tokenFileName = path.expandvars(r'%LOCALAPPDATA%\GymBotToken.json')
@@ -57,18 +60,19 @@ if __name__ == "__main__":
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
-    logger = logging.getLogger(__name__)                # logger
-    driver = webdriver.Chrome(service=ser, options=op)  # webdriver
-    toaster = ToastNotifier()                           # notifier
-    toaster.icon = iconFileName                         # notifier: icon
-    iac01bot = Iac01Bot(driver)                         # iac01bot
-    iac01bot.url = login_url                            # iac01bot: url
-    signal.signal(signal.SIGINT, signal_handler)        # signal handler
-    calendar = Calendar()                               # calendar
-    calendar.credsFileName = credsFileName              # calendar: credentials
-    calendar.tokenFileName = tokenFileName              # calendar: token
-    gui = GymBotGUI(iac01bot, toaster, calendar)        # interface
-    gui.icon_photo = PhotoImage(file=pngFileName)      # interface: png
+    logger = logging.getLogger(__name__)                        # logger
+    driver = webdriver.Chrome(service=ser, options=op)          # webdriver
+    toaster = ToastNotifier()                                   # notifier
+    toaster.icon = iconFileName                                 # notifier: icon
+    iac01bot = Iac01Bot(driver)                                 # iac01bot
+    iac01bot.url = login_url                                    # iac01bot: url
+    signal.signal(signal.SIGINT, signal_handler)                # signal handler
+    calendar = Calendar()                                       # calendar
+    calendar.credsFileName = credsFileName                      # calendar: credentials
+    calendar.tokenFileName = tokenFileName                      # calendar: token
+    gui = GymBotGUI(iac01bot, toaster, calendar)                # interface
+    gui.icon_photo = PhotoImage(file=pngFileName)               # interface: png
+    gui.background_photo = PhotoImage(file=backgroundFileName)  # interface: background png
 
     # Start process
     gui.set_theme_mode()

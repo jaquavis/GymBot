@@ -1,5 +1,6 @@
 import logging
 from selenium.common.exceptions import NoSuchElementException
+import datetime
 
 
 class Iac01Bot:
@@ -62,3 +63,12 @@ class Iac01Bot:
         slot = self.driver.find_element('id', self.slot_id)
         slot.click()
         print(f"\nBooked {self.time_slot_text[5:24]}{' ' * 6}")
+
+    def booking_successful(self):  # Returns True if the booking was successful
+        # For future use
+        # f"{datetime.datetime.now().strftime('%A, %d, %B, %Y')} from {self.time_slot_text[10:15]} to {self.time_slot_text[19:24]}, Fitness Centre"
+        status_msg = self.driver.find_element('id', "ctl00_lblMessage")
+        if status_msg.text is not None and "Booking successful" in status_msg.text:
+            return True
+        else:
+            return False
