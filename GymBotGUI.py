@@ -49,7 +49,7 @@ class GymBotGUI:
         self.dropdown_font = tk_font.Font(family='Bahnschrift Light', size=13)
 
     def create_main_window(self):
-        self.window.iconphoto(False, self.icon_photo)  # Taskbar icon
+        self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
         self.window.geometry("700x437")
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
@@ -165,7 +165,10 @@ class GymBotGUI:
         self.loading_window.configure(bg=self.background_colour)
 
         # Progress bar
-        self.bar = Progressbar(self.loading_window, orient=HORIZONTAL, length=600, mode='indeterminate')
+        bar_style = Style()
+        bar_style.theme_use('default')
+        bar_style.configure("blue.Horizontal.TProgressbar", foreground='#245ec8', background='#245ec8')
+        self.bar = Progressbar(self.loading_window, style="blue.Horizontal.TProgressbar", orient=HORIZONTAL, length=600,mode='indeterminate')
         self.bar.pack(pady=20)
         self.bar.start()
 
