@@ -152,7 +152,7 @@ class GymBotGUI:
             slot.click()
             print(f"\nBooked {self.time_slot_text[5:24]}{' ' * 6}")
             self.loading_window.destroy()
-            self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
+            self.toaster.show_toast("GymBot®", "Your appointment has been booked! Thanks for using GymBot", icon_path=self.toaster.icon)
 
     def loading_page(self):
 
