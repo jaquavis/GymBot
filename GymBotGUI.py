@@ -34,8 +34,6 @@ class GymBotGUI:
         self.password_login = StringVar()
         self.time_clicked = StringVar()
         self.time_entry = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']
-        self.username = None
-        self.password = None
         self.time_menu = None
         self.toggle_button = None
         self.add_to_cal = False
@@ -57,10 +55,10 @@ class GymBotGUI:
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
 
-        # Background image
-        # canvas = Canvas(bd=10, bg=self.background_colour, width=250, height=141)
-        # canvas.pack(anchor=N)
-        # canvas.create_image(10, 10, anchor=NW, image=self.background_photo)
+        # Background image - can be implemented if we want
+        #canvas = Canvas(bd=10, bg=self.background_colour, width=250, height=141)
+        #canvas.place(anchor=NW)
+        #canvas.create_image(150, 15, anchor=NW, image=self.background_photo)
 
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
         tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
@@ -94,10 +92,10 @@ class GymBotGUI:
             self.loading_page()
 
     def get_creds(self):
-        self.username = self.username_login.get()
-        self.password = self.password_login.get()
+        self.iac01bot.username = self.username_login.get()
+        self.iac01bot.password = self.password_login.get()
 
-        self.login_success = self.iac01bot.login(self.username, self.password)
+        self.login_success = self.iac01bot.login()
         if self.login_success:
             if self.invalid_usr_win:
                 self.destroy_invalid_usr_win()
@@ -136,12 +134,12 @@ class GymBotGUI:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
         print(f"Desired Time: {self.iac01bot.desired_time}")
 
-        while not self.time_available and not self.booking_successful:  # main loop
+        while not self.time_available:  # main loop         #while not self.time_available and not self.booking_successful:  # main loop
             # Refresh / login if timed out
             if self.iac01bot.login_status():
                 self.iac01bot.driver.refresh()
             else:
-                self.iac01bot.login(self.username, self.password)
+                self.iac01bot.login()
 
             # Get available slots / Check if desired slot is available
             self.time_available = self.iac01bot.check_slots()
@@ -151,19 +149,23 @@ class GymBotGUI:
             # Attempt booking
             if self.time_available:
                 self.iac01bot.book_slot()
+                # Check booking
+                self.booking_successful = self.iac01bot.booking_successful()
+                # Destroy windows
                 self.loading_window.destroy()
                 self.instance_loading_window.destroy()
+
+            # Upon successful booking
+            if self.booking_successful:
                 self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
 
-            # Check booking
-            self.booking_successful = self.iac01bot.booking_successful()
-
             # Loading wheel
-            loading_wheel = ['/', '─', "\\", '|']
-            print(f'\rNot available - trying again   {loading_wheel[wheel_index]}', end="")
-            wheel_index = wheel_index + 1
-            if wheel_index == 4:
-                wheel_index = 0
+            if not self.time_available:
+                loading_wheel = ['/', '─', "\\", '|']
+                print(f'\rNot available - trying again   {loading_wheel[wheel_index]}', end="")
+                wheel_index = wheel_index + 1
+                if wheel_index == 4:
+                    wheel_index = 0
 
     def loading_page(self):
         self.window.destroy()

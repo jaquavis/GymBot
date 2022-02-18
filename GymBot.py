@@ -44,7 +44,7 @@ else:
 # Define paths
 iconFileName = running_dir + 'GymBot.ico'
 pngFileName = running_dir + 'GymBot_small.png'
-backgroundFileName = running_dir + 'GymBot_large.png'
+#backgroundFileName = running_dir + 'GymBot_large.png'
 driverFileName = running_dir + 'chromedriver.exe'
 credsFileName = running_dir + 'credentials.json'
 tokenFileName = path.expandvars(r'%LOCALAPPDATA%\GymBotToken.json')
@@ -65,14 +65,15 @@ if __name__ == "__main__":
     toaster = ToastNotifier()                                   # notifier
     toaster.icon = iconFileName                                 # notifier: icon
     iac01bot = Iac01Bot(driver)                                 # iac01bot
-    iac01bot.url = login_url                                    # iac01bot: url
+    iac01bot.login_url = login_url                              # iac01bot: login url
+    iac01bot.default_url = default_url                          # iac01bot: default url
     signal.signal(signal.SIGINT, signal_handler)                # signal handler
     calendar = Calendar()                                       # calendar
     calendar.credsFileName = credsFileName                      # calendar: credentials
     calendar.tokenFileName = tokenFileName                      # calendar: token
     gui = GymBotGUI(iac01bot, toaster, calendar)                # interface
     gui.icon_photo = PhotoImage(file=pngFileName)               # interface: png
-    gui.background_photo = PhotoImage(file=backgroundFileName)  # interface: background png
+    #gui.background_photo = PhotoImage(file=backgroundFileName)  # interface: background png
 
     # Start process
     gui.set_theme_mode()
@@ -83,7 +84,7 @@ if __name__ == "__main__":
         today = datetime.datetime.now().isoformat()
         start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
         end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
-        if gui.add_to_cal:
+        if gui.add_to_cal and gui.booking_successful:
             calendar.book_event(start_time, end_time)
 
     except TypeError:
