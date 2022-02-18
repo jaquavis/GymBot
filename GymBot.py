@@ -15,22 +15,6 @@ import logging
 from tkinter import PhotoImage
 
 
-# Lukas:
-# TODO Exit cleanup
-# TODO test confirmed bookings
-# TODO py2app - mac release
-# TODO add per/user options for theme
-# TODO fix background image
-# TODO increase icon resolution
-
-# Nathan:
-# TODO End threads / destroy all windows
-# TODO Find out how to use return to enter login
-# TODO Alert if website is down
-# TODO loading wheel (rotating text)
-# TODO maybe colour on button click if its easy
-
-
 def signal_handler(sig, frame):
     print('\nExiting: You may now close this window')
     driver.quit()

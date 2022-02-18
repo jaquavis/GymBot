@@ -70,7 +70,8 @@ class Iac01Bot:
     def book_slot(self):
         slot = self.driver.find_element('id', self.slot_id)
         slot.click()
-        print(f"\nAttempting to book {self.time_slot_text[5:24]}")
+        print(f"\nBooked {self.time_slot_text[5:24]}{' '*6}")
+        #print(f"\nAttempting to book {self.time_slot_text[5:24]}")
 
     def booking_successful(self):  # Returns True if the booking was successful
         index = 102
