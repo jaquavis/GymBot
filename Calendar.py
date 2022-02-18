@@ -34,7 +34,7 @@ class Calendar:
             calendar = build('calendar', 'v3', credentials=self.creds)
 
             event = {
-                'summary': 'Gym',
+                'summary': 'U of C Gym Booking',
                 'description': 'Booked by GymBot®',
                 'start': {
                     'dateTime': start_time,
