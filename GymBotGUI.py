@@ -156,8 +156,8 @@ class GymBotGUI:
                 self.instance_loading_window.destroy()
 
             # Upon successful booking
-            if self.booking_successful:
-                self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
+            #if self.booking_successful:
+            self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
 
             # Loading wheel
             if not self.time_available:

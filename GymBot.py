@@ -43,7 +43,7 @@ else:
 
 # Define paths
 iconFileName = running_dir + 'GymBot.ico'
-pngFileName = running_dir + 'GymBot_small.png'
+pngFileName = running_dir + 'GymBot.png'
 #backgroundFileName = running_dir + 'GymBot_large.png'
 driverFileName = running_dir + 'chromedriver.exe'
 credsFileName = running_dir + 'credentials.json'
