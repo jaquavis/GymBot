@@ -68,7 +68,7 @@ if __name__ == "__main__":
         today = datetime.datetime.now().isoformat()
         start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
         end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
-        if gui.add_to_cal and gui.booking_successful:
+        if gui.add_to_cal: #        if gui.add_to_cal and gui.booking_successful:
             calendar.book_event(start_time, end_time)
 
     except TypeError:
