@@ -73,3 +73,4 @@ if __name__ == "__main__":
     # Cleanup
     print('\nExiting: You may now close this window')
     driver.quit()
+
