@@ -149,6 +149,7 @@ class GymBotGUI:
             # Attempt booking
             if self.time_available:
                 self.iac01bot.book_slot()
+                self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
                 # Check booking
                 #self.booking_successful = self.iac01bot.booking_successful()
                 # Destroy windows
@@ -166,7 +167,6 @@ class GymBotGUI:
                 wheel_index = wheel_index + 1
                 if wheel_index == 4:
                     wheel_index = 0
-        self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
 
     def loading_page(self):
         self.window.destroy()
