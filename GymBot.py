@@ -18,7 +18,7 @@ from tkinter import PhotoImage
 def signal_handler(sig, frame):
     print('\nExiting: You may now close this window')
     driver.quit()
-
+#test
 
 if getattr(sys, 'frozen', False):  # Running as compiled
     running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
