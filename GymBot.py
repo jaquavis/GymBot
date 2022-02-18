@@ -36,7 +36,7 @@ login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
 if __name__ == "__main__":
-    print("GymBot® v0.15")
+    print("GymBot® v0.15.1")
 
     # Define objects
     ser = Service(driverFileName)
