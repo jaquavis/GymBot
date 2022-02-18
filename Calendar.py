@@ -4,10 +4,12 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+import logging
 
 
 class Calendar:
     def __init__(self):
+        self.logger = logging.getLogger(__name__)
         self.SCOPES = ['https://www.googleapis.com/auth/calendar']  # If modifying these scopes, delete the file token.json
         self.creds = None
         self.tokenFileName = None
@@ -15,7 +17,7 @@ class Calendar:
 
     def authenticate(self):
         if os.path.exists(self.tokenFileName):
-            creds = Credentials.from_authorized_user_file(self.tokenFileName, self.SCOPES)
+            self.creds = Credentials.from_authorized_user_file(self.tokenFileName, self.SCOPES)
         # If there are no (valid) credentials available, let the user log in.
         if not self.creds or not self.creds.valid:
             if self.creds and self.creds.expired and self.creds.refresh_token:
@@ -42,9 +44,12 @@ class Calendar:
                     'dateTime': end_time,
                     'timeZone': 'Canada/Mountain',
                 },
+                "reminders": {
+                    "useDefault": False,
+                }
             }
             calendar.events().insert(calendarId='primary', body=event).execute()
             print('Calendar event created')
 
         except HttpError as error:
-            print('An error occurred: %s' % error)
+            self.logger.warning('An error occurred: %s' % error)
