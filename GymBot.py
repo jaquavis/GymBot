@@ -16,17 +16,17 @@ from tkinter import PhotoImage
 
 
 # Lukas:
-# TODO Exit cleanup
 # TODO confirm bookings - running two instances at once wont work
 # TODO py2app - mac release
 # TODO add per/user options for theme
+# TODO Persistent Notification
 
 # Nathan:
 # TODO End threads / destroy all windows
 # TODO Find out how to use return to enter login
 # TODO Alert if website is down
 # TODO loading wheel (rotating text)
-# TODO maybe colour on button click if its easy
+# TODO Allow calendar customization
 
 
 def signal_handler(sig, frame):
