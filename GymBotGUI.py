@@ -152,12 +152,8 @@ class GymBotGUI:
         if self.time_available:
             self.iac01bot.book_slot()
             self.loading_window.destroy()
-<<<<<<< HEAD
-            self.toaster.show_toast("GymBot®", "Your appointment has been booked! Thanks for using GymBot", icon_path=self.toaster.icon)
-=======
             self.instance_loading_window.destroy()
             self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
->>>>>>> 8a54066e694af55b461dc18b2b14b3a5987de32c
 
     def loading_page(self):
         self.window.destroy()
