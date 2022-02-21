@@ -39,7 +39,7 @@ if __name__ == "__main__":
     # Define objects
     ser = Service(driverFileName)
     op = webdriver.ChromeOptions()
-    op.add_argument("--headless")
+    #op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     logger = logging.getLogger(__name__)                # logger

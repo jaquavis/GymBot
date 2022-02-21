@@ -99,6 +99,7 @@ class GymBotGUI:
         if self.login_success:
             if self.invalid_usr_win:
                 self.destroy_invalid_usr_win()
+            #self.iac01bot.next_page()
             threading.Thread(target=self.get_gym_time).start()
         else:
             self.invalid_user()
@@ -151,7 +152,7 @@ class GymBotGUI:
                 self.iac01bot.book_slot()
                 self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
                 # Check booking
-                #self.booking_successful = self.iac01bot.booking_successful()
+                self.booking_successful = self.iac01bot.booking_successful()
                 # Destroy windows
                 self.loading_window.destroy()
                 self.instance_loading_window.destroy()
