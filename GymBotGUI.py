@@ -92,7 +92,7 @@ class GymBotGUI:
         self.cal_toggle_button = tk.Button(self.window, text="OFF", command=self.cal_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.cal_toggle_button.pack(pady=10)
 
-        tk.Label(self.window, text="Auto-fill:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(self.window, text="Autofill:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         self.fil_toggle_button = tk.Button(self.window, text="OFF", command=self.fil_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.fil_toggle_button.pack(pady=10)
 
@@ -325,7 +325,7 @@ class GymBotGUI:
         self.instance_auto_fill_prompt = tk.Tk()
         self.instance_auto_fill_prompt.withdraw()
         self.auto_fill_prompt = Toplevel(self.instance_auto_fill_prompt)
-        self.auto_fill_prompt.title("Auto-fill")
+        self.auto_fill_prompt.title("Autofill")
         self.auto_fill_prompt.configure(bg=self.background_colour)
         tk.Label(self.auto_fill_prompt, text="No user profile was found.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(self.auto_fill_prompt, text="Would you like to save your credentials on next login?", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
