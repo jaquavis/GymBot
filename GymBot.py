@@ -47,13 +47,14 @@ if __name__ == "__main__":
     toaster = ToastNotifier()                           # notifier
     toaster.icon = iconFileName                         # notifier: icon
     iac01bot = Iac01Bot(driver)                         # iac01bot
-    iac01bot.url = login_url                            # iac01bot: url
+    iac01bot.login_url = login_url                      # iac01bot: login url
+    iac01bot.default_url = default_url                  # iac01bot: default url
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
     calendar = Calendar()                               # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
     calendar.tokenFileName = tokenFileName              # calendar: token
     gui = GymBotGUI(iac01bot, toaster, calendar)        # interface
-    gui.icon_photo = PhotoImage(file=pngFileName)      # interface: png
+    gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
 
     # Start process
     gui.set_theme_mode()
