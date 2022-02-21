@@ -1,5 +1,5 @@
 import logging
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import datetime
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -59,7 +59,7 @@ class Iac01Bot:
         for i in range(16):
             try:
                 self.slot_id = f"ctl00_ContentPlaceHolder1_ctl00_repAvailFitness_ctl{self.nums[i]}_lnkBtnFitness"
-                slot = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, self.slot_id)))
+                slot = self.driver.find_element('id', self.slot_id)
                 slot_text = slot.text
                 slots_array.append(slot_text)
                 if self.desired_time in slots_array[i]:
@@ -71,33 +71,29 @@ class Iac01Bot:
 
     def book_slot(self):
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, self.slot_id))).click()
-        print(f"\nBooked {self.time_slot_text[5:24]}{' '*6}")
+        print(f"\nAttempting to book {self.time_slot_text[5:24]}")
         #print(f"\nAttempting to book {self.time_slot_text[5:24]}")
 
     def booking_successful(self):  # Returns True if the booking was successful
-        index = 102
+        index = 2
         self.driver.get(self.login_url)
         self.login()
 
         if self.time_slot_text is not None:
             booking_msg = f"{datetime.datetime.now().strftime('%A, %B %d, %Y')} from {self.time_slot_text[10:15]} to {self.time_slot_text[19:24]}, Fitness Centre"
-            print("booking msg")
-            print(booking_msg)
-
             while True:
                 try:
-                    booking_id = f"ctl00_ContentPlaceHolder1_ctl00_gvClientFitnessBookings_ct{index}_lblFCBooking"
-                    print("booking id") # remove these prints
-                    print(booking_id)
-                    booking = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, booking_id)))
+                    if index < 10:
+                        booking_id = f"ctl00_ContentPlaceHolder1_ctl00_gvClientFitnessBookings_ctl0{index}_lblFCBooking"
+                    else:
+                        booking_id = f"ctl00_ContentPlaceHolder1_ctl00_gvClientFitnessBookings_ctl{index}_lblFCBooking"
+                    booking = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, f"//span[contains(@id,'{booking_id}')]")))
                     booking_text = booking.text
-                    print("booking text")
-                    print(booking.text)
                     if booking_msg == booking_text:
                         print("Booking successful")
                         return True
                     index = index + 1
-                except NoSuchElementException:
+                except TimeoutException:
                     self.logger.error("Booking unsuccessful")
                     return False
 

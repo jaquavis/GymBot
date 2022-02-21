@@ -53,6 +53,7 @@ class GymBotGUI:
         self.font_type10 = ("Bahnschrift Light", 10)
         self.option_menu_font = tk_font.Font(family='Bahnschrift Light', size=13)
         self.dropdown_font = tk_font.Font(family='Bahnschrift Light', size=13)
+        self.retry = 0
 
     def create_main_window(self):
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
@@ -141,7 +142,7 @@ class GymBotGUI:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
         print(f"Desired Time: {self.iac01bot.desired_time}")
 
-        while not self.time_available:  # main loop         #while not self.time_available and not self.booking_successful:  # main loop
+        while not self.time_available or not self.booking_successful:  # main loop
             # Refresh / login if timed out
             if self.iac01bot.login_status():
                 self.iac01bot.driver.refresh()
@@ -156,16 +157,23 @@ class GymBotGUI:
             # Attempt booking
             if self.time_available:
                 self.iac01bot.book_slot()
-                self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
                 # Check booking
                 self.booking_successful = self.iac01bot.booking_successful()
+                if not self.booking_successful:  # Upon unsuccessful booking
+                    self.retry = self.retry + 1
+                    self.logger.error(f"Retrying: {self.retry} of 3")
+                if self.booking_successful:  # Upon successful booking
+                    self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
+                    # Destroy windows
+                    self.loading_window.destroy()
+                    self.instance_loading_window.destroy()
+
+            if self.retry >= 3:
+                self.logger.error("Maximum number of retries reached, exiting program.")
                 # Destroy windows
                 self.loading_window.destroy()
                 self.instance_loading_window.destroy()
-
-            # Upon successful booking
-            #if self.booking_successful:
-                #self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
+                break
 
             # Loading wheel
             if not self.time_available:
