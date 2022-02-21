@@ -35,7 +35,7 @@ login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
 if __name__ == "__main__":
-    print("GymBot® v0.15.2")
+    print("GymBot® v0.17")
 
     # Define objects
     ser = Service(driverFileName)
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     calendar = Calendar()                               # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
     calendar.tokenFileName = tokenFileName              # calendar: token
-    settings = Settings                                 # settings
+    settings = Settings()                               # settings
     gui = GymBotGUI(iac01bot,                           # interface
                     toaster,
                     calendar,
