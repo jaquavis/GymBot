@@ -21,25 +21,35 @@ class Settings:
         self.username = None
         self.password = None
         self.theme = "auto"
+        self.config_path = path.expandvars(r'%LOCALAPPDATA%\GymBotUserConfig.json')
 
     def get_settings(self):  # Returns settings data
         try:
-            if os.stat(path.expandvars(r'%LOCALAPPDATA%\GymBotSettings.json')).st_size != 0:
-                with open(path.expandvars(r'%LOCALAPPDATA%\GymBotSettings.json')) as settings_file:
+            if os.stat(self.config_path).st_size != 0:
+                with open(self.config_path) as settings_file:
                     settings_data = json.load(settings_file)
-                    return settings_data
 
         except FileNotFoundError:
-            with open(path.expandvars(r'%LOCALAPPDATA%\GymBotSettings.json'), "w+") as settings_file:
+            with open(self.config_path, "w+") as settings_file:
                 print("No settings found: Creating new user profile")
                 settings_file.write(self.default_settings)
-                return None
 
-    def set_settings(self, theme=None, username=None, password=None):
+        with open(self.config_path) as settings_file:
+            settings_data = json.load(settings_file)
+            return settings_data
+
+    def set_settings(self, theme="NoChange", username="NoChange", password="NoChange"):
         settings_data = self.get_settings()
-        settings_data['user_profile']['username'] = username
-        settings_data['user_profile']['password'] = password
-        settings_data['settings']['theme'] = theme
-        with open(path.expandvars(r'%LOCALAPPDATA%\GymBotSettings.json'), "w") as settings_file:
+
+        if username != "NoChange":
+            settings_data['user_profile']['username'] = username
+
+        if password != "NoChange":
+            settings_data['user_profile']['password'] = password
+
+        if theme != "NoChange":
+            settings_data['settings']['theme'] = theme
+
+        with open(self.config_path, "w") as settings_file:
             settings_data_to_write = json.dumps(settings_data, indent=2)
             settings_file.write(settings_data_to_write)
