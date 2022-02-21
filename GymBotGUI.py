@@ -11,11 +11,12 @@ from tkinter import font as tk_font
 
 
 class GymBotGUI:
-    def __init__(self, iac01bot, toaster, calendar):
+    def __init__(self, iac01bot, toaster, calendar, settings):
         super().__init__()
         self.iac01bot = iac01bot
         self.toaster = toaster
         self.calendar = calendar
+        self.settings = settings
         self.icon_photo = None
         self.background_photo = None
         self.logger = logging.getLogger(__name__)
@@ -24,7 +25,9 @@ class GymBotGUI:
         self.backend_thread = None
         self.instance_loading_window = None
         self.instance_invalid_usr_win = None
+        self.instance_settings_win = None
         self.invalid_usr_win = None
+        self.settings_win = None
         self.bar = None
         self.time_available = False
         self.booking_successful = False
@@ -33,8 +36,10 @@ class GymBotGUI:
         self.username_login = StringVar()
         self.password_login = StringVar()
         self.time_clicked = StringVar()
+        self.theme_clicked = StringVar()
         self.time_entry = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']
         self.time_menu = None
+        self.theme_menu = None
         self.toggle_button = None
         self.add_to_cal = False
         self.background_colour = None
@@ -51,7 +56,7 @@ class GymBotGUI:
 
     def create_main_window(self):
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
-        self.window.geometry("700x437")
+        #self.window.geometry("700x437")
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
 
@@ -83,6 +88,8 @@ class GymBotGUI:
         self.toggle_button = tk.Button(self.window, text="OFF", command=self.toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.toggle_button.pack(pady=10)
 
+        tk.Button(self.window, text="Settings", command=lambda: self.create_settings_win(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
+
         tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
         self.window.mainloop()
 
@@ -99,7 +106,6 @@ class GymBotGUI:
         if self.login_success:
             if self.invalid_usr_win:
                 self.destroy_invalid_usr_win()
-            #self.iac01bot.next_page()
             threading.Thread(target=self.get_gym_time).start()
         else:
             self.invalid_user()
@@ -175,7 +181,7 @@ class GymBotGUI:
         self.instance_loading_window.withdraw()
 
         self.loading_window = tk.Toplevel(self.instance_loading_window)
-        self.loading_window.geometry("700x150")
+        #self.loading_window.geometry("700x150")
         self.loading_window.title("GymBot®")
         self.loading_window.configure(bg=self.background_colour)
 
@@ -216,3 +222,34 @@ class GymBotGUI:
             self.toggle_button.config(text='ON')
             self.add_to_cal = True
             threading.Thread(target=self.calendar.authenticate()).start()
+
+    def create_settings_win(self):
+        self.instance_settings_win = tk.Tk()
+        self.instance_settings_win.withdraw()
+        self.settings_win = Toplevel(self.instance_settings_win)
+        self.settings_win.title("Settings")
+        self.settings_win.configure(bg=self.background_colour)
+        tk.Label(self.settings_win, text="Select your default GymBot® theme:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+
+        self.theme_clicked.set("Auto")
+        self.theme_menu = tk.OptionMenu(self.settings_win, self.theme_clicked, *['Auto', 'Dark', 'Light'])
+        self.theme_menu.pack(pady=10)
+        self.theme_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour,
+                               activebackground=self.menu_colour,
+                               activeforeground=self.font_colour)  # set the button font
+        menu = self.settings_win.nametowidget(self.theme_menu.menuname)
+        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour,
+                    activebackground=self.gymbot_blue,
+                    activeforeground=self.font_colour)  # Set the dropdown menu's font
+
+        tk.Button(self.settings_win, text="Apply", command=self.destroy_settings_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
+
+    def destroy_settings_win(self):  # Apply settings
+        print(self.time_clicked.get())
+        self.settings_win.destroy()
+        self.instance_settings_win.destroy()
+        self.settings_win = None
+        self.instance_settings_win = None
+
+    def auto_fill(self):
+        pass

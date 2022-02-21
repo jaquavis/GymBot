@@ -13,6 +13,7 @@ from Calendar import Calendar
 from os import path
 import logging
 from tkinter import PhotoImage
+from Settings import Settings
 
 
 def signal_handler(sig, frame):
@@ -39,7 +40,7 @@ if __name__ == "__main__":
     # Define objects
     ser = Service(driverFileName)
     op = webdriver.ChromeOptions()
-    #op.add_argument("--headless")
+    op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     logger = logging.getLogger(__name__)                # logger
@@ -53,7 +54,11 @@ if __name__ == "__main__":
     calendar = Calendar()                               # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
     calendar.tokenFileName = tokenFileName              # calendar: token
-    gui = GymBotGUI(iac01bot, toaster, calendar)        # interface
+    settings = Settings                                 # settings
+    gui = GymBotGUI(iac01bot,                           # interface
+                    toaster,
+                    calendar,
+                    settings)
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
 
     # Start process
