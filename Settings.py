@@ -21,7 +21,7 @@ class Settings:
         self.username = None
         self.password = None
         self.theme = "auto"
-        self.config_path = path.expandvars(r'%LOCALAPPDATA%\GymBotUserConfig.json')
+        self.config_path = None
 
     def get_settings(self):  # Returns settings data
         try:

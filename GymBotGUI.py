@@ -182,7 +182,7 @@ class GymBotGUI:
                     self.retry = self.retry + 1
                     self.logger.error(f"Retrying: {self.retry} of 3")
                 if self.booking_successful:  # Upon successful booking
-                    self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
+                    self.toaster.show_toast("GymBot®", "Your appointment has been booked!", duration=10, icon_path=self.toaster.icon, threaded=True)
                     self.exit_all()
 
             if self.retry >= 3:
