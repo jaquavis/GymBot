@@ -1,5 +1,5 @@
 # GymBot®
-# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
+# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
 from __future__ import print_function
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -17,8 +17,8 @@ from Settings import Settings
 
 
 def signal_handler(sig, frame):
-    print('\nExiting: You may now close this window')
-    driver.quit()
+    pass
+
 
 if getattr(sys, 'frozen', False):  # Running as compiled
     running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
@@ -28,6 +28,8 @@ else:
 # Define paths
 iconFileName = running_dir + 'GymBot.ico'
 pngFileName = running_dir + 'GymBot.png'
+lightFileName = running_dir + 'GymBot_light.png'
+darkFileName = running_dir + 'GymBot_dark.png'
 driverFileName = running_dir + 'chromedriver.exe'
 credsFileName = running_dir + 'credentials.json'
 tokenFileName = path.expandvars(r'%LOCALAPPDATA%\GymBotToken.json')
@@ -35,7 +37,7 @@ login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
 if __name__ == "__main__":
-    print("GymBot® v0.17")
+    print("GymBot® v0.18")
 
     # Define objects
     ser = Service(driverFileName)
@@ -60,6 +62,8 @@ if __name__ == "__main__":
                     calendar,
                     settings)
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
+    gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
+    gui.dark_photo = PhotoImage(file=darkFileName)      # interface: dark png
 
     # Start process
     gui.set_theme_mode()
@@ -79,3 +83,4 @@ if __name__ == "__main__":
     # Cleanup
     print('\nExiting: You may now close this window')
     driver.quit()
+    gui.exit_all()

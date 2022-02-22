@@ -1,3 +1,4 @@
+import _tkinter
 import threading
 import tkinter as tk
 from tkinter import *
@@ -19,6 +20,8 @@ class GymBotGUI:
         self.settings = settings
         self.icon_photo = None
         self.background_photo = None
+        self.light_photo = None
+        self.dark_photo = None
         self.logger = logging.getLogger(__name__)
 
         self.login_success = None
@@ -64,10 +67,10 @@ class GymBotGUI:
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
 
-        # Background image - can be implemented if we want
-        #canvas = Canvas(bd=10, bg=self.background_colour, width=250, height=141)
-        #canvas.place(anchor=NW)
-        #canvas.create_image(150, 15, anchor=NW, image=self.background_photo)
+        # Background image
+        canvas = Canvas(bd=10, bg=self.background_colour, width=self.background_photo.width(), height=self.background_photo.height(), highlightbackground=self.background_colour)
+        canvas.place(x=0, y=420)
+        canvas.create_image(0, 0, anchor=NW, image=self.background_photo)
 
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
         tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
@@ -77,7 +80,7 @@ class GymBotGUI:
         self.time_clicked.set("06")
         self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
         self.time_menu.pack(pady=10)
-        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour)  # set the button font
+        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
         menu = self.window.nametowidget(self.time_menu.menuname)
         menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
@@ -227,6 +230,7 @@ class GymBotGUI:
     def set_theme_mode(self):
         theme_config = self.settings.get_settings()
         theme = theme_config['settings']['theme']
+        self.background_photo = self.light_photo
 
         if theme == "Auto":
             loc = LocationInfo(name='Calgary', region='AB, Canada', timezone='Canada/Mountain', latitude=51.048615, longitude=-114.070847)
@@ -242,6 +246,7 @@ class GymBotGUI:
                 self.entry_colour = '#f0f4fc'
                 self.entry_font_colour = '#2b2c2f'
                 self.menu_colour = "#302c34"
+                self.background_photo = self.dark_photo
 
         if theme == "Dark":
             self.background_colour = '#323437'
@@ -249,6 +254,7 @@ class GymBotGUI:
             self.entry_colour = '#f0f4fc'
             self.entry_font_colour = '#2b2c2f'
             self.menu_colour = "#302c34"
+            self.background_photo = self.dark_photo
 
     def cal_toggle(self):
         if self.cal_toggle_button.config('text')[-1] == 'ON':
@@ -361,21 +367,48 @@ class GymBotGUI:
         self.cancel = True
 
     def exit_all(self):
-        if self.window:
-            self.window = self.window.destroy()
-        if self.invalid_usr_win:
-            self.invalid_usr_win = self.invalid_usr_win.destroy()
-        if self.instance_invalid_usr_win:
-            self.instance_invalid_usr_win = self.instance_invalid_usr_win.destroy()
-        if self.loading_window:
-            self.loading_window = self.loading_window.destroy()
-        if self.instance_loading_window:
-            self.instance_loading_window = self.instance_loading_window.destroy()
-        if self.auto_fill_prompt:
-            self.auto_fill_prompt = self.auto_fill_prompt.destroy()
-        if self.instance_auto_fill_prompt:
-            self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
-        if self.settings_win:
-            self.settings_win = self.settings_win.destroy()
-        if self.instance_settings_win:
-            self.instance_settings_win = self.instance_settings_win.destroy()
+        try:
+            if self.window:
+                self.window = self.window.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.invalid_usr_win:
+                self.invalid_usr_win = self.invalid_usr_win.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.instance_invalid_usr_win:
+                self.instance_invalid_usr_win = self.instance_invalid_usr_win.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.loading_window:
+                self.loading_window = self.loading_window.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.instance_loading_window:
+                self.instance_loading_window = self.instance_loading_window.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.auto_fill_prompt:
+                self.auto_fill_prompt = self.auto_fill_prompt.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.instance_auto_fill_prompt:
+                self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.settings_win:
+                self.settings_win = self.settings_win.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.instance_settings_win:
+                self.instance_settings_win = self.instance_settings_win.destroy()
+        except _tkinter.TclError:
+            pass

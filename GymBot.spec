@@ -6,7 +6,7 @@ block_cipher = None
 
 a = Analysis(['GymBot.py'],
              pathex=[],
-             binaries=[('GymBot.ico', 'files'), ('GymBot.png', 'files'), ('chromedriver.exe', 'files'), ('credentials.json', 'files')],
+             binaries=[('GymBot.ico', 'files'), ('GymBot_light.png', 'files'), ('GymBot_dark.png', 'files'), ('GymBot.png', 'files'), ('chromedriver.exe', 'files'), ('credentials.json', 'files')],
              datas=[],
              hiddenimports=[],
              hookspath=[],
