@@ -57,10 +57,10 @@ class GymBotGUI:
         self.save_creds_on_login = False
         self.instance_auto_fill_prompt = None
         self.auto_fill_prompt = None
+        self.cancel = False
 
     def create_main_window(self):
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
-        #self.window.geometry("700x437")
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
 
@@ -102,7 +102,7 @@ class GymBotGUI:
         self.window.mainloop()
 
     def cred_thread(self):
-        self.backend_thread = threading.Thread(target=self.get_creds()).start()
+        self.backend_thread = threading.Thread(target=self.get_creds(), daemon=True).start()
         if self.login_success:
             self.loading_page()
 
@@ -125,7 +125,7 @@ class GymBotGUI:
         if self.login_success:
             if self.invalid_usr_win:
                 self.destroy_invalid_usr_win()
-            threading.Thread(target=self.get_gym_time).start()
+            threading.Thread(target=self.get_gym_time, daemon=True).start()
         else:
             self.invalid_user()
 
@@ -147,10 +147,8 @@ class GymBotGUI:
         tk.Button(self.invalid_usr_win, text="Ok", command=self.destroy_invalid_usr_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
 
     def destroy_invalid_usr_win(self):
-        self.invalid_usr_win.destroy()
-        self.instance_invalid_usr_win.destroy()
-        self.invalid_usr_win = None
-        self.instance_invalid_usr_win = None
+        self.invalid_usr_win = self.invalid_usr_win.destroy()
+        self.instance_invalid_usr_win = self.instance_invalid_usr_win.destroy()
 
     def get_gym_time(self):
         wheel_index = 0
@@ -182,15 +180,16 @@ class GymBotGUI:
                     self.logger.error(f"Retrying: {self.retry} of 3")
                 if self.booking_successful:  # Upon successful booking
                     self.toaster.show_toast("GymBot®", "Your appointment has been booked!", icon_path=self.toaster.icon)
-                    # Destroy windows
-                    self.loading_window.destroy()
-                    self.instance_loading_window.destroy()
+                    self.exit_all()
 
             if self.retry >= 3:
                 self.logger.error("Maximum number of retries reached, exiting program.")
-                # Destroy windows
-                self.loading_window.destroy()
-                self.instance_loading_window.destroy()
+                self.exit_all()
+                break
+
+            if self.cancel:
+                self.logger.warning("\nCanceling")
+                self.exit_all()
                 break
 
             # Loading wheel
@@ -202,14 +201,15 @@ class GymBotGUI:
                     wheel_index = 0
 
     def loading_page(self):
-        self.window.destroy()
+        self.window = self.window.destroy()
         self.instance_loading_window = tk.Tk()
         self.instance_loading_window.withdraw()
 
         self.loading_window = tk.Toplevel(self.instance_loading_window)
-        #self.loading_window.geometry("700x150")
         self.loading_window.title("GymBot®")
         self.loading_window.configure(bg=self.background_colour)
+
+        tk.Label(self.loading_window, text="We are currently looking for your gym time.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
         # Progress bar
         bar_style = Style()
@@ -219,8 +219,8 @@ class GymBotGUI:
         self.bar.pack(pady=20)
         self.bar.start()
 
-        tk.Label(self.loading_window, text="We are currently looking for your gym time.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Button(self.loading_window, text="Cancel", command=self.cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
+        tk.Label(self.loading_window, text="Feel free to close or minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
         self.instance_loading_window.mainloop()
 
@@ -257,7 +257,7 @@ class GymBotGUI:
         else:
             self.cal_toggle_button.config(text='ON')
             self.add_to_cal = True
-            threading.Thread(target=self.calendar.authenticate()).start()
+            threading.Thread(target=self.calendar.authenticate(), daemon=True).start()
 
     def fil_toggle(self):
         if self.fil_toggle_button.config('text')[-1] == 'ON':
@@ -292,15 +292,12 @@ class GymBotGUI:
         tk.Button(self.settings_win, text="Dark", command=self.settings_win_dark, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
         tk.Button(self.settings_win, text="Light", command=self.settings_win_light, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
 
-
         tk.Label(self.settings_win, text="Remove saved username and password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Button(self.settings_win, text="Remove", command=self.remove_creds, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
 
     def destroy_settings_win(self):
-        self.settings_win.destroy()
-        self.instance_settings_win.destroy()
-        self.settings_win = None
-        self.instance_settings_win = None
+        self.settings_win = self.settings_win.destroy()
+        self.instance_settings_win = self.instance_settings_win.destroy()
 
     def settings_win_auto(self):
         self.settings.set_settings(theme="Auto")
@@ -336,25 +333,17 @@ class GymBotGUI:
         self.fil_toggle_button.config(text='OFF')
         self.auto_fill = False
         self.save_creds_on_login = True
-        self.auto_fill_prompt.destroy()
-        self.instance_auto_fill_prompt.destroy()
-        self.auto_fill_prompt = None
-        self.instance_auto_fill_prompt = None
+        self.destroy_auto_fill_prompt()
 
     def auto_fill_no(self):
         self.fil_toggle_button.config(text='OFF')
         self.auto_fill = False
         self.save_creds_on_login = False
-        self.auto_fill_prompt.destroy()
-        self.instance_auto_fill_prompt.destroy()
-        self.auto_fill_prompt = None
-        self.instance_auto_fill_prompt = None
+        self.destroy_auto_fill_prompt()
 
     def destroy_auto_fill_prompt(self):
-        self.auto_fill_prompt.destroy()
-        self.instance_auto_fill_prompt.destroy()
-        self.auto_fill_prompt = None
-        self.instance_auto_fill_prompt = None
+        self.auto_fill_prompt = self.auto_fill_prompt.destroy()
+        self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
 
     def remove_creds(self):
         creds = self.settings.get_settings()
@@ -367,3 +356,26 @@ class GymBotGUI:
             self.settings.set_settings(password=None)
             print("Removed: password")
         self.destroy_settings_win()
+
+    def cancel_search(self):
+        self.cancel = True
+
+    def exit_all(self):
+        if self.window:
+            self.window = self.window.destroy()
+        if self.invalid_usr_win:
+            self.invalid_usr_win = self.invalid_usr_win.destroy()
+        if self.instance_invalid_usr_win:
+            self.instance_invalid_usr_win = self.instance_invalid_usr_win.destroy()
+        if self.loading_window:
+            self.loading_window = self.loading_window.destroy()
+        if self.instance_loading_window:
+            self.instance_loading_window = self.instance_loading_window.destroy()
+        if self.auto_fill_prompt:
+            self.auto_fill_prompt = self.auto_fill_prompt.destroy()
+        if self.instance_auto_fill_prompt:
+            self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
+        if self.settings_win:
+            self.settings_win = self.settings_win.destroy()
+        if self.instance_settings_win:
+            self.instance_settings_win = self.instance_settings_win.destroy()
