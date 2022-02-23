@@ -1,5 +1,4 @@
 # GymBot®
-# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
 from __future__ import print_function
 
 import os.path
@@ -18,6 +17,7 @@ import logging
 from tkinter import PhotoImage
 from Settings import Settings
 
+version = "v0.19"
 
 def signal_handler(sig, frame):
     driver.quit()
@@ -47,7 +47,7 @@ if not os.path.exists(localPath):
     os.makedirs(localPath)
 
 if __name__ == "__main__":
-    print("GymBot® v0.19")
+    print(f"GymBot® {version}")
 
     # Define objects
     ser = Service(driverFileName)
@@ -75,6 +75,7 @@ if __name__ == "__main__":
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
     gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
     gui.dark_photo = PhotoImage(file=darkFileName)      # interface: dark png
+    gui.version = version                               # interface: version
 
     # Start process
     gui.set_theme_mode()
