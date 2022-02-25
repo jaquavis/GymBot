@@ -1,6 +1,9 @@
 # GymBot®
-# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
+# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
 from __future__ import print_function
+
+import os.path
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
@@ -13,10 +16,13 @@ from Calendar import Calendar
 from os import path
 import logging
 from tkinter import PhotoImage
+from Settings import Settings
 
 def signal_handler(sig, frame):
-    print('\nExiting: You may now close this window')
     driver.quit()
+    gui.exit_all()
+    pass
+
 
 if getattr(sys, 'frozen', False):  # Running as compiled
     running_dir = sys._MEIPASS + "/files/"  # Same path name than pyinstaller option
@@ -24,16 +30,23 @@ else:
     running_dir = "./"  # Path name when run with Python interpreter
 
 # Define paths
+localPath = path.expandvars(r'%LOCALAPPDATA%\GymBot') + '\\'
 iconFileName = running_dir + 'GymBot.ico'
 pngFileName = running_dir + 'GymBot.png'
+lightFileName = running_dir + 'GymBot_light.png'
+darkFileName = running_dir + 'GymBot_dark.png'
 driverFileName = running_dir + 'chromedriver.exe'
 credsFileName = running_dir + 'credentials.json'
-tokenFileName = path.expandvars(r'%LOCALAPPDATA%\GymBotToken.json')
+tokenFileName = localPath + 'GymBotToken.json'
+configFileName = localPath + 'GymBotUserConfig.json'
 login_url = "https://iac01.ucalgary.ca/CamRecWebBooking/Login.aspx"
 default_url = "https://iac01.ucalgary.ca/CamRecWebBooking/default.aspx"
 
+if not os.path.exists(localPath):
+    os.makedirs(localPath)
+
 if __name__ == "__main__":
-    print("GymBot® v0.15")
+    print("GymBot® v0.19")
 
     # Define objects
     ser = Service(driverFileName)
@@ -46,30 +59,38 @@ if __name__ == "__main__":
     toaster = ToastNotifier()                           # notifier
     toaster.icon = iconFileName                         # notifier: icon
     iac01bot = Iac01Bot(driver)                         # iac01bot
-    iac01bot.url = login_url                            # iac01bot: url
+    iac01bot.login_url = login_url                      # iac01bot: login url
+    iac01bot.default_url = default_url                  # iac01bot: default url
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
     calendar = Calendar()                               # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
     calendar.tokenFileName = tokenFileName              # calendar: token
-    gui = GymBotGUI(iac01bot, toaster, calendar)        # interface
-    gui.icon_photo = PhotoImage(file=pngFileName)      # interface: png
+    settings = Settings()                               # settings
+    settings.config_path = configFileName               # settings: config
+    gui = GymBotGUI(iac01bot,                           # interface
+                    toaster,
+                    calendar,
+                    settings)
+    gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
+    gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
+    gui.dark_photo = PhotoImage(file=darkFileName)      # interface: dark png
 
     # Start process
     gui.set_theme_mode()
     gui.create_main_window()
 
     # Calendar booking
-    try:
-        today = datetime.datetime.now().isoformat()
-        start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
-        end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
-        if gui.add_to_cal:
-            calendar.book_event(start_time, end_time)
-
-    except TypeError:
-        logger.warning("Could not find event times")
+    if gui.booking_successful:
+        try:
+            today = datetime.datetime.now().isoformat()
+            start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
+            end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
+            if gui.add_to_cal:
+                calendar.book_event(start_time, end_time)
+        except TypeError:
+            logger.warning("Could not find event times")
 
     # Cleanup
     print('\nExiting: You may now close this window')
     driver.quit()
-
+    gui.exit_all()
