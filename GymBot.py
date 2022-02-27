@@ -17,7 +17,7 @@ import logging
 from tkinter import PhotoImage
 from Settings import Settings
 
-version = "v0.19"
+version = "v0.20_wip"
 
 def signal_handler(sig, frame):
     driver.quit()
