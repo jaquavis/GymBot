@@ -142,6 +142,8 @@ class GymBotGUI:
             creds = self.settings.get_settings()
             self.iac01bot.username = creds['user_profile']['username']
             self.iac01bot.password = creds['user_profile']['password']
+            print(f"Username: {self.iac01bot.username}")
+            print(f"Password: {self.iac01bot.password}")
 
         self.login_success = self.iac01bot.login()
 
