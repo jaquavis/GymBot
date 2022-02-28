@@ -292,8 +292,10 @@ class GymBotGUI:
         self.settings_win = Toplevel(self.instance_settings_win)
         self.settings_win.title("Settings")
         self.settings_win.configure(bg=self.background_colour)
-        tk.Label(self.settings_win, text="Select your default GymBot® theme (changes will take effect upon app restart):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
+        tk.Label(self.settings_win, text="Settings", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).grid(row=0, columnspan=8)
+
+        tk.Label(self.settings_win, text="Select your default GymBot® theme (changes will take effect upon app restart):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Button(self.settings_win, text="Auto", command=self.settings_win_auto, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
         tk.Button(self.settings_win, text="Dark", command=self.settings_win_dark, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
         tk.Button(self.settings_win, text="Light", command=self.settings_win_light, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
