@@ -24,6 +24,7 @@ class GymBotGUI:
         self.light_photo = None
         self.dark_photo = None
         self.logger = logging.getLogger(__name__)
+        self.today = datetime.datetime.now().isoformat()
 
         self.login_success = None
         self.backend_thread = None

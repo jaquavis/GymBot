@@ -102,3 +102,14 @@ class Iac01Bot:
 
     def previous_page(self):
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_lnkBtnPrev"))).click()
+
+    def get_page_date(self):
+        page_date = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_ctl00_lblAvailableFitness")))
+        datetime_object = datetime.datetime.strptime()
+
+        page_date = page_date[21:]
+        day =
+        month =
+        year =
+
+    def goto_date(self, date):
