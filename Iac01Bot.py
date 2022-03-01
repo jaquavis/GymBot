@@ -27,6 +27,8 @@ class Iac01Bot:
         pw_field.send_keys(self.password)
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_LoginButton"))).click()
 
+        self.get_page_date()
+
         status = self.login_status()
         if status:
             print("Logged in")
@@ -103,13 +105,16 @@ class Iac01Bot:
     def previous_page(self):
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_lnkBtnPrev"))).click()
 
-    def get_page_date(self):
-        page_date = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_ctl00_lblAvailableFitness")))
-        datetime_object = datetime.datetime.strptime()
-
-        page_date = page_date[21:]
-        day =
-        month =
-        year =
+    def get_page_date(self):  # Returns a datetime object
+        page_date_obj = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_ctl00_lblAvailableFitness")))
+        page_date = datetime.datetime.strptime(page_date_obj.text[12:].strip(), "%A, %B %d, %Y.")
+        print(page_date.month)
+        print(page_date_obj)
+        return page_date
 
     def goto_date(self, date):
+        while True:
+            page_date = self.get_page_date()
+            if page_date.day == date.day:
+                return
+            self.next_page()

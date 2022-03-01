@@ -24,7 +24,7 @@ class GymBotGUI:
         self.light_photo = None
         self.dark_photo = None
         self.logger = logging.getLogger(__name__)
-        self.today = datetime.datetime.now().isoformat()
+        self.today = datetime.datetime.now()
 
         self.login_success = None
         self.backend_thread = None
@@ -64,6 +64,16 @@ class GymBotGUI:
         self.cancel = False
         self.hover_bgcolour = '#d1d0c6'
         self.hover_fgcolour = '#000000'
+        self.date_entry = [datetime.datetime.strftime(self.today, "%A, %B %-m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=1), "%A, %B %-m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=2), "%A, %B %-m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=3), "%A, %B %-m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=4), "%A, %B %-m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=5), "%A, %B %-m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=6), "%A, %B %-m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=7), "%A, %B %-m, %Y")]
+        self.date_clicked = StringVar()
+        self.date_menu = None
 
     def create_main_window(self):
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
@@ -83,12 +93,19 @@ class GymBotGUI:
         tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
         # no arrow?
-        self.time_clicked.set("06")
+        self.time_clicked.set(self.time_entry[0])
         self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
         self.time_menu.pack(pady=10)
         self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
         menu = self.window.nametowidget(self.time_menu.menuname)
         menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
+
+        self.date_clicked.set(self.date_entry[0])
+        self.date_menu = tk.OptionMenu(self.window, self.date_clicked, *self.date_entry)
+        self.date_menu.pack(pady=10)
+        self.date_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
+        menu2 = self.window.nametowidget(self.date_menu.menuname)
+        menu2.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
         tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Username:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
