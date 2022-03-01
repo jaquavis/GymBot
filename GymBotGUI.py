@@ -64,14 +64,14 @@ class GymBotGUI:
         self.cancel = False
         self.hover_bgcolour = '#d1d0c6'
         self.hover_fgcolour = '#000000'
-        self.date_entry = [datetime.datetime.strftime(self.today, "%A, %B %-m, %Y"),
-                           datetime.datetime.strftime(self.today + datetime.timedelta(days=1), "%A, %B %-m, %Y"),
-                           datetime.datetime.strftime(self.today + datetime.timedelta(days=2), "%A, %B %-m, %Y"),
-                           datetime.datetime.strftime(self.today + datetime.timedelta(days=3), "%A, %B %-m, %Y"),
-                           datetime.datetime.strftime(self.today + datetime.timedelta(days=4), "%A, %B %-m, %Y"),
-                           datetime.datetime.strftime(self.today + datetime.timedelta(days=5), "%A, %B %-m, %Y"),
-                           datetime.datetime.strftime(self.today + datetime.timedelta(days=6), "%A, %B %-m, %Y"),
-                           datetime.datetime.strftime(self.today + datetime.timedelta(days=7), "%A, %B %-m, %Y")]
+        self.date_entry = [datetime.datetime.strftime(self.today, "%A, %B %m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=1), "%A, %B %m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=2), "%A, %B %m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=3), "%A, %B %m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=4), "%A, %B %m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=5), "%A, %B %m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=6), "%A, %B %m, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=7), "%A, %B %m, %Y")]
         self.date_clicked = StringVar()
         self.date_menu = None
 
