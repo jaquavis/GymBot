@@ -1,8 +1,6 @@
 # GymBot®
 from __future__ import print_function
-
 import os.path
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
@@ -16,6 +14,7 @@ from os import path
 import logging
 from tkinter import PhotoImage
 from Settings import Settings
+
 
 def signal_handler(sig, frame):
     driver.quit()
