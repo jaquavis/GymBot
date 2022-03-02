@@ -80,9 +80,9 @@ if __name__ == "__main__":
     # Calendar booking
     if gui.booking_successful:
         try:
-            today = datetime.datetime.now().isoformat()
-            start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
-            end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
+            booking_date = datetime.datetime.strftime(datetime.datetime.strptime(gui.date_clicked.get(), "%A, %B %d, %Y"), "%Y-%m-%d")+"T"
+            start_time = f"{booking_date}{iac01bot.time_slot_text[10:15]}:00.000"
+            end_time = f"{booking_date}{iac01bot.time_slot_text[19:24]}:00.000"
             if gui.add_to_cal:
                 calendar.book_event(start_time, end_time)
         except TypeError:

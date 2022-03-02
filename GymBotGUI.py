@@ -24,6 +24,7 @@ class GymBotGUI:
         self.light_photo = None
         self.dark_photo = None
         self.logger = logging.getLogger(__name__)
+        self.today = datetime.datetime.now()
 
         self.login_success = None
         self.backend_thread = None
@@ -63,6 +64,16 @@ class GymBotGUI:
         self.cancel = False
         self.hover_bgcolour = '#d1d0c6'
         self.hover_fgcolour = '#000000'
+        self.date_entry = [datetime.datetime.strftime(self.today, "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=1), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=2), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=3), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=4), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=5), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=6), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=7), "%A, %B %d, %Y")]
+        self.date_clicked = StringVar()
+        self.date_menu = None
 
     def create_main_window(self):
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
@@ -79,10 +90,17 @@ class GymBotGUI:
 
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
         tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(text="Select the date and hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+
+        self.date_clicked.set(self.date_entry[0])
+        self.date_menu = tk.OptionMenu(self.window, self.date_clicked, *self.date_entry)
+        self.date_menu.pack(pady=10)
+        self.date_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
+        menu2 = self.window.nametowidget(self.date_menu.menuname)
+        menu2.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
         # no arrow?
-        self.time_clicked.set("06")
+        self.time_clicked.set(self.time_entry[0])
         self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
         self.time_menu.pack(pady=10)
         self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
@@ -185,7 +203,8 @@ class GymBotGUI:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
         else:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
-        print(f"Desired Time: {self.iac01bot.desired_time}")
+        print(f"Desired date: {self.date_clicked.get()}")
+        print(f"Desired time: {self.iac01bot.desired_time}")
 
         while not self.time_available or not self.booking_successful:  # main loop
             # Refresh / login if timed out
@@ -193,6 +212,8 @@ class GymBotGUI:
                 self.iac01bot.driver.refresh()
             else:
                 self.iac01bot.login()
+
+            self.iac01bot.goto_date(datetime.datetime.strptime(self.date_clicked.get(), "%A, %B %d, %Y"))
 
             # Get available slots / Check if desired slot is available
             self.time_available = self.iac01bot.check_slots()
@@ -203,7 +224,7 @@ class GymBotGUI:
             if self.time_available:
                 self.iac01bot.book_slot()
                 # Check booking
-                self.booking_successful = self.iac01bot.booking_successful()
+                self.booking_successful = self.iac01bot.booking_successful(self.date_clicked.get())
                 if not self.booking_successful:  # Upon unsuccessful booking
                     self.retry = self.retry + 1
                     self.logger.error(f"Retrying: {self.retry} of 3")
