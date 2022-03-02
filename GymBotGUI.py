@@ -218,8 +218,6 @@ class GymBotGUI:
             # Get available slots / Check if desired slot is available
             self.time_available = self.iac01bot.check_slots()
 
-            # Check for an existing booking - do later
-
             # Attempt booking
             if self.time_available:
                 self.iac01bot.book_slot()
