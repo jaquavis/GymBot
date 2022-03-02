@@ -74,15 +74,14 @@ class Iac01Bot:
     def book_slot(self):
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, self.slot_id))).click()
         print(f"\nAttempting to book {self.time_slot_text[5:24]}")
-        #print(f"\nAttempting to book {self.time_slot_text[5:24]}")
 
-    def booking_successful(self):  # Returns True if the booking was successful
+    def booking_successful(self, date):  # Returns True if the booking was successful
         index = 2
         self.driver.get(self.login_url)
         self.login()
 
         if self.time_slot_text is not None:
-            booking_msg = f"{datetime.datetime.now().strftime('%A, %B %d, %Y')} from {self.time_slot_text[10:15]} to {self.time_slot_text[19:24]}, Fitness Centre"
+            booking_msg = f"{date} from {self.time_slot_text[10:15]} to {self.time_slot_text[19:24]}, Fitness Centre"
             while True:
                 try:
                     if index < 10:
@@ -108,8 +107,6 @@ class Iac01Bot:
     def get_page_date(self):  # Returns a datetime object
         page_date_obj = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_ctl00_lblAvailableFitness")))
         page_date = datetime.datetime.strptime(page_date_obj.text[12:].strip(), "%A, %B %d, %Y.")
-        print(page_date.month)
-        print(page_date_obj)
         return page_date
 
     def goto_date(self, date):
