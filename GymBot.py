@@ -15,6 +15,7 @@ import logging
 from tkinter import PhotoImage
 from Settings import Settings
 
+version = "v0.22"
 
 def signal_handler(sig, frame):
     driver.quit()
@@ -44,7 +45,7 @@ if not os.path.exists(localPath):
     os.makedirs(localPath)
 
 if __name__ == "__main__":
-    print("GymBot® v0.22")
+    print(f"GymBot® {version}")
 
     # Define objects
     ser = Service(driverFileName)
@@ -69,6 +70,7 @@ if __name__ == "__main__":
                     toaster,
                     calendar,
                     settings)
+    gui.version = version                               # interface: version
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
     gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
     gui.dark_photo = PhotoImage(file=darkFileName)      # interface: dark png

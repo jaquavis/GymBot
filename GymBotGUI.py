@@ -25,6 +25,7 @@ class GymBotGUI:
         self.dark_photo = None
         self.logger = logging.getLogger(__name__)
         self.today = datetime.datetime.now()
+        self.version = None
 
         self.login_success = None
         self.backend_thread = None
@@ -85,38 +86,38 @@ class GymBotGUI:
 
         # Background image
         canvas = Canvas(bd=10, bg=self.background_colour, width=self.background_photo.width(), height=self.background_photo.height(), highlightbackground=self.background_colour)
-        canvas.place(x=0, y=250)
+        canvas.place(x=0, y=325)
         canvas.create_image(0, 0, anchor=NW, image=self.background_photo)
 
-        tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
-        tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Label(text="Select the date and hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).grid(row=0, columnspan=2)
+        tk.Label(text="Ensure you do not currently have a booking", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=1, columnspan=2)
+        tk.Label(text="Select the date and hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=2, columnspan=2, padx=30)
 
         self.date_clicked.set(self.date_entry[0])
         self.date_menu = tk.OptionMenu(self.window, self.date_clicked, *self.date_entry)
-        self.date_menu.pack(pady=10)
+        self.date_menu.grid(row=3, column=0, sticky=W, padx=138)
         self.date_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
-        menu2 = self.window.nametowidget(self.date_menu.menuname)
-        menu2.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
+        d_menu = self.window.nametowidget(self.date_menu.menuname)
+        d_menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
         # no arrow?
         self.time_clicked.set(self.time_entry[0])
         self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
-        self.time_menu.pack(pady=10)
+        self.time_menu.grid(row=3, column=1, pady=10, padx=0, sticky=W)
         self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
-        menu = self.window.nametowidget(self.time_menu.menuname)
-        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
+        t_menu = self.window.nametowidget(self.time_menu.menuname)
+        t_menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
-        tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Label(self.window, text="Username:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Entry(self.window, textvariable=self.username_login, bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
-        tk.Label(self.window, text="Password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
+        tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=4, columnspan=2)
+        tk.Label(self.window, text="Username:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=5, column=0, sticky=W, padx=138)
+        tk.Entry(self.window, textvariable=self.username_login, bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).grid(row=5, columnspan=2)
+        tk.Label(self.window, text="Password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=6, column=0, sticky=W, padx=138)
+        tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).grid(row=6, columnspan=2)
         self.loginbutton = tk.Button(self.window, text="Login", command=lambda: self.cred_thread(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
-        self.loginbutton.pack(pady=10)
+        self.loginbutton.grid(row=7, columnspan=2, pady=10)
 
         self.settingsbutton = tk.Button(self.window, text="Settings", command=lambda: self.open_settings(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
-        self.settingsbutton.pack(pady=10)
+        self.settingsbutton.grid(row=8, columnspan=2, pady=10)
 
         # Highlight button when hover
         self.loginbutton.bind("<Enter>", self.login_button_hover)
@@ -125,8 +126,8 @@ class GymBotGUI:
         self.settingsbutton.bind("<Enter>", self.settings_button_hover)
         self.settingsbutton.bind("<Leave>", self.settings_button_hover_leave)
 
-        tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
-        tk.Label(text=f"GymBot® {self.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack(side='bottom', anchor=E)
+        tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).grid(row=9, columnspan=2)
+        tk.Label(text=f"GymBot® {self.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).grid(row=9, column=1, sticky=E)
         self.window.mainloop()
 
     def main_on_click(self, arg):
