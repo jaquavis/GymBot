@@ -61,11 +61,11 @@ if __name__ == "__main__":
     iac01bot.login_url = login_url                      # iac01bot: login url
     iac01bot.default_url = default_url                  # iac01bot: default url
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
-    calendar = Calendar()                               # calendar
-    calendar.credsFileName = credsFileName              # calendar: credentials
-    calendar.tokenFileName = tokenFileName              # calendar: token
     settings = Settings(version)                        # settings
     settings.config_path = configFileName               # settings: config
+    calendar = Calendar(settings)                       # calendar
+    calendar.credsFileName = credsFileName              # calendar: credentials
+    calendar.tokenFileName = tokenFileName              # calendar: token
     gui = GymBotGUI(iac01bot,                           # interface
                     toaster,
                     calendar,
