@@ -83,7 +83,7 @@ class GymBotGUI:
 
         # Background image
         canvas = Canvas(bd=10, bg=self.background_colour, width=self.background_photo.width(), height=self.background_photo.height(), highlightbackground=self.background_colour)
-        canvas.place(x=0, y=250)
+        canvas.place(x=0, y=320)
         canvas.create_image(0, 0, anchor=NW, image=self.background_photo)
 
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
@@ -123,8 +123,11 @@ class GymBotGUI:
         self.settingsbutton.bind("<Enter>", self.settings_button_hover)
         self.settingsbutton.bind("<Leave>", self.settings_button_hover_leave)
 
-        tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
-        tk.Label(text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
+        bottom_frame = Frame(self.window, width=1200)
+
+        tk.Label(bottom_frame, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
+        tk.Label(bottom_frame, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
+        bottom_frame.pack()
         self.window.mainloop()
 
     def main_on_click(self, arg):
