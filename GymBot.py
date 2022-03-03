@@ -1,8 +1,6 @@
 # GymBot®
 from __future__ import print_function
-
 import os.path
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from win10toast import ToastNotifier
@@ -17,7 +15,7 @@ import logging
 from tkinter import PhotoImage
 from Settings import Settings
 
-version = "v0.20_wip"
+version = "v0.22"
 
 def signal_handler(sig, frame):
     driver.quit()
@@ -72,10 +70,10 @@ if __name__ == "__main__":
                     toaster,
                     calendar,
                     settings)
+    gui.version = version                               # interface: version
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
     gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
     gui.dark_photo = PhotoImage(file=darkFileName)      # interface: dark png
-    gui.version = version                               # interface: version
 
     # Start process
     gui.set_theme_mode()
@@ -84,9 +82,9 @@ if __name__ == "__main__":
     # Calendar booking
     if gui.booking_successful:
         try:
-            today = datetime.datetime.now().isoformat()
-            start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
-            end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
+            booking_date = datetime.datetime.strftime(datetime.datetime.strptime(gui.date_clicked.get(), "%A, %B %d, %Y"), "%Y-%m-%d")+"T"
+            start_time = f"{booking_date}{iac01bot.time_slot_text[10:15]}:00.000"
+            end_time = f"{booking_date}{iac01bot.time_slot_text[19:24]}:00.000"
             if gui.add_to_cal:
                 calendar.book_event(start_time, end_time)
         except TypeError:
