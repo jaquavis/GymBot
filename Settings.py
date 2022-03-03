@@ -5,20 +5,22 @@ import json
 
 
 class Settings:
-    def __init__(self):
+    def __init__(self, version):
         self.logger = logging.getLogger(__name__)
-        self.default_settings = '''
-        {
-            "user_profile": {
+        self.version = version
+        self.default_settings = f'''
+        {{
+            "version": "{self.version}",
+            "user_profile": {{
                 "username": null,
                 "password": null
-            },
-            "settings": {
+            }},
+            "settings": {{
                 "theme": "Auto",
                 "add_to_cal": false,
                 "autofill": false
-            }
-        }
+            }}
+        }}
         '''
         self.username = None
         self.password = None
@@ -65,3 +67,30 @@ class Settings:
         with open(self.config_path, "w") as settings_file:
             settings_data_to_write = json.dumps(settings_data, indent=2)
             settings_file.write(settings_data_to_write)
+
+    def version_check(self):
+        try:
+            if self.get_settings()['version'] == self.version:
+                pass
+            else:
+                try:
+                    with open(self.config_path, "w+") as settings_file:
+                        print("User configuration out of date: Writing new user profile")
+                        settings_file.write(self.default_settings)
+
+                except FileNotFoundError:
+                    self.logger.error("Fatal error")
+
+        except KeyError:
+            try:
+                with open(self.config_path, "w+") as settings_file:
+                    print("User configuration out of date: Writing new user profile")
+                    settings_file.write(self.default_settings)
+
+            except FileNotFoundError:
+                self.logger.error("Fatal error")
+
+        except json.decoder.JSONDecodeError:
+            self.logger.error("Error: corrupt configuration file removed")
+            print("Please restart the program")
+            os.remove(self.config_path)

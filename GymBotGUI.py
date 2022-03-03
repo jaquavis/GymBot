@@ -124,6 +124,7 @@ class GymBotGUI:
         self.settingsbutton.bind("<Leave>", self.settings_button_hover_leave)
 
         tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
+        tk.Label(text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
         self.window.mainloop()
 
     def main_on_click(self, arg):
@@ -363,11 +364,11 @@ class GymBotGUI:
         self.cal_toggle_button.grid(row=3, column=0)
 
         # Autofill control
-        if settings['settings']['add_to_cal']:
+        if settings['settings']['autofill']:
             autofill_button_colour = selected_button_colour
             autofill_font_colour = selected_button_text_colour
             autofill_text = "ON"
-        if not settings['settings']['add_to_cal']:
+        if not settings['settings']['autofill']:
             autofill_button_colour = self.background_colour
             autofill_font_colour = self.font_colour
             autofill_text = "OFF"
