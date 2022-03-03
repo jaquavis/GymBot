@@ -126,6 +126,7 @@ class GymBotGUI:
         self.settingsbutton.bind("<Leave>", self.settings_button_hover_leave)
 
         tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
+        tk.Label(text=f"GymBot® {self.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack(side='bottom', anchor=E)
         self.window.mainloop()
 
     def main_on_click(self, arg):
