@@ -27,8 +27,6 @@ class Iac01Bot:
         pw_field.send_keys(self.password)
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_LoginButton"))).click()
 
-        self.get_page_date()
-
         status = self.login_status()
         if status:
             print("Logged in")

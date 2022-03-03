@@ -383,24 +383,33 @@ class GymBotGUI:
 
         # Account removal
         creds = self.settings.get_settings()
-        afusername = tk.StringVar()
-        afpassword = tk.StringVar()
-        if creds['user_profile']['username'] is None and creds['user_profile']['password'] is None:
-            afusername = 'No saved username found'
-        else:
-            afusername = creds['user_profile']['username']
         tk.Label(self.settings_win, text="Remove saved username and password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=6, column=0)
         saved_username = tk.Label(self.settings_win, bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
-        saved_username.config(text=afusername)
         self.saved_password = tk.Label(self.settings_win, bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
+
+        if creds['user_profile']['username'] is None and creds['user_profile']['password'] is None:
+            saved_username.config(text='No saved username found')
+            self.saved_password.config(text='No saved password found')
+        else:
+            saved_username.config(text=creds['user_profile']['username'])
+            self.hide_password()
+            self.show_pass_button = tk.Button(self.settings_win, text="Show password", command=self.show_pass_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+            self.show_pass_button.grid(row=9, column=0, rowspan=2)
 
         saved_username.grid(row=7, column=0)
         self.saved_password.grid(row=8, column=0)
         tk.Button(self.settings_win, text="Remove", command=self.remove_creds, bg=self.background_colour, activebackground="#FF7F7F", fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=7, column=1, rowspan=2)
-        tk.Button(self.settings_win, text="Show password", command=self.show_password, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=9, column=0, rowspan=2)
 
         # Close settings window button
-        tk.Button(self.settings_win, text="Close", command=self.show_password, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(pady=10, row=11, column=0, columnspan=2)
+        tk.Button(self.settings_win, text="Close", command=self.destroy_settings_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(pady=10, row=11, column=0, columnspan=2)
+
+    def show_pass_toggle(self):
+        if self.show_pass_button.config('text')[-1] == 'Show password':
+            self.show_pass_button.config(text='Hide password', bg=self.background_colour, fg=self.font_colour)
+            self.show_password()
+        else:
+            self.show_pass_button.config(text='Show password', bg=self.background_colour, fg=self.font_colour)
+            self.hide_password()
 
     def show_password(self):
         creds = self.settings.get_settings()
@@ -408,6 +417,14 @@ class GymBotGUI:
             self.saved_password.config(text=creds['user_profile']['password'])
         else:
             self.saved_password.config(text='No saved password found')
+
+    def hide_password(self):
+        creds = self.settings.get_settings()
+        stars = ''
+        if creds['user_profile']['password'] is not None:
+            for s in creds['user_profile']['username']:
+                stars += '*'
+            self.saved_password.config(text=stars)
 
     def destroy_settings_win(self):
         self.settings_win = self.settings_win.destroy()
@@ -460,6 +477,7 @@ class GymBotGUI:
         self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
 
     def remove_creds(self):
+        self.auto_fill = False
         creds = self.settings.get_settings()
         if creds['user_profile']['username'] is None and creds['user_profile']['password'] is None:
             self.logger.error("No username or password on file")

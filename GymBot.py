@@ -44,7 +44,7 @@ if not os.path.exists(localPath):
     os.makedirs(localPath)
 
 if __name__ == "__main__":
-    print("GymBot® v0.21")
+    print("GymBot® v0.22")
 
     # Define objects
     ser = Service(driverFileName)
