@@ -55,9 +55,11 @@ class Calendar:
             print('Calendar event created')
 
         except HttpError as error:
+            self.logger.warning('Calendar booking failed')
             self.logger.warning('An error occurred: %s' % error)
 
         except google.auth.exceptions.DefaultCredentialsError:
+            self.logger.warning('Calendar booking failed')
             self.logger.error("Token error: removing stored token")
             print("Please restart the program")
             os.remove(self.tokenFileName)
