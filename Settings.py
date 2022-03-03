@@ -14,7 +14,9 @@ class Settings:
                 "password": null
             },
             "settings": {
-                "theme": "Auto"
+                "theme": "Auto",
+                "add_to_cal": false,
+                "autofill": false
             }
         }
         '''
@@ -38,7 +40,11 @@ class Settings:
             settings_data = json.load(settings_file)
             return settings_data
 
-    def set_settings(self, theme="NoChange", username="NoChange", password="NoChange"):
+    def set_settings(self, theme="NoChange",
+                     username="NoChange",
+                     password="NoChange",
+                     add_to_cal="NoChange",
+                     autofill="NoChange"):
         settings_data = self.get_settings()
 
         if username != "NoChange":
@@ -49,6 +55,12 @@ class Settings:
 
         if theme != "NoChange":
             settings_data['settings']['theme'] = theme
+
+        if add_to_cal != "NoChange":
+            settings_data['settings']['add_to_cal'] = add_to_cal
+
+        if autofill != "NoChange":
+            settings_data['settings']['autofill'] = autofill
 
         with open(self.config_path, "w") as settings_file:
             settings_data_to_write = json.dumps(settings_data, indent=2)
