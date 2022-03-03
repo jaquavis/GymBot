@@ -422,7 +422,7 @@ class GymBotGUI:
         creds = self.settings.get_settings()
         stars = ''
         if creds['user_profile']['password'] is not None:
-            for s in creds['user_profile']['username']:
+            for _ in creds['user_profile']['username']:
                 stars += '*'
             self.saved_password.config(text=stars)
 
