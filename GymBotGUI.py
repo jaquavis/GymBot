@@ -93,15 +93,15 @@ class GymBotGUI:
         self.date_clicked.set(self.date_entry[0])
         self.date_menu = tk.OptionMenu(self.window, self.date_clicked, *self.date_entry)
         self.date_menu.pack(pady=10)
-        self.date_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
+        self.date_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.background_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
         menu2 = self.window.nametowidget(self.date_menu.menuname)
-        menu2.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
+        menu2.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
         # no arrow?
         self.time_clicked.set(self.time_entry[0])
         self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
         self.time_menu.pack(pady=10)
-        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
+        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.background_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
         menu = self.window.nametowidget(self.time_menu.menuname)
         menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
@@ -278,33 +278,39 @@ class GymBotGUI:
         self.instance_loading_window.mainloop()
 
     def set_theme_mode(self):
-        theme_config = self.settings.get_settings()
-        theme = theme_config['settings']['theme']
+        settings = self.settings.get_settings()
         self.background_photo = self.light_photo
 
-        if theme == "Auto":
+        def light_mode():
+            self.background_colour = '#F0F0F0'
+            self.font_colour = '#000000'
+            self.entry_colour = '#f0f4fc'
+            self.entry_font_colour = '#2b2c2f'
+            self.background_photo = self.light_photo
+
+        def dark_mode():
+            self.background_colour = '#323437'
+            self.font_colour = '#d1d0c5'
+            self.entry_colour = '#f0f4fc'
+            self.entry_font_colour = '#2b2c2f'
+            self.background_photo = self.dark_photo
+
+        if settings['settings']['theme'] == "Auto":
             loc = LocationInfo(name='Calgary', region='AB, Canada', timezone='Canada/Mountain', latitude=51.048615, longitude=-114.070847)
             s = sun(loc.observer, date=date.today(), tzinfo=loc.timezone)
             sunrise = s["sunrise"].replace(tzinfo=None)
             sunset = s["sunset"].replace(tzinfo=None)
             current = datetime.datetime.now()
-            if (sunrise < current) & (current < sunset):  # Light mode
-                pass
-            else:  # Dark mode
-                self.background_colour = '#323437'
-                self.font_colour = '#d1d0c5'
-                self.entry_colour = '#f0f4fc'
-                self.entry_font_colour = '#2b2c2f'
-                self.menu_colour = "#302c34"
-                self.background_photo = self.dark_photo
+            if (sunrise < current) & (current < sunset):
+                light_mode()
+            else:
+                dark_mode()
 
-        if theme == "Dark":
-            self.background_colour = '#323437'
-            self.font_colour = '#d1d0c5'
-            self.entry_colour = '#f0f4fc'
-            self.entry_font_colour = '#2b2c2f'
-            self.menu_colour = "#302c34"
-            self.background_photo = self.dark_photo
+        if settings['settings']['theme'] == "Dark":
+            dark_mode()
+
+        if settings['settings']['theme'] == "Light":
+            light_mode()
 
     def cal_toggle(self):
         if self.cal_toggle_button.config('text')[-1] == 'ON':
