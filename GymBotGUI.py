@@ -2,6 +2,7 @@ import _tkinter
 import threading
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 from tkinter.ttk import *
 import datetime
 from astral import LocationInfo
@@ -10,9 +11,8 @@ from datetime import date
 import logging
 from tkinter import font as tk_font
 
-
 class GymBotGUI:
-    def __init__(self, iac01bot, toaster, calendar, settings):
+    def __init__(self, iac01bot, calendar, settings, toaster=None):
         super().__init__()
         self.cal_toggle_button = None
         self.iac01bot = iac01bot
@@ -208,7 +208,10 @@ class GymBotGUI:
                     self.retry = self.retry + 1
                     self.logger.error(f"Retrying: {self.retry} of 3")
                 if self.booking_successful:  # Upon successful booking
-                    self.toaster.show_toast("GymBot®", "Your appointment has been booked!", duration=10, icon_path=self.toaster.icon, threaded=True)
+                    if self.toaster is not None:
+                        self.toaster.show_toast("GymBot®", "Your appointment has been booked!", duration=10, icon_path=self.toaster.icon, threaded=True)
+                    else:
+                        messagebox.showinfo("Information","Your appointment has been booked!")
                     self.exit_all()
 
             if self.retry >= 3:

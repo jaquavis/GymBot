@@ -2,10 +2,12 @@
 from __future__ import print_function
 
 import os.path
-
+import platform
+OS = platform.system()
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from win10toast import ToastNotifier
+if OS == "Windows":
+    from win10toast import ToastNotifier
 from Iac01Bot import Iac01Bot
 import signal
 import sys
@@ -29,12 +31,23 @@ else:
     running_dir = "./"  # Path name when run with Python interpreter
 
 # Define paths
-localPath = path.expandvars(r'%LOCALAPPDATA%\GymBot') + '\\'
+if OS == "Windows":
+    localPath = path.expandvars(r'%LOCALAPPDATA%\GymBot') + '\\'
+else:
+    localPath = os.path.join(path.expanduser("~"), ".GymBot")
+
 iconFileName = running_dir + 'GymBot.ico'
 pngFileName = running_dir + 'GymBot.png'
 lightFileName = running_dir + 'GymBot_light.png'
 darkFileName = running_dir + 'GymBot_dark.png'
-driverFileName = running_dir + 'chromedriver.exe'
+
+if OS == "Linux":
+    driverFileName = running_dir + 'chromedriver_linux64'
+elif OS == "Darwin":
+    driverFileName = running_dir + 'chromedriver_mac64'
+else:
+    driverFileName = running_dir + 'chromedriver.exe'
+
 credsFileName = running_dir + 'credentials.json'
 tokenFileName = localPath + 'GymBotToken.json'
 configFileName = localPath + 'GymBotUserConfig.json'
@@ -55,8 +68,6 @@ if __name__ == "__main__":
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     logger = logging.getLogger(__name__)                # logger
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
-    toaster = ToastNotifier()                           # notifier
-    toaster.icon = iconFileName                         # notifier: icon
     iac01bot = Iac01Bot(driver)                         # iac01bot
     iac01bot.login_url = login_url                      # iac01bot: login url
     iac01bot.default_url = default_url                  # iac01bot: default url
@@ -66,10 +77,20 @@ if __name__ == "__main__":
     calendar.tokenFileName = tokenFileName              # calendar: token
     settings = Settings()                               # settings
     settings.config_path = configFileName               # settings: config
-    gui = GymBotGUI(iac01bot,                           # interface
-                    toaster,
+    
+    if OS == "Windows":
+        toaster = ToastNotifier()                           # notifier
+        toaster.icon = iconFileName                         # notifier: icon
+        gui = GymBotGUI(iac01bot,                           # interface
                     calendar,
-                    settings)
+                    settings,
+                    toaster=toaster)
+    else:
+        gui = GymBotGUI(iac01bot,                           # interface
+                    calendar,
+                    settings,)        
+
+
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
     gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
     gui.dark_photo = PhotoImage(file=darkFileName)      # interface: dark png
