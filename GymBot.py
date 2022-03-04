@@ -1,6 +1,5 @@
 # GymBot®
 from __future__ import print_function
-
 import os.path
 import platform
 OS = platform.system()
@@ -18,6 +17,8 @@ from os import path
 import logging
 from tkinter import PhotoImage
 from Settings import Settings
+
+version = "v0.23"
 
 def signal_handler(sig, frame):
     driver.quit()
@@ -58,7 +59,7 @@ if not os.path.exists(localPath):
     os.makedirs(localPath)
 
 if __name__ == "__main__":
-    print("GymBot® v0.20")
+    print(f"GymBot® {version}")
 
     # Define objects
     ser = Service(driverFileName)
@@ -72,10 +73,12 @@ if __name__ == "__main__":
     iac01bot.login_url = login_url                      # iac01bot: login url
     iac01bot.default_url = default_url                  # iac01bot: default url
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
-    calendar = Calendar()                               # calendar
+    settings = Settings(version)                        # settings
+    settings.config_path = configFileName               # settings: config
+    calendar = Calendar(settings)                       # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
     calendar.tokenFileName = tokenFileName              # calendar: token
-    settings = Settings()                               # settings
+    settings = Settings(version)                               # settings
     settings.config_path = configFileName               # settings: config
     
     if OS == "Windows":
@@ -95,6 +98,9 @@ if __name__ == "__main__":
     gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
     gui.dark_photo = PhotoImage(file=darkFileName)      # interface: dark png
 
+    # Version check for local data
+    settings.version_check()
+
     # Start process
     gui.set_theme_mode()
     gui.create_main_window()
@@ -102,10 +108,10 @@ if __name__ == "__main__":
     # Calendar booking
     if gui.booking_successful:
         try:
-            today = datetime.datetime.now().isoformat()
-            start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
-            end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
-            if gui.add_to_cal:
+            booking_date = datetime.datetime.strftime(datetime.datetime.strptime(gui.date_clicked.get(), "%A, %B %d, %Y"), "%Y-%m-%d")+"T"
+            start_time = f"{booking_date}{iac01bot.time_slot_text[10:15]}:00.000"
+            end_time = f"{booking_date}{iac01bot.time_slot_text[19:24]}:00.000"
+            if settings.get_settings()['settings']['add_to_cal']:
                 calendar.book_event(start_time, end_time)
         except TypeError:
             logger.warning("Could not find event times")
