@@ -50,6 +50,7 @@ class GymBotGUI:
         self.entry_colour = None
         self.entry_font_colour = None
         self.gymbot_blue = '#245ec8'
+        self.gymbot_gold = '#d8b824'
         self.font_type20 = ("Bahnschrift Light", 20)
         self.font_type13 = ("Bahnschrift Light", 13)
         self.font_type10 = ("Bahnschrift Light", 10)
@@ -317,7 +318,7 @@ class GymBotGUI:
             self.cal_toggle_button.config(text='OFF', bg=self.background_colour, fg=self.font_colour)
             self.settings.set_settings(add_to_cal=False)
         else:
-            self.cal_toggle_button.config(text='ON', bg='#d8b824', fg='#000000')
+            self.cal_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#dFFFFFF')
             self.settings.set_settings(add_to_cal=True)
             threading.Thread(target=self.calendar.authenticate(), daemon=True).start()
 
@@ -332,7 +333,7 @@ class GymBotGUI:
             if settings['user_profile']['username'] is None or settings['user_profile']['password'] is None:
                 self.auto_fill_prompt_user_interface()
             else:
-                self.fil_toggle_button.config(text='ON', bg='#d8b824', fg='#000000')
+                self.fil_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#FFFFFF')
                 self.settings.set_settings(autofill=True)
 
     def open_settings(self):
@@ -344,8 +345,8 @@ class GymBotGUI:
 
     def create_settings_win(self):
         settings = self.settings.get_settings()
-        selected_button_colour = '#d8b824'
-        selected_button_text_colour = '#000000'
+        selected_button_colour = self.gymbot_gold
+        selected_button_text_colour ='#FFFFFF'
 
         self.instance_settings_win = tk.Tk()
         self.instance_settings_win.withdraw()
@@ -458,6 +459,8 @@ class GymBotGUI:
     def destroy_settings_win(self):
         self.settings_win = self.settings_win.destroy()
         self.instance_settings_win = self.instance_settings_win.destroy()
+        if self.auto_fill_prompt:
+            self.destroy_auto_fill_prompt()
 
     def settings_win_auto(self):
         self.settings.set_settings(theme="Auto")
