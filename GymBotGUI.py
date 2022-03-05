@@ -318,7 +318,7 @@ class GymBotGUI:
             self.cal_toggle_button.config(text='OFF', bg=self.background_colour, fg=self.font_colour)
             self.settings.set_settings(add_to_cal=False)
         else:
-            self.cal_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#dFFFFFF')
+            self.cal_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#000000')
             self.settings.set_settings(add_to_cal=True)
             threading.Thread(target=self.calendar.authenticate(), daemon=True).start()
 
@@ -333,7 +333,7 @@ class GymBotGUI:
             if settings['user_profile']['username'] is None or settings['user_profile']['password'] is None:
                 self.auto_fill_prompt_user_interface()
             else:
-                self.fil_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#FFFFFF')
+                self.fil_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#000000')
                 self.settings.set_settings(autofill=True)
 
     def open_settings(self):
@@ -346,7 +346,7 @@ class GymBotGUI:
     def create_settings_win(self):
         settings = self.settings.get_settings()
         selected_button_colour = self.gymbot_gold
-        selected_button_text_colour ='#FFFFFF'
+        selected_button_text_colour ='#000000'
 
         self.instance_settings_win = tk.Tk()
         self.instance_settings_win.withdraw()
