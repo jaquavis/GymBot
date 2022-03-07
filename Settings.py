@@ -1,6 +1,5 @@
 import logging
 import os
-from os import path
 import json
 
 
@@ -30,8 +29,8 @@ class Settings:
     def get_settings(self):  # Returns settings data
         try:
             if os.stat(self.config_path).st_size != 0:
-                with open(self.config_path) as settings_file:
-                    settings_data = json.load(settings_file)
+                with open(self.config_path):
+                    pass
 
         except FileNotFoundError:
             with open(self.config_path, "w+") as settings_file:

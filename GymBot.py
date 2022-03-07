@@ -2,11 +2,8 @@
 from __future__ import print_function
 import os.path
 import platform
-OS = platform.system()
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-if OS == "Windows":
-    from win10toast import ToastNotifier
 from Iac01Bot import Iac01Bot
 import signal
 import sys
@@ -18,7 +15,12 @@ import logging
 from tkinter import PhotoImage
 from Settings import Settings
 
+OS = platform.system()
+if OS == "Windows":
+    from win10toast import ToastNotifier
+
 version = "v0.24"
+
 
 def signal_handler(sig, frame):
     driver.quit()
@@ -78,21 +80,20 @@ if __name__ == "__main__":
     calendar = Calendar(settings)                       # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
     calendar.tokenFileName = tokenFileName              # calendar: token
-    settings = Settings(version)                               # settings
+    settings = Settings(version)                        # settings
     settings.config_path = configFileName               # settings: config
-    
-    if OS == "Windows":
-        toaster = ToastNotifier()                           # notifier
-        toaster.icon = iconFileName                         # notifier: icon
-        gui = GymBotGUI(iac01bot,                           # interface
-                    calendar,
-                    settings,
-                    toaster=toaster)
-    else:
-        gui = GymBotGUI(iac01bot,                           # interface
-                    calendar,
-                    settings,)        
 
+    if OS == "Windows":
+        toaster = ToastNotifier()                       # notifier
+        toaster.icon = iconFileName                     # notifier: icon
+        gui = GymBotGUI(iac01bot,                       # interface
+                        calendar,
+                        settings,
+                        toaster=toaster)
+    else:
+        gui = GymBotGUI(iac01bot,                       # interface
+                        calendar,
+                        settings,)
 
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
     gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png

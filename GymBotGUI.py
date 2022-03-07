@@ -11,6 +11,7 @@ from datetime import date
 import logging
 from tkinter import font as tk_font
 
+
 class GymBotGUI:
     def __init__(self, iac01bot, calendar, settings, toaster=None):
         super().__init__()
@@ -125,7 +126,7 @@ class GymBotGUI:
         self.settingsbutton.bind("<Leave>", self.settings_button_hover_leave)
 
         tk.Label(self.window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
-        tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=577, y=452)
+        tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=452)
         self.window.mainloop()
 
     def main_on_click(self, arg):
@@ -258,6 +259,9 @@ class GymBotGUI:
                     wheel_index = 0
 
     def loading_page(self):
+        def cancel_search():
+            self.cancel = True
+
         self.window = self.window.destroy()
         self.instance_loading_window = tk.Tk()
         self.instance_loading_window.withdraw()
@@ -276,7 +280,7 @@ class GymBotGUI:
         self.bar.pack(pady=20)
         self.bar.start()
 
-        tk.Button(self.loading_window, text="Cancel", command=self.cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
+        tk.Button(self.loading_window, text="Cancel", command=cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
         tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
         self.instance_loading_window.mainloop()
@@ -519,9 +523,6 @@ class GymBotGUI:
             self.settings.set_settings(password=None)
             print("Removed: password")
         self.destroy_settings_win()
-
-    def cancel_search(self):
-        self.cancel = True
 
     def exit_all(self):
         try:
