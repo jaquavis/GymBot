@@ -19,20 +19,24 @@ class Iac01Bot:
         self.username = None
         self.password = None
 
-    def login(self):  # Returns True if successful, else returns False
+    def login(self):  # Returns 'success' if successful; returns 'invalid' if invalid credentials; returns 'unavail' if site down
         self.driver.get(self.login_url)
+        if 'error' in self.driver.current_url:
+            self.logger.error("Site is down")
+            return 'unavail'
+
         un_field = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_UserName")))
         pw_field = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_Password")))
         un_field.send_keys(self.username)
         pw_field.send_keys(self.password)
         WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_LoginButton"))).click()
 
-        status = self.login_status()
-        if status:
+        if self.login_status():
             print("Logged in")
+            return 'success'
         else:
             self.logger.warning("Could not log in")
-        return status
+            return 'invalid'
 
     def login_status(self):  # returns True if logged in, False if logged out
         try:

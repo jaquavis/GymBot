@@ -19,7 +19,7 @@ OS = platform.system()
 if OS == "Windows":
     from win10toast import ToastNotifier
 
-version = "v0.24"
+version = "v0.25"
 
 
 def signal_handler(sig, frame):

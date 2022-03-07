@@ -10,6 +10,7 @@ from astral.sun import sun
 from datetime import date
 import logging
 from tkinter import font as tk_font
+import time
 
 
 class GymBotGUI:
@@ -167,7 +168,7 @@ class GymBotGUI:
                 self.logger.error("Autofill failed")
                 self.settings.set_settings(autofill=False)
 
-        self.login_success = self.iac01bot.login()
+        self.login_success = self.login()
 
         if self.save_creds_on_login:
             if self.login_success:
@@ -203,6 +204,17 @@ class GymBotGUI:
         self.invalid_usr_win = self.invalid_usr_win.destroy()
         self.instance_invalid_usr_win = self.instance_invalid_usr_win.destroy()
 
+    def login(self):  # Returns True if successful, else returns False; Will wait and retry if site is down
+        while True:  # Check if site is down
+            state = self.iac01bot.login()
+            if state == 'unavail':
+                self.logger.error("Retrying in 1 minute")
+                time.sleep(60)
+            elif state == 'success':
+                return True
+            elif state == 'invalid':
+                return False
+
     def get_gym_time(self):
         wheel_index = 0
         if int(self.time_clicked.get()) < 9:
@@ -216,8 +228,10 @@ class GymBotGUI:
             # Refresh / login if timed out
             if self.iac01bot.login_status():
                 self.iac01bot.driver.refresh()
+                if 'error' in self.iac01bot.driver.current_url:
+                    self.login()
             else:
-                self.iac01bot.login()
+                self.login()
 
             self.iac01bot.goto_date(datetime.datetime.strptime(self.date_clicked.get(), "%A, %B %d, %Y"))
 
