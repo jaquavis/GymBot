@@ -2,6 +2,7 @@ import _tkinter
 import threading
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 from tkinter.ttk import *
 import datetime
 from astral import LocationInfo
@@ -12,7 +13,7 @@ from tkinter import font as tk_font
 
 
 class GymBotGUI:
-    def __init__(self, iac01bot, toaster, calendar, settings):
+    def __init__(self, iac01bot, calendar, settings, toaster=None):
         super().__init__()
         self.cal_toggle_button = None
         self.iac01bot = iac01bot
@@ -24,6 +25,7 @@ class GymBotGUI:
         self.light_photo = None
         self.dark_photo = None
         self.logger = logging.getLogger(__name__)
+        self.today = datetime.datetime.now()
 
         self.login_success = None
         self.backend_thread = None
@@ -43,14 +45,12 @@ class GymBotGUI:
         self.time_entry = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']
         self.time_menu = None
         self.fil_toggle_button = None
-        self.add_to_cal = False
-        self.auto_fill = False
         self.background_colour = None
         self.font_colour = None
-        self.menu_colour = None
         self.entry_colour = None
         self.entry_font_colour = None
         self.gymbot_blue = '#245ec8'
+        self.gymbot_gold = '#d8b824'
         self.font_type20 = ("Bahnschrift Light", 20)
         self.font_type13 = ("Bahnschrift Light", 13)
         self.font_type10 = ("Bahnschrift Light", 10)
@@ -63,31 +63,48 @@ class GymBotGUI:
         self.cancel = False
         self.hover_bgcolour = '#d1d0c6'
         self.hover_fgcolour = '#000000'
+        self.date_entry = [datetime.datetime.strftime(self.today, "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=1), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=2), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=3), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=4), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=5), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=6), "%A, %B %d, %Y"),
+                           datetime.datetime.strftime(self.today + datetime.timedelta(days=7), "%A, %B %d, %Y")]
+        self.date_clicked = StringVar()
+        self.date_menu = None
 
     def create_main_window(self):
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
 
-        #Allows use of enter button to login
-        self.window.bind('<Return>', self.mainonclick)
+        # Allows use of enter button to login
+        self.window.bind('<Return>', self.main_on_click)
 
         # Background image
         canvas = Canvas(bd=10, bg=self.background_colour, width=self.background_photo.width(), height=self.background_photo.height(), highlightbackground=self.background_colour)
-        canvas.place(x=0, y=250)
+        canvas.place(x=0, y=320)
         canvas.create_image(0, 0, anchor=NW, image=self.background_photo)
 
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
-        tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour,fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(text="Ensure you do not currently have a booking.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(text="Select the date and hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+
+        self.date_clicked.set(self.date_entry[0])
+        self.date_menu = tk.OptionMenu(self.window, self.date_clicked, *self.date_entry)
+        self.date_menu.pack(pady=10)
+        self.date_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.background_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
+        menu2 = self.window.nametowidget(self.date_menu.menuname)
+        menu2.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
         # no arrow?
-        self.time_clicked.set("06")
+        self.time_clicked.set(self.time_entry[0])
         self.time_menu = tk.OptionMenu(self.window, self.time_clicked, *self.time_entry)
         self.time_menu.pack(pady=10)
-        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.menu_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
+        self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.background_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
         menu = self.window.nametowidget(self.time_menu.menuname)
-        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
+        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
         tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Username:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
@@ -107,17 +124,18 @@ class GymBotGUI:
         self.settingsbutton.bind("<Enter>", self.settings_button_hover)
         self.settingsbutton.bind("<Leave>", self.settings_button_hover_leave)
 
-        tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
+        tk.Label(self.window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
+        tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=452)
         self.window.mainloop()
 
-    def mainonclick(self,arg):
+    def main_on_click(self, arg):
         self.cred_thread()
 
-    def login_button_hover(self,arg):
+    def login_button_hover(self, arg):
         self.loginbutton["bg"] = self.hover_bgcolour
         self.loginbutton["fg"] = self.hover_fgcolour
 
-    def login_button_hover_leave(self,arg):
+    def login_button_hover_leave(self, arg):
         self.loginbutton["bg"] = self.background_colour
         self.loginbutton["fg"] = self.font_colour
 
@@ -135,13 +153,19 @@ class GymBotGUI:
             self.loading_page()
 
     def get_creds(self):
-        if not self.auto_fill:
+        settings = self.settings.get_settings()
+        if not settings['settings']['autofill']:
             self.iac01bot.username = self.username_login.get()
             self.iac01bot.password = self.password_login.get()
-        if self.auto_fill:
-            creds = self.settings.get_settings()
-            self.iac01bot.username = creds['user_profile']['username']
-            self.iac01bot.password = creds['user_profile']['password']
+        if settings['settings']['autofill']:
+            if settings['user_profile']['username'] is not None and settings['user_profile']['password'] is not None:
+                self.iac01bot.username = settings['user_profile']['username']
+                self.iac01bot.password = settings['user_profile']['password']
+            else:
+                self.iac01bot.username = self.username_login.get()
+                self.iac01bot.password = self.password_login.get()
+                self.logger.error("Autofill failed")
+                self.settings.set_settings(autofill=False)
 
         self.login_success = self.iac01bot.login()
 
@@ -181,11 +205,12 @@ class GymBotGUI:
 
     def get_gym_time(self):
         wheel_index = 0
-        if int(self.time_clicked.get()) < 10:
+        if int(self.time_clicked.get()) < 9:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
         else:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
-        print(f"Desired Time: {self.iac01bot.desired_time}")
+        print(f"Desired date: {self.date_clicked.get()}")
+        print(f"Desired time: {self.iac01bot.desired_time}")
 
         while not self.time_available or not self.booking_successful:  # main loop
             # Refresh / login if timed out
@@ -194,21 +219,24 @@ class GymBotGUI:
             else:
                 self.iac01bot.login()
 
+            self.iac01bot.goto_date(datetime.datetime.strptime(self.date_clicked.get(), "%A, %B %d, %Y"))
+
             # Get available slots / Check if desired slot is available
             self.time_available = self.iac01bot.check_slots()
-
-            # Check for an existing booking - do later
 
             # Attempt booking
             if self.time_available:
                 self.iac01bot.book_slot()
                 # Check booking
-                self.booking_successful = self.iac01bot.booking_successful()
+                self.booking_successful = self.iac01bot.booking_successful(self.date_clicked.get())
                 if not self.booking_successful:  # Upon unsuccessful booking
                     self.retry = self.retry + 1
                     self.logger.error(f"Retrying: {self.retry} of 3")
                 if self.booking_successful:  # Upon successful booking
-                    self.toaster.show_toast("GymBot®", "Your appointment has been booked!", duration=10, icon_path=self.toaster.icon, threaded=True)
+                    if self.toaster is not None:
+                        self.toaster.show_toast("GymBot®", "Your appointment has been booked!", duration=10, icon_path=self.toaster.icon, threaded=True)
+                    else:
+                        messagebox.showinfo("Information","Your appointment has been booked!")
                     self.exit_all()
 
             if self.retry >= 3:
@@ -230,6 +258,9 @@ class GymBotGUI:
                     wheel_index = 0
 
     def loading_page(self):
+        def cancel_search():
+            self.cancel = True
+
         self.window = self.window.destroy()
         self.instance_loading_window = tk.Tk()
         self.instance_loading_window.withdraw()
@@ -248,62 +279,68 @@ class GymBotGUI:
         self.bar.pack(pady=20)
         self.bar.start()
 
-        tk.Button(self.loading_window, text="Cancel", command=self.cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
-        tk.Label(self.loading_window, text="Feel free to close or minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Button(self.loading_window, text="Cancel", command=cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
+        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
         self.instance_loading_window.mainloop()
 
     def set_theme_mode(self):
-        theme_config = self.settings.get_settings()
-        theme = theme_config['settings']['theme']
+        settings = self.settings.get_settings()
         self.background_photo = self.light_photo
 
-        if theme == "Auto":
+        def light_mode():
+            self.background_colour = '#F0F0F0'
+            self.font_colour = '#000000'
+            self.entry_colour = '#f0f4fc'
+            self.entry_font_colour = '#2b2c2f'
+            self.background_photo = self.light_photo
+
+        def dark_mode():
+            self.background_colour = '#323437'
+            self.font_colour = '#d1d0c5'
+            self.entry_colour = '#f0f4fc'
+            self.entry_font_colour = '#2b2c2f'
+            self.background_photo = self.dark_photo
+
+        if settings['settings']['theme'] == "Auto":
             loc = LocationInfo(name='Calgary', region='AB, Canada', timezone='Canada/Mountain', latitude=51.048615, longitude=-114.070847)
             s = sun(loc.observer, date=date.today(), tzinfo=loc.timezone)
             sunrise = s["sunrise"].replace(tzinfo=None)
             sunset = s["sunset"].replace(tzinfo=None)
             current = datetime.datetime.now()
-            if (sunrise < current) & (current < sunset):  # Light mode
-                pass
-            else:  # Dark mode
-                self.background_colour = '#323437'
-                self.font_colour = '#d1d0c5'
-                self.entry_colour = '#f0f4fc'
-                self.entry_font_colour = '#2b2c2f'
-                self.menu_colour = "#302c34"
-                self.background_photo = self.dark_photo
+            if (sunrise < current) & (current < sunset):
+                light_mode()
+            else:
+                dark_mode()
 
-        if theme == "Dark":
-            self.background_colour = '#323437'
-            self.font_colour = '#d1d0c5'
-            self.entry_colour = '#f0f4fc'
-            self.entry_font_colour = '#2b2c2f'
-            self.menu_colour = "#302c34"
-            self.background_photo = self.dark_photo
+        if settings['settings']['theme'] == "Dark":
+            dark_mode()
+
+        if settings['settings']['theme'] == "Light":
+            light_mode()
 
     def cal_toggle(self):
         if self.cal_toggle_button.config('text')[-1] == 'ON':
             self.cal_toggle_button.config(text='OFF', bg=self.background_colour, fg=self.font_colour)
-            self.add_to_cal = False
+            self.settings.set_settings(add_to_cal=False)
         else:
-            self.cal_toggle_button.config(text='ON', bg='#d8b824', fg='#000000')
-            self.add_to_cal = True
+            self.cal_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#000000')
+            self.settings.set_settings(add_to_cal=True)
             threading.Thread(target=self.calendar.authenticate(), daemon=True).start()
 
     def fil_toggle(self):
+        settings = self.settings.get_settings()
         if self.fil_toggle_button.config('text')[-1] == 'ON':
             self.fil_toggle_button.config(text='OFF', bg=self.background_colour, fg=self.font_colour)
-            self.auto_fill = False
+            self.settings.set_settings(autofill=False)
             if self.auto_fill_prompt:
                 self.destroy_auto_fill_prompt()
         else:
-            self.fil_toggle_button.config(text='ON', bg='#d8b824', fg='#000000')
-            fill_creds = self.settings.get_settings()
-            if fill_creds['user_profile']['username'] is None or fill_creds['user_profile']['password'] is None:
+            if settings['user_profile']['username'] is None or settings['user_profile']['password'] is None:
                 self.auto_fill_prompt_user_interface()
             else:
-                self.auto_fill = True
+                self.fil_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#000000')
+                self.settings.set_settings(autofill=True)
 
     def open_settings(self):
         if not self.settings_win:
@@ -313,80 +350,123 @@ class GymBotGUI:
             self.create_settings_win()
 
     def create_settings_win(self):
+        settings = self.settings.get_settings()
+        selected_button_colour = self.gymbot_gold
+        selected_button_text_colour ='#000000'
+
         self.instance_settings_win = tk.Tk()
         self.instance_settings_win.withdraw()
         self.settings_win = Toplevel(self.instance_settings_win)
         self.settings_win.title("Settings")
         self.settings_win.configure(bg=self.background_colour)
-        tk.Label(self.settings_win, text="Select your default GymBot® settings (changes will be applied after app restart):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=0,column=0, columnspan=2)
-        selectedbuttoncolour = '#d8b824'
-        selectedbuttontextcolour = '#000000'
+        tk.Label(self.settings_win, text="Settings", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).grid(row=0, columnspan=2)
+        tk.Label(self.settings_win, text="Select your default GymBot® settings (theme changes will be applied after app restart):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=1, column=0, columnspan=2)
 
-        #Add to calendar option
-        tk.Label(self.settings_win, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=1, column=0)
-        self.cal_toggle_button = tk.Button(self.settings_win, text="OFF", command=self.cal_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
-        self.cal_toggle_button.grid(row=2, column=0)
+        # Add to calendar control
+        if settings['settings']['add_to_cal']:
+            cal_button_colour = selected_button_colour
+            cal_font_colour = selected_button_text_colour
+            cal_text = "ON"
+        if not settings['settings']['add_to_cal']:
+            cal_button_colour = self.background_colour
+            cal_font_colour = self.font_colour
+            cal_text = "OFF"
 
-        #Autofill option
-        tk.Label(self.settings_win, text="Autofill:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=3, column=0)
-        self.fil_toggle_button = tk.Button(self.settings_win, text="OFF", command=self.fil_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
-        self.fil_toggle_button.grid(row=4, column=0)
+        tk.Label(self.settings_win, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=2, column=0)
+        self.cal_toggle_button = tk.Button(self.settings_win, text=cal_text, command=self.cal_toggle, bg=cal_button_colour, activebackground=self.background_colour, fg=cal_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.cal_toggle_button.grid(row=3, column=0)
 
-        #Theme control
-        tk.Label(self.settings_win, text="Select your preferred theme:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=1, column=1)
-        theme_config = self.settings.get_settings()
-        theme = theme_config['settings']['theme']
-        if theme == "Auto":
-            autocolour = selectedbuttoncolour
-            darkcolour = self.background_colour
-            lightcolour = self.background_colour
-            autofontcolour = selectedbuttontextcolour
-            darkfontcolour = self.font_colour
-            lightfontcolour = self.font_colour
-        elif theme == "Dark":
-            autocolour = self.background_colour
-            darkcolour = selectedbuttoncolour
-            lightcolour = self.background_colour
-            autofontcolour = self.font_colour
-            darkfontcolour = selectedbuttontextcolour
-            lightfontcolour = self.font_colour
-        elif theme == "Light":
-            autocolour = self.background_colour
-            darkcolour = self.background_colour
-            lightcolour = selectedbuttoncolour
-            autofontcolour = self.font_colour
-            darkfontcolour = self.font_colour
-            lightfontcolour = selectedbuttontextcolour
-        tk.Button(self.settings_win, text="AUTO", command=self.settings_win_auto, bg=autocolour, activebackground=self.background_colour, fg=autofontcolour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=2, column=1)
-        tk.Button(self.settings_win, text="Dark", command=self.settings_win_dark, bg=darkcolour, activebackground=self.background_colour, fg=darkfontcolour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=3, column=1)
-        tk.Button(self.settings_win, text="Light", command=self.settings_win_light, bg=lightcolour, activebackground=self.background_colour, fg=lightfontcolour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=4, column=1)
+        # Autofill control
+        if settings['settings']['autofill']:
+            autofill_button_colour = selected_button_colour
+            autofill_font_colour = selected_button_text_colour
+            autofill_text = "ON"
+        if not settings['settings']['autofill']:
+            autofill_button_colour = self.background_colour
+            autofill_font_colour = self.font_colour
+            autofill_text = "OFF"
+            
+        tk.Label(self.settings_win, text="Autofill:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=4, column=0)
+        self.fil_toggle_button = tk.Button(self.settings_win, text=autofill_text, command=self.fil_toggle, bg=autofill_button_colour, activebackground=self.background_colour, fg=autofill_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.fil_toggle_button.grid(row=5, column=0)
 
-        #Account removal
-        creds = self.settings.get_settings()
-        afusername = tk.StringVar()
-        afpassword = tk.StringVar()
-        if creds['user_profile']['username'] is None and creds['user_profile']['password'] is None:
-            afusername = 'No saved username found'
-            afpassword = 'No saved password found'
-        else:
-            afusername = creds['user_profile']['username']
-            afpassword = creds['user_profile']['password']
-        tk.Label(self.settings_win, text="Remove saved username and password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=5, column=0)
+        # Theme control
+        tk.Label(self.settings_win, text="Select your preferred theme:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=2, column=1)
+        if settings['settings']['theme'] == "Auto":
+            auto_colour = selected_button_colour
+            dark_colour = self.background_colour
+            light_colour = self.background_colour
+            auto_font_colour = selected_button_text_colour
+            dark_font_colour = self.font_colour
+            light_font_colour = self.font_colour
+        elif settings['settings']['theme'] == "Dark":
+            auto_colour = self.background_colour
+            dark_colour = selected_button_colour
+            light_colour = self.background_colour
+            auto_font_colour = self.font_colour
+            dark_font_colour = selected_button_text_colour
+            light_font_colour = self.font_colour
+        elif settings['settings']['theme'] == "Light":
+            auto_colour = self.background_colour
+            dark_colour = self.background_colour
+            light_colour = selected_button_colour
+            auto_font_colour = self.font_colour
+            dark_font_colour = self.font_colour
+            light_font_colour = selected_button_text_colour
+        tk.Button(self.settings_win, text="AUTO", command=self.settings_win_auto, bg=auto_colour, activebackground=self.background_colour, fg=auto_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=3, column=1)
+        tk.Button(self.settings_win, text="Dark", command=self.settings_win_dark, bg=dark_colour, activebackground=self.background_colour, fg=dark_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=4, column=1)
+        tk.Button(self.settings_win, text="Light", command=self.settings_win_light, bg=light_colour, activebackground=self.background_colour, fg=light_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=5, column=1)
+
+        # Account removal
+        settings = self.settings.get_settings()
+        tk.Label(self.settings_win, text="Remove saved username and password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=6, column=0)
         saved_username = tk.Label(self.settings_win, bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
-        saved_username.config(text=afusername)
-        saved_password = tk.Label(self.settings_win, bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
-        saved_password.config(text=afpassword)
+        self.saved_password = tk.Label(self.settings_win, bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
 
-        saved_username.grid(row=6, column=0)
-        saved_password.grid(row=7, column=0)
-        tk.Button(self.settings_win, text="Remove", command=self.remove_creds, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=6, column=1, rowspan=2)
+        if settings['user_profile']['username'] is None and settings['user_profile']['password'] is None:
+            saved_username.config(text='No saved username found')
+            self.saved_password.config(text='No saved password found')
+        else:
+            saved_username.config(text=settings['user_profile']['username'])
+            self.hide_password()
+            self.show_pass_button = tk.Button(self.settings_win, text="Show password", command=self.show_pass_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+            self.show_pass_button.grid(row=9, column=0, rowspan=2)
 
-        #Close settings window button
-        tk.Button(self.settings_win, text="Close", command=self.destroy_settings_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(pady=10, row=8, column=0, columnspan=2)
+        saved_username.grid(row=7, column=0)
+        self.saved_password.grid(row=8, column=0)
+        tk.Button(self.settings_win, text="Remove", command=self.remove_creds, bg=self.background_colour, activebackground="#FF7F7F", fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=7, column=1, rowspan=2)
+
+        # Close settings window button
+        tk.Button(self.settings_win, text="Close", command=self.destroy_settings_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(pady=10, row=11, column=0, columnspan=2)
+
+    def show_pass_toggle(self):
+        if self.show_pass_button.config('text')[-1] == 'Show password':
+            self.show_pass_button.config(text='Hide password', bg=self.background_colour, fg=self.font_colour)
+            self.show_password()
+        else:
+            self.show_pass_button.config(text='Show password', bg=self.background_colour, fg=self.font_colour)
+            self.hide_password()
+
+    def show_password(self):
+        settings = self.settings.get_settings()
+        if settings['user_profile']['password'] is not None:
+            self.saved_password.config(text=settings['user_profile']['password'])
+        else:
+            self.saved_password.config(text='No saved password found')
+
+    def hide_password(self):
+        settings = self.settings.get_settings()
+        stars = ''
+        if settings['user_profile']['password'] is not None:
+            for _ in settings['user_profile']['username']:
+                stars += '*'
+            self.saved_password.config(text=stars)
 
     def destroy_settings_win(self):
         self.settings_win = self.settings_win.destroy()
         self.instance_settings_win = self.instance_settings_win.destroy()
+        if self.auto_fill_prompt:
+            self.destroy_auto_fill_prompt()
 
     def settings_win_auto(self):
         self.settings.set_settings(theme="Auto")
@@ -419,14 +499,10 @@ class GymBotGUI:
         tk.Button(self.auto_fill_prompt, text="No", command=self.auto_fill_no, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
 
     def auto_fill_yes(self):
-        self.fil_toggle_button.config(text='ON', bg='#d8b824', fg='#000000')
-        self.auto_fill = False
         self.save_creds_on_login = True
         self.destroy_auto_fill_prompt()
 
     def auto_fill_no(self):
-        self.fil_toggle_button.config(text='OFF', bg=self.background_colour, fg=self.font_colour)
-        self.auto_fill = False
         self.save_creds_on_login = False
         self.destroy_auto_fill_prompt()
 
@@ -435,19 +511,17 @@ class GymBotGUI:
         self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
 
     def remove_creds(self):
-        creds = self.settings.get_settings()
-        if creds['user_profile']['username'] is None and creds['user_profile']['password'] is None:
+        self.settings.set_settings(autofill=False)
+        settings = self.settings.get_settings()
+        if settings['user_profile']['username'] is None and settings['user_profile']['password'] is None:
             self.logger.error("No username or password on file")
-        if creds['user_profile']['username'] is not None:
+        if settings['user_profile']['username'] is not None:
             self.settings.set_settings(username=None)
             print("Removed: username")
-        if creds['user_profile']['password'] is not None:
+        if settings['user_profile']['password'] is not None:
             self.settings.set_settings(password=None)
             print("Removed: password")
         self.destroy_settings_win()
-
-    def cancel_search(self):
-        self.cancel = True
 
     def exit_all(self):
         try:

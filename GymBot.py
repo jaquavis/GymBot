@@ -1,12 +1,9 @@
 # GymBot®
-# pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py
 from __future__ import print_function
-
 import os.path
-
+import platform
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from win10toast import ToastNotifier
 from Iac01Bot import Iac01Bot
 import signal
 import sys
@@ -17,6 +14,13 @@ from os import path
 import logging
 from tkinter import PhotoImage
 from Settings import Settings
+
+OS = platform.system()
+if OS == "Windows":
+    from win10toast import ToastNotifier
+
+version = "v0.24"
+
 
 def signal_handler(sig, frame):
     driver.quit()
@@ -30,12 +34,23 @@ else:
     running_dir = "./"  # Path name when run with Python interpreter
 
 # Define paths
-localPath = path.expandvars(r'%LOCALAPPDATA%\GymBot') + '\\'
+if OS == "Windows":
+    localPath = path.expandvars(r'%LOCALAPPDATA%\GymBot') + '\\'
+else:
+    localPath = os.path.join(path.expanduser("~"), ".GymBot")
+
 iconFileName = running_dir + 'GymBot.ico'
 pngFileName = running_dir + 'GymBot.png'
 lightFileName = running_dir + 'GymBot_light.png'
 darkFileName = running_dir + 'GymBot_dark.png'
-driverFileName = running_dir + 'chromedriver.exe'
+
+if OS == "Linux":
+    driverFileName = running_dir + 'chromedriver_linux64'
+elif OS == "Darwin":
+    driverFileName = running_dir + 'chromedriver_mac64'
+else:
+    driverFileName = running_dir + 'chromedriver.exe'
+
 credsFileName = running_dir + 'credentials.json'
 tokenFileName = localPath + 'GymBotToken.json'
 configFileName = localPath + 'GymBotUserConfig.json'
@@ -46,7 +61,7 @@ if not os.path.exists(localPath):
     os.makedirs(localPath)
 
 if __name__ == "__main__":
-    print("GymBot® v0.20")
+    print(f"GymBot® {version}")
 
     # Define objects
     ser = Service(driverFileName)
@@ -56,24 +71,36 @@ if __name__ == "__main__":
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
     logger = logging.getLogger(__name__)                # logger
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
-    toaster = ToastNotifier()                           # notifier
-    toaster.icon = iconFileName                         # notifier: icon
     iac01bot = Iac01Bot(driver)                         # iac01bot
     iac01bot.login_url = login_url                      # iac01bot: login url
     iac01bot.default_url = default_url                  # iac01bot: default url
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
-    calendar = Calendar()                               # calendar
+    settings = Settings(version)                        # settings
+    settings.config_path = configFileName               # settings: config
+    calendar = Calendar(settings)                       # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
     calendar.tokenFileName = tokenFileName              # calendar: token
-    settings = Settings()                               # settings
+    settings = Settings(version)                        # settings
     settings.config_path = configFileName               # settings: config
-    gui = GymBotGUI(iac01bot,                           # interface
-                    toaster,
-                    calendar,
-                    settings)
+
+    if OS == "Windows":
+        toaster = ToastNotifier()                       # notifier
+        toaster.icon = iconFileName                     # notifier: icon
+        gui = GymBotGUI(iac01bot,                       # interface
+                        calendar,
+                        settings,
+                        toaster=toaster)
+    else:
+        gui = GymBotGUI(iac01bot,                       # interface
+                        calendar,
+                        settings,)
+
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
     gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
     gui.dark_photo = PhotoImage(file=darkFileName)      # interface: dark png
+
+    # Version check for local data
+    settings.version_check()
 
     # Start process
     gui.set_theme_mode()
@@ -82,10 +109,10 @@ if __name__ == "__main__":
     # Calendar booking
     if gui.booking_successful:
         try:
-            today = datetime.datetime.now().isoformat()
-            start_time = f"{today[0:11]}{iac01bot.time_slot_text[10:15]}:00.000"
-            end_time = f"{today[0:11]}{iac01bot.time_slot_text[19:24]}:00.000"
-            if gui.add_to_cal:
+            booking_date = datetime.datetime.strftime(datetime.datetime.strptime(gui.date_clicked.get(), "%A, %B %d, %Y"), "%Y-%m-%d")+"T"
+            start_time = f"{booking_date}{iac01bot.time_slot_text[10:15]}:00.000"
+            end_time = f"{booking_date}{iac01bot.time_slot_text[19:24]}:00.000"
+            if settings.get_settings()['settings']['add_to_cal']:
                 calendar.book_event(start_time, end_time)
         except TypeError:
             logger.warning("Could not find event times")

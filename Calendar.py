@@ -4,16 +4,19 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+import google.auth
+from google.auth.exceptions import DefaultCredentialsError
 import logging
 
 
 class Calendar:
-    def __init__(self):
+    def __init__(self, settings):
         self.logger = logging.getLogger(__name__)
         self.SCOPES = ['https://www.googleapis.com/auth/calendar']  # If modifying these scopes, delete the file token.json
         self.creds = None
         self.tokenFileName = None
         self.credsFileName = None
+        self.settings = settings
 
     def authenticate(self):
         if os.path.exists(self.tokenFileName):
@@ -52,4 +55,12 @@ class Calendar:
             print('Calendar event created')
 
         except HttpError as error:
+            self.logger.warning('Calendar booking failed')
             self.logger.warning('An error occurred: %s' % error)
+
+        except google.auth.exceptions.DefaultCredentialsError:
+            self.logger.warning('Calendar booking failed')
+            self.logger.error("Token error: removing stored token")
+            print("Please restart the program")
+            os.remove(self.tokenFileName)
+            self.settings.set_settings(add_to_cal=False)
