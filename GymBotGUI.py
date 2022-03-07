@@ -47,7 +47,6 @@ class GymBotGUI:
         self.fil_toggle_button = None
         self.background_colour = None
         self.font_colour = None
-        self.menu_colour = None
         self.entry_colour = None
         self.entry_font_colour = None
         self.gymbot_blue = '#245ec8'
@@ -105,7 +104,7 @@ class GymBotGUI:
         self.time_menu.pack(pady=10)
         self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.background_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
         menu = self.window.nametowidget(self.time_menu.menuname)
-        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.menu_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
+        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
 
         tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Username:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
