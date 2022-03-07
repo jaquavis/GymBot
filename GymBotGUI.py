@@ -69,8 +69,8 @@ class GymBotGUI:
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
 
-        #Allows use of enter button to login
-        self.window.bind('<Return>', self.mainonclick)
+        # Allows use of enter button to login
+        self.window.bind('<Return>', self.main_on_click)
 
         # Background image
         canvas = Canvas(bd=10, bg=self.background_colour, width=self.background_photo.width(), height=self.background_photo.height(), highlightbackground=self.background_colour)
@@ -79,7 +79,7 @@ class GymBotGUI:
 
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
         tk.Label(text="Ensure you do not currently have a booking. Appointments will be booked for today only.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour,fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(text="Select the hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
         # no arrow?
         self.time_clicked.set("06")
@@ -110,14 +110,14 @@ class GymBotGUI:
         tk.Label(text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
         self.window.mainloop()
 
-    def mainonclick(self,arg):
+    def main_on_click(self, arg):
         self.cred_thread()
 
-    def login_button_hover(self,arg):
+    def login_button_hover(self, arg):
         self.loginbutton["bg"] = self.hover_bgcolour
         self.loginbutton["fg"] = self.hover_fgcolour
 
-    def login_button_hover_leave(self,arg):
+    def login_button_hover_leave(self, arg):
         self.loginbutton["bg"] = self.background_colour
         self.loginbutton["fg"] = self.font_colour
 
@@ -318,50 +318,51 @@ class GymBotGUI:
         self.settings_win = Toplevel(self.instance_settings_win)
         self.settings_win.title("Settings")
         self.settings_win.configure(bg=self.background_colour)
-        tk.Label(self.settings_win, text="Select your default GymBot® settings (changes will be applied after app restart):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=0,column=0, columnspan=2)
-        selectedbuttoncolour = '#d8b824'
-        selectedbuttontextcolour = '#000000'
+        tk.Label(self.settings_win, text="Select your default GymBot® settings (changes will be applied after app restart):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=0, column=0, columnspan=2)
+        selected_button_colour = '#d8b824'
+        selected_button_text_colour = '#000000'
+        tk.Label(self.settings_win, text="Settings", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).grid(row=0, columnspan=8)
 
-        #Add to calendar option
+        # Add to calendar option
         tk.Label(self.settings_win, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=1, column=0)
         self.cal_toggle_button = tk.Button(self.settings_win, text="OFF", command=self.cal_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.cal_toggle_button.grid(row=2, column=0)
 
-        #Autofill option
+        # Autofill option
         tk.Label(self.settings_win, text="Autofill:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=3, column=0)
         self.fil_toggle_button = tk.Button(self.settings_win, text="OFF", command=self.fil_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.fil_toggle_button.grid(row=4, column=0)
 
-        #Theme control
+        # Theme control
         tk.Label(self.settings_win, text="Select your preferred theme:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=1, column=1)
         theme_config = self.settings.get_settings()
         theme = theme_config['settings']['theme']
         if theme == "Auto":
-            autocolour = selectedbuttoncolour
-            darkcolour = self.background_colour
-            lightcolour = self.background_colour
-            autofontcolour = selectedbuttontextcolour
-            darkfontcolour = self.font_colour
-            lightfontcolour = self.font_colour
+            auto_colour = selected_button_colour
+            dark_colour = self.background_colour
+            light_colour = self.background_colour
+            auto_font_colour = selected_button_text_colour
+            dark_font_colour = self.font_colour
+            light_font_colour = self.font_colour
         elif theme == "Dark":
-            autocolour = self.background_colour
-            darkcolour = selectedbuttoncolour
-            lightcolour = self.background_colour
-            autofontcolour = self.font_colour
-            darkfontcolour = selectedbuttontextcolour
-            lightfontcolour = self.font_colour
+            auto_colour = self.background_colour
+            dark_colour = selected_button_colour
+            light_colour = self.background_colour
+            auto_font_colour = self.font_colour
+            dark_font_colour = selected_button_text_colour
+            light_font_colour = self.font_colour
         elif theme == "Light":
-            autocolour = self.background_colour
-            darkcolour = self.background_colour
-            lightcolour = selectedbuttoncolour
-            autofontcolour = self.font_colour
-            darkfontcolour = self.font_colour
-            lightfontcolour = selectedbuttontextcolour
-        tk.Button(self.settings_win, text="AUTO", command=self.settings_win_auto, bg=autocolour, activebackground=self.background_colour, fg=autofontcolour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=2, column=1)
-        tk.Button(self.settings_win, text="Dark", command=self.settings_win_dark, bg=darkcolour, activebackground=self.background_colour, fg=darkfontcolour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=3, column=1)
-        tk.Button(self.settings_win, text="Light", command=self.settings_win_light, bg=lightcolour, activebackground=self.background_colour, fg=lightfontcolour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=4, column=1)
+            auto_colour = self.background_colour
+            dark_colour = self.background_colour
+            light_colour = selected_button_colour
+            auto_font_colour = self.font_colour
+            dark_font_colour = self.font_colour
+            light_font_colour = selected_button_text_colour
+        tk.Button(self.settings_win, text="AUTO", command=self.settings_win_auto, bg=auto_colour, activebackground=self.background_colour, fg=auto_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=2, column=1)
+        tk.Button(self.settings_win, text="Dark", command=self.settings_win_dark, bg=dark_colour, activebackground=self.background_colour, fg=dark_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=3, column=1)
+        tk.Button(self.settings_win, text="Light", command=self.settings_win_light, bg=light_colour, activebackground=self.background_colour, fg=light_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=4, column=1)
 
-        #Account removal
+        # Account removal
         creds = self.settings.get_settings()
         afusername = tk.StringVar()
         afpassword = tk.StringVar()
@@ -381,7 +382,7 @@ class GymBotGUI:
         saved_password.grid(row=7, column=0)
         tk.Button(self.settings_win, text="Remove", command=self.remove_creds, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=6, column=1, rowspan=2)
 
-        #Close settings window button
+        # Close settings window button
         tk.Button(self.settings_win, text="Close", command=self.destroy_settings_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(pady=10, row=8, column=0, columnspan=2)
 
     def destroy_settings_win(self):
