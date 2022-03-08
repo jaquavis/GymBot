@@ -289,7 +289,7 @@ class GymBotGUI:
             self.desired_time_str = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
         tk.Label(self.loading_window, text="We are currently looking for your gym time:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=0,column=0)
         display_time_clicked = tk.Label(self.loading_window, bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
-        display_time_clicked.config(text=f"{self.date_clicked.get()} at {self.desired_time_str}")
+        display_time_clicked.config(text=f"{self.date_clicked.get()} from {self.desired_time_str}")
         display_time_clicked.grid(row=1, column=0)
 
         # Progress bar

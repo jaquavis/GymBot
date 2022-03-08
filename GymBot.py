@@ -15,11 +15,11 @@ import logging
 from tkinter import PhotoImage
 from Settings import Settings
 
+version = "v0.25"
+
 OS = platform.system()
 if OS == "Windows":
     from win10toast import ToastNotifier
-
-version = "v0.25"
 
 
 def signal_handler(sig, frame):
