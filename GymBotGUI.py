@@ -283,18 +283,25 @@ class GymBotGUI:
         self.loading_window.title("GymBot®")
         self.loading_window.configure(bg=self.background_colour)
 
-        tk.Label(self.loading_window, text="We are currently looking for your gym time.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        if int(self.time_clicked.get()) < 9:
+            self.desired_time_str = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
+        else:
+            self.desired_time_str = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
+        tk.Label(self.loading_window, text="We are currently looking for your gym time:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=0,column=0)
+        display_time_clicked = tk.Label(self.loading_window, bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
+        display_time_clicked.config(text=f"{self.date_clicked.get()} at {self.desired_time_str}")
+        display_time_clicked.grid(row=1, column=0)
 
         # Progress bar
         bar_style = Style()
         bar_style.theme_use('default')
         bar_style.configure("blue.Horizontal.TProgressbar", foreground=self.gymbot_blue, background=self.gymbot_blue)
         self.bar = Progressbar(self.loading_window, style="blue.Horizontal.TProgressbar", orient=HORIZONTAL, length=600, mode='indeterminate')
-        self.bar.pack(pady=20)
+        self.bar.grid(pady=10, row=2,column=0)
         self.bar.start()
 
-        tk.Button(self.loading_window, text="Cancel", command=cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
-        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Button(self.loading_window, text="Cancel", command=cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=4, column=0)
+        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=5, column=0)
 
         self.instance_loading_window.mainloop()
 
