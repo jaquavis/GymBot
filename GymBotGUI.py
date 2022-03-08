@@ -76,12 +76,20 @@ class GymBotGUI:
         self.date_menu = None
 
     def create_main_window(self):
+        def main_on_click(arg):
+            cred_thread()
+
+        def cred_thread():
+            self.backend_thread = threading.Thread(target=self.get_creds(), daemon=True).start()
+            if self.login_success:
+                self.loading_page()
+
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
 
         # Allows use of enter button to login
-        self.window.bind('<Return>', self.main_on_click)
+        self.window.bind('<Return>', main_on_click)
 
         # Background image
         canvas = Canvas(bd=10, bg=self.background_colour, width=self.background_photo.width(), height=self.background_photo.height(), highlightbackground=self.background_colour)
@@ -112,46 +120,30 @@ class GymBotGUI:
         tk.Entry(self.window, textvariable=self.username_login, bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
-        self.loginbutton = tk.Button(self.window, text="Login", command=lambda: self.cred_thread(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.loginbutton = tk.Button(self.window, text="Login", command=lambda: cred_thread(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.loginbutton.pack(pady=10)
 
-        self.settingsbutton = tk.Button(self.window, text="Settings", command=lambda: self.open_settings(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        self.settingsbutton = tk.Button(self.window, text="Settings", command=lambda: self.open_settings_win(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
         self.settingsbutton.pack(pady=10)
 
         # Highlight button when hover
-        self.loginbutton.bind("<Enter>", self.login_button_hover)
-        self.loginbutton.bind("<Leave>", self.login_button_hover_leave)
+        self.loginbutton.bind("<Enter>", lambda arg: self.hover(arg, button=self.loginbutton, use="over"))
+        self.loginbutton.bind("<Leave>", lambda arg: self.hover(arg, button=self.loginbutton, use="leave"))
 
-        self.settingsbutton.bind("<Enter>", self.settings_button_hover)
-        self.settingsbutton.bind("<Leave>", self.settings_button_hover_leave)
+        self.settingsbutton.bind("<Enter>", lambda arg: self.hover(arg, button=self.settingsbutton, use="over"))
+        self.settingsbutton.bind("<Leave>", lambda arg: self.hover(arg, button=self.settingsbutton, use="leave"))
 
         tk.Label(self.window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
         tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=452)
         self.window.mainloop()
 
-    def main_on_click(self, arg):
-        self.cred_thread()
-
-    def login_button_hover(self, arg):
-        self.loginbutton["bg"] = self.hover_bgcolour
-        self.loginbutton["fg"] = self.hover_fgcolour
-
-    def login_button_hover_leave(self, arg):
-        self.loginbutton["bg"] = self.background_colour
-        self.loginbutton["fg"] = self.font_colour
-
-    def settings_button_hover(self, arg):
-        self.settingsbutton["bg"] = self.hover_bgcolour
-        self.settingsbutton["fg"] = self.hover_fgcolour
-
-    def settings_button_hover_leave(self, arg):
-        self.settingsbutton["bg"] = self.background_colour
-        self.settingsbutton["fg"] = self.font_colour
-
-    def cred_thread(self):
-        self.backend_thread = threading.Thread(target=self.get_creds(), daemon=True).start()
-        if self.login_success:
-            self.loading_page()
+    def hover(self, arg, button, use):
+        if use == "over":
+            button["bg"] = self.hover_bgcolour
+            button["fg"] = self.hover_fgcolour
+        if use == "leave":
+            button["bg"] = self.background_colour
+            button["fg"] = self.font_colour
 
     def get_creds(self):
         settings = self.settings.get_settings()
@@ -180,9 +172,9 @@ class GymBotGUI:
                 self.destroy_invalid_usr_win()
             threading.Thread(target=self.get_gym_time, daemon=True).start()
         else:
-            self.invalid_user()
+            self.open_invalid_user_win()
 
-    def invalid_user(self):
+    def open_invalid_user_win(self):
         self.logger.warning("Invalid User")
         if not self.invalid_usr_win:
             self.create_invalid_usr_win()
@@ -358,12 +350,12 @@ class GymBotGUI:
                 self.destroy_auto_fill_prompt()
         else:
             if settings['user_profile']['username'] is None or settings['user_profile']['password'] is None:
-                self.auto_fill_prompt_user_interface()
+                self.open_auto_fill_prompt()
             else:
                 self.fil_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#000000')
                 self.settings.set_settings(autofill=True)
 
-    def open_settings(self):
+    def open_settings_win(self):
         if not self.settings_win:
             self.create_settings_win()
         else:
@@ -371,9 +363,21 @@ class GymBotGUI:
             self.create_settings_win()
 
     def create_settings_win(self):
+        def settings_win_auto():
+            self.settings.set_settings(theme="Auto")
+            self.destroy_settings_win()
+
+        def settings_win_dark():
+            self.settings.set_settings(theme="Dark")
+            self.destroy_settings_win()
+
+        def settings_win_light():
+            self.settings.set_settings(theme="Light")
+            self.destroy_settings_win()
+
         settings = self.settings.get_settings()
         selected_button_colour = self.gymbot_gold
-        selected_button_text_colour ='#000000'
+        selected_button_text_colour = '#000000'
 
         self.instance_settings_win = tk.Tk()
         self.instance_settings_win.withdraw()
@@ -434,9 +438,9 @@ class GymBotGUI:
             auto_font_colour = self.font_colour
             dark_font_colour = self.font_colour
             light_font_colour = selected_button_text_colour
-        tk.Button(self.settings_win, text="AUTO", command=self.settings_win_auto, bg=auto_colour, activebackground=self.background_colour, fg=auto_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=3, column=1)
-        tk.Button(self.settings_win, text="Dark", command=self.settings_win_dark, bg=dark_colour, activebackground=self.background_colour, fg=dark_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=4, column=1)
-        tk.Button(self.settings_win, text="Light", command=self.settings_win_light, bg=light_colour, activebackground=self.background_colour, fg=light_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=5, column=1)
+        tk.Button(self.settings_win, text="AUTO", command=settings_win_auto, bg=auto_colour, activebackground=self.background_colour, fg=auto_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=3, column=1)
+        tk.Button(self.settings_win, text="Dark", command=settings_win_dark, bg=dark_colour, activebackground=self.background_colour, fg=dark_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=4, column=1)
+        tk.Button(self.settings_win, text="Light", command=settings_win_light, bg=light_colour, activebackground=self.background_colour, fg=light_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=5, column=1)
 
         # Account removal
         settings = self.settings.get_settings()
@@ -489,19 +493,7 @@ class GymBotGUI:
         if self.auto_fill_prompt:
             self.destroy_auto_fill_prompt()
 
-    def settings_win_auto(self):
-        self.settings.set_settings(theme="Auto")
-        self.destroy_settings_win()
-
-    def settings_win_dark(self):
-        self.settings.set_settings(theme="Dark")
-        self.destroy_settings_win()
-
-    def settings_win_light(self):
-        self.settings.set_settings(theme="Light")
-        self.destroy_settings_win()
-
-    def auto_fill_prompt_user_interface(self):
+    def open_auto_fill_prompt(self):
         if not self.auto_fill_prompt:
             self.create_auto_fill_prompt()
         else:
@@ -509,6 +501,14 @@ class GymBotGUI:
             self.create_auto_fill_prompt()
 
     def create_auto_fill_prompt(self):
+        def auto_fill_yes():
+            self.save_creds_on_login = True
+            self.destroy_auto_fill_prompt()
+
+        def auto_fill_no():
+            self.save_creds_on_login = False
+            self.destroy_auto_fill_prompt()
+
         self.instance_auto_fill_prompt = tk.Tk()
         self.instance_auto_fill_prompt.withdraw()
         self.auto_fill_prompt = Toplevel(self.instance_auto_fill_prompt)
@@ -516,16 +516,8 @@ class GymBotGUI:
         self.auto_fill_prompt.configure(bg=self.background_colour)
         tk.Label(self.auto_fill_prompt, text="No user profile was found.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(self.auto_fill_prompt, text="Would you like to save your credentials on next login?", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Button(self.auto_fill_prompt, text="Yes", command=self.auto_fill_yes, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
-        tk.Button(self.auto_fill_prompt, text="No", command=self.auto_fill_no, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
-
-    def auto_fill_yes(self):
-        self.save_creds_on_login = True
-        self.destroy_auto_fill_prompt()
-
-    def auto_fill_no(self):
-        self.save_creds_on_login = False
-        self.destroy_auto_fill_prompt()
+        tk.Button(self.auto_fill_prompt, text="Yes", command=auto_fill_yes, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
+        tk.Button(self.auto_fill_prompt, text="No", command=auto_fill_no, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
 
     def destroy_auto_fill_prompt(self):
         self.auto_fill_prompt = self.auto_fill_prompt.destroy()
