@@ -1,4 +1,3 @@
-import logging
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import datetime
 from selenium.webdriver.support.wait import WebDriverWait
@@ -11,7 +10,6 @@ class Iac01Bot:
         self.driver = driver
         self.login_url = None
         self.default_url = None
-        self.logger = logging.getLogger(__name__)
         self.desired_time = None
         self.nums = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15']
         self.time_slot_text = None
@@ -22,7 +20,7 @@ class Iac01Bot:
     def login(self):  # Returns 'success' if successful; returns 'invalid' if invalid credentials; returns 'unavail' if site down
         self.driver.get(self.login_url)
         if 'error' in self.driver.current_url:
-            self.logger.error("Site is down")
+            print("Site is down")
             return 'unavail'
 
         un_field = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_UserName")))
@@ -35,7 +33,7 @@ class Iac01Bot:
             print("Logged in")
             return 'success'
         else:
-            self.logger.warning("Could not log in")
+            print("Could not log in")
             return 'invalid'
 
     def login_status(self):  # returns True if logged in, False if logged out
@@ -46,13 +44,13 @@ class Iac01Bot:
             if status.text == "LOGIN":
                 return False
         except NoSuchElementException:
-            self.logger.warning("Could not determine login status!")
+            print("Could not determine login status!")
             return False  # Assume logged out
             pass
 
     def logout(self):
         if not self.login_status():
-            self.logger.warning("Already logged out")
+            print("Already logged out")
         if self.login_status():
             WebDriverWait(self.driver, 5).until(
                 EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_LoginButton"))).click()
@@ -97,7 +95,7 @@ class Iac01Bot:
                         return True
                     index = index + 1
                 except TimeoutException:
-                    self.logger.error("Booking unsuccessful")
+                    print("Booking unsuccessful")
                     return False
 
     def next_page(self):

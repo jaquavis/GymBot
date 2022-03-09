@@ -1,11 +1,9 @@
-import logging
 import os
 import json
 
 
 class Settings:
     def __init__(self, version):
-        self.logger = logging.getLogger(__name__)
         self.version = version
         self.default_settings = f'''
         {{
@@ -78,7 +76,7 @@ class Settings:
                         settings_file.write(self.default_settings)
 
                 except FileNotFoundError:
-                    self.logger.error("Fatal error")
+                    print("Fatal error")
 
         except KeyError:
             try:
@@ -87,9 +85,9 @@ class Settings:
                     settings_file.write(self.default_settings)
 
             except FileNotFoundError:
-                self.logger.error("Fatal error")
+                print("Fatal error")
 
         except json.decoder.JSONDecodeError:
-            self.logger.error("Error: corrupt configuration file removed")
+            print("Error: corrupt configuration file removed")
             print("Please restart the program")
             os.remove(self.config_path)

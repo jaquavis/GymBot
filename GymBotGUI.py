@@ -8,7 +8,6 @@ import datetime
 from astral import LocationInfo
 from astral.sun import sun
 from datetime import date
-import logging
 from tkinter import font as tk_font
 import time
 from Redirect import Redirect
@@ -27,19 +26,15 @@ class GymBotGUI:
         self.background_photo = None
         self.light_photo = None
         self.dark_photo = None
-        self.logger = logging.getLogger(__name__)
-        logging.basicConfig(stream=sys.stdout)
         self.today = datetime.datetime.now()
+        self.old_stdout = sys.stdout
 
         self.login_success = None
         self.backend_thread = None
-        self.instance_loading_window = None
-        self.instance_invalid_usr_win = None
-        self.instance_settings_win = None
         self.invalid_usr_win = None
         self.settings_win = None
         self.terminal_win = None
-        self.instance_terminal_win = None
+        self.terminal_toggle_button = None
         self.bar = None
         self.time_available = False
         self.booking_successful = False
@@ -64,7 +59,6 @@ class GymBotGUI:
         self.dropdown_font = tk_font.Font(family='Bahnschrift Light', size=13)
         self.retry = 0
         self.save_creds_on_login = False
-        self.instance_auto_fill_prompt = None
         self.auto_fill_prompt = None
         self.cancel = False
         self.hover_bgcolour = '#d1d0c6'
@@ -88,32 +82,6 @@ class GymBotGUI:
             self.backend_thread = threading.Thread(target=self.get_creds(), daemon=True).start()
             if self.login_success:
                 self.loading_page()
-
-        def run():
-            threading.Thread(target=test).start()
-
-        def test():
-            print("Thread: start")
-
-        frame = tk.Frame(self.window)
-        frame.pack(expand=True, fill='both')
-
-        text = tk.Text(frame)
-        text.pack(side='left', fill='both', expand=True)
-
-        scrollbar = tk.Scrollbar(frame)
-        scrollbar.pack(side='right', fill='y')
-
-        text['yscrollcommand'] = scrollbar.set
-        scrollbar['command'] = text.yview
-
-        old_stdout = sys.stdout
-        sys.stdout = Redirect(text)
-
-        # - rest -
-
-        button = tk.Button(self.window, text='TEST', command=self.get_creds)
-        button.pack()
 
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
         self.window.title("GymBot®")
@@ -164,15 +132,13 @@ class GymBotGUI:
         self.settings_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.settings_button, use="over"))
         self.settings_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.settings_button, use="leave"))
 
+        self.terminal_toggle_button = tk.Button(self.window, text="Show Terminal", command=self.terminal_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        self.terminal_toggle_button.pack(pady=10)
+
         tk.Label(self.window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
-        tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=452)
-        #self.terminal_button = tk.Button(self.window, text="Terminal", command=self.run, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
-        #self.terminal_button.pack(pady=10)
+        tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=509)
 
-
-
-
-
+        self.start_terminal()
         self.window.mainloop()
 
     def hover(self, arg, button, use):
@@ -184,7 +150,6 @@ class GymBotGUI:
             button["fg"] = self.font_colour
 
     def get_creds(self):
-        print("Test")
         settings = self.settings.get_settings()
         if not settings['settings']['autofill']:
             self.iac01bot.username = self.username_login.get()
@@ -196,7 +161,7 @@ class GymBotGUI:
             else:
                 self.iac01bot.username = self.username_login.get()
                 self.iac01bot.password = self.password_login.get()
-                self.logger.error("Autofill failed")
+                print("Autofill failed")
                 self.settings.set_settings(autofill=False)
 
         self.login_success = self.login()
@@ -214,7 +179,7 @@ class GymBotGUI:
             self.open_invalid_user_win()
 
     def open_invalid_user_win(self):
-        self.logger.warning("Invalid User")
+        print("Invalid User")
         if not self.invalid_usr_win:
             self.create_invalid_usr_win()
         else:
@@ -222,9 +187,7 @@ class GymBotGUI:
             self.create_invalid_usr_win()
 
     def create_invalid_usr_win(self):
-        self.instance_invalid_usr_win = tk.Tk()
-        self.instance_invalid_usr_win.withdraw()
-        self.invalid_usr_win = Toplevel(self.instance_invalid_usr_win)
+        self.invalid_usr_win = Toplevel(self.window)
         self.invalid_usr_win.title("Invalid User")
         self.invalid_usr_win.configure(bg=self.background_colour)
 
@@ -233,13 +196,12 @@ class GymBotGUI:
 
     def destroy_invalid_usr_win(self):
         self.invalid_usr_win = self.invalid_usr_win.destroy()
-        self.instance_invalid_usr_win = self.instance_invalid_usr_win.destroy()
 
     def login(self):  # Returns True if successful, else returns False; Will wait and retry if site is down
         while True:  # Check if site is down
             state = self.iac01bot.login()
             if state == 'unavail':
-                self.logger.error("Retrying in 1 minute")
+                print("Retrying in 1 minute")
                 time.sleep(60)
             elif state == 'success':
                 return True
@@ -276,41 +238,51 @@ class GymBotGUI:
                 self.booking_successful = self.iac01bot.booking_successful(self.date_clicked.get())
                 if not self.booking_successful:  # Upon unsuccessful booking
                     self.retry = self.retry + 1
-                    self.logger.error(f"Retrying: {self.retry} of 3")
+                    print(f"Retrying: {self.retry} of 3")
                 if self.booking_successful:  # Upon successful booking
                     if self.toaster is not None:
                         self.toaster.show_toast("GymBot®", "Your appointment has been booked!", duration=10, icon_path=self.toaster.icon, threaded=True)
                     else:
-                        messagebox.showinfo("Information","Your appointment has been booked!")
+                        messagebox.showinfo("Information", "Your appointment has been booked!")
+                    self.book_event()
+                    print('\nExiting: This window will now close')
                     self.exit_all()
 
             if self.retry >= 3:
-                self.logger.error("Maximum number of retries reached, exiting program.")
+                print("Maximum number of retries reached, exiting program.")
                 self.exit_all()
                 break
 
             if self.cancel:
-                self.logger.warning("\nCancelling")
                 self.exit_all()
                 break
 
             # Loading wheel
             if not self.time_available:
                 loading_wheel = ['/', '─', "\\", '|']
+                sys.stdout = self.old_stdout  # Avoid printing this in the terminal
                 print(f'\rNot available - trying again   {loading_wheel[wheel_index]}', end="")
                 wheel_index = wheel_index + 1
                 if wheel_index == 4:
                     wheel_index = 0
 
+    def book_event(self):
+        try:
+            booking_date = datetime.datetime.strftime(datetime.datetime.strptime(self.date_clicked.get(), "%A, %B %d, %Y"), "%Y-%m-%d")+"T"
+            start_time = f"{booking_date}{self.iac01bot.time_slot_text[10:15]}:00.000"
+            end_time = f"{booking_date}{self.iac01bot.time_slot_text[19:24]}:00.000"
+            if self.settings.get_settings()['settings']['add_to_cal']:
+                self.calendar.book_event(start_time, end_time)
+        except TypeError:
+            print("Could not find event times")
+
     def loading_page(self):
         def cancel_search():
+            print("\nCancelling")
             self.cancel = True
 
-        self.window = self.window.destroy()
-        self.instance_loading_window = tk.Tk()
-        self.instance_loading_window.withdraw()
-
-        self.loading_window = tk.Toplevel(self.instance_loading_window)
+        self.window.withdraw()
+        self.loading_window = tk.Toplevel(self.window)
         self.loading_window.title("GymBot®")
         self.loading_window.configure(bg=self.background_colour)
 
@@ -333,8 +305,6 @@ class GymBotGUI:
 
         tk.Button(self.loading_window, text="Cancel", command=cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=4, column=0)
         tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=5, column=0)
-
-        self.instance_loading_window.mainloop()
 
     def set_theme_mode(self):
         settings = self.settings.get_settings()
@@ -418,9 +388,7 @@ class GymBotGUI:
         selected_button_colour = self.gymbot_gold
         selected_button_text_colour = '#000000'
 
-        self.instance_settings_win = tk.Tk()
-        self.instance_settings_win.withdraw()
-        self.settings_win = Toplevel(self.instance_settings_win)
+        self.settings_win = Toplevel(self.window)
         self.settings_win.title("Settings")
         self.settings_win.configure(bg=self.background_colour)
         tk.Label(self.settings_win, text="Settings", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).grid(row=0, columnspan=2)
@@ -528,7 +496,6 @@ class GymBotGUI:
 
     def destroy_settings_win(self):
         self.settings_win = self.settings_win.destroy()
-        self.instance_settings_win = self.instance_settings_win.destroy()
         if self.auto_fill_prompt:
             self.destroy_auto_fill_prompt()
 
@@ -548,9 +515,7 @@ class GymBotGUI:
             self.save_creds_on_login = False
             self.destroy_auto_fill_prompt()
 
-        self.instance_auto_fill_prompt = tk.Tk()
-        self.instance_auto_fill_prompt.withdraw()
-        self.auto_fill_prompt = Toplevel(self.instance_auto_fill_prompt)
+        self.auto_fill_prompt = Toplevel(self.window)
         self.auto_fill_prompt.title("Autofill")
         self.auto_fill_prompt.configure(bg=self.background_colour)
         tk.Label(self.auto_fill_prompt, text="No user profile was found.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
@@ -560,19 +525,22 @@ class GymBotGUI:
 
     def destroy_auto_fill_prompt(self):
         self.auto_fill_prompt = self.auto_fill_prompt.destroy()
-        self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
 
-    def open_terminal_win(self):
-        if not self.terminal_win:
-            self.create_terminal_win()
+    def terminal_toggle(self):
+        if self.terminal_toggle_button.config('text')[-1] == 'Show Terminal':
+            self.terminal_toggle_button.config(text='Hide Terminal', bg=self.background_colour, fg=self.font_colour)
+            self.terminal_win.deiconify()
         else:
-            self.destroy_terminal_win()
-            self.create_terminal_win()
+            self.terminal_toggle_button.config(text='Show Terminal', bg=self.background_colour, fg=self.font_colour)
+            self.terminal_win.withdraw()
 
-    def create_terminal_win(self):
-        self.instance_terminal_win = tk.Tk()
-        self.instance_terminal_win.withdraw()
-        self.terminal_win = Toplevel(self.instance_terminal_win)
+    def start_terminal(self):
+        if not self.terminal_win:
+            self.create_terminal_instance()
+
+    def create_terminal_instance(self):
+        self.terminal_win = Toplevel(self.window)
+        self.terminal_win.withdraw()
         self.terminal_win.title("Terminal")
 
         frame = tk.Frame(self.terminal_win)
@@ -587,20 +555,14 @@ class GymBotGUI:
         text['yscrollcommand'] = scrollbar.set
         scrollbar['command'] = text.yview
 
-        old_stdout = sys.stdout
         redirect = Redirect(text)
         sys.stdout = redirect
-
-        self.terminal_win.mainloop()
-
-    def run(self):
-        threading.Thread(target=self.open_terminal_win).start()
 
     def remove_creds(self):
         self.settings.set_settings(autofill=False)
         settings = self.settings.get_settings()
         if settings['user_profile']['username'] is None and settings['user_profile']['password'] is None:
-            self.logger.error("No username or password on file")
+            print("No username or password on file")
         if settings['user_profile']['username'] is not None:
             self.settings.set_settings(username=None)
             print("Removed: username")
@@ -610,6 +572,8 @@ class GymBotGUI:
         self.destroy_settings_win()
 
     def exit_all(self):
+        sys.stdout = self.old_stdout
+
         try:
             if self.window:
                 self.window = self.window.destroy()
@@ -621,18 +585,8 @@ class GymBotGUI:
         except _tkinter.TclError:
             pass
         try:
-            if self.instance_invalid_usr_win:
-                self.instance_invalid_usr_win = self.instance_invalid_usr_win.destroy()
-        except _tkinter.TclError:
-            pass
-        try:
             if self.loading_window:
                 self.loading_window = self.loading_window.destroy()
-        except _tkinter.TclError:
-            pass
-        try:
-            if self.instance_loading_window:
-                self.instance_loading_window = self.instance_loading_window.destroy()
         except _tkinter.TclError:
             pass
         try:
@@ -641,17 +595,12 @@ class GymBotGUI:
         except _tkinter.TclError:
             pass
         try:
-            if self.instance_auto_fill_prompt:
-                self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
-        except _tkinter.TclError:
-            pass
-        try:
             if self.settings_win:
                 self.settings_win = self.settings_win.destroy()
         except _tkinter.TclError:
             pass
         try:
-            if self.instance_settings_win:
-                self.instance_settings_win = self.instance_settings_win.destroy()
+            if self.terminal_win:
+                self.terminal_win = self.terminal_win.destroy()
         except _tkinter.TclError:
             pass

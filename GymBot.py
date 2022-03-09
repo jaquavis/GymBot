@@ -11,7 +11,6 @@ from GymBotGUI import GymBotGUI
 import datetime
 from Calendar import Calendar
 from os import path
-import logging
 from tkinter import PhotoImage
 from Settings import Settings
 
@@ -69,7 +68,6 @@ if __name__ == "__main__":
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
-    logger = logging.getLogger(__name__)                # logger
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
     iac01bot = Iac01Bot(driver)                         # iac01bot
     iac01bot.login_url = login_url                      # iac01bot: login url
@@ -93,7 +91,7 @@ if __name__ == "__main__":
     else:
         gui = GymBotGUI(iac01bot,                       # interface
                         calendar,
-                        settings,)
+                        settings)
 
     gui.icon_photo = PhotoImage(file=pngFileName)       # interface: png
     gui.light_photo = PhotoImage(file=lightFileName)    # interface: light png
@@ -106,18 +104,6 @@ if __name__ == "__main__":
     gui.set_theme_mode()
     gui.create_main_window()
 
-    # Calendar booking
-    if gui.booking_successful:
-        try:
-            booking_date = datetime.datetime.strftime(datetime.datetime.strptime(gui.date_clicked.get(), "%A, %B %d, %Y"), "%Y-%m-%d")+"T"
-            start_time = f"{booking_date}{iac01bot.time_slot_text[10:15]}:00.000"
-            end_time = f"{booking_date}{iac01bot.time_slot_text[19:24]}:00.000"
-            if settings.get_settings()['settings']['add_to_cal']:
-                calendar.book_event(start_time, end_time)
-        except TypeError:
-            logger.warning("Could not find event times")
-
     # Cleanup
-    print('\nExiting: You may now close this window')
     driver.quit()
     gui.exit_all()
