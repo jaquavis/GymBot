@@ -1,4 +1,3 @@
-import _tkinter
 import threading
 import tkinter as tk
 from tkinter import *
@@ -586,31 +585,32 @@ class GymBotGUI:
         try:
             if self.invalid_usr_win:
                 self.invalid_usr_win = self.invalid_usr_win.destroy()
-        except _tkinter.TclError:
+        except TclError:
             pass
         try:
             if self.loading_window:
                 self.loading_window = self.loading_window.destroy()
-        except _tkinter.TclError:
+        except TclError:
             pass
         try:
             if self.auto_fill_prompt:
                 self.auto_fill_prompt = self.auto_fill_prompt.destroy()
-        except _tkinter.TclError:
+        except TclError:
             pass
         try:
             if self.settings_win:
                 self.settings_win = self.settings_win.destroy()
-        except _tkinter.TclError:
+        except TclError:
             pass
         try:
             if self.terminal_win:
-                time.sleep(10)
+                if self.terminal_win.winfo_viewable():
+                    time.sleep(10)
                 self.terminal_win = self.terminal_win.destroy()
-        except _tkinter.TclError:
+        except TclError:
             pass
         try:
             if self.window:
                 self.window = self.window.destroy()
-        except _tkinter.TclError:
+        except TclError:
             pass

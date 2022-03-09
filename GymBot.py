@@ -75,7 +75,9 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
     settings = Settings(version)                        # settings
     settings.config_path = configFileName               # settings: config
-    calendar = Calendar(settings, tokenFileName)        # calendar
+    calendar = Calendar(settings,                       # calendar
+                        tokenFileName,
+                        credsFileName)
     calendar.credsFileName = credsFileName              # calendar: credentials
     settings = Settings(version)                        # settings
     settings.config_path = configFileName               # settings: config
@@ -98,6 +100,10 @@ if __name__ == "__main__":
 
     # Version check for local data
     settings.version_check()
+
+    # Authenticate calendar
+    if settings.get_settings()['settings']['add_to_cal']:
+        calendar.authenticate()
 
     # Start process
     gui.set_theme_mode()

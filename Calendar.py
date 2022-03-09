@@ -10,12 +10,12 @@ import logging
 
 
 class Calendar:
-    def __init__(self, settings, tokenFileName):
+    def __init__(self, settings, tokenFileName, credsFileName):
         self.SCOPES = ['https://www.googleapis.com/auth/calendar']  # If modifying these scopes, delete the file token.json
         self.creds = None
         self.tokenFileName = tokenFileName
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = tokenFileName
-        self.credsFileName = None
+        self.credsFileName = credsFileName
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credsFileName
         self.settings = settings
         self.logger = logging.getLogger(__name__)
 
