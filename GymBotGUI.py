@@ -100,8 +100,6 @@ class GymBotGUI:
         tk.Label(text="Ensure you do not currently have a booking.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(text="Select the date and hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
-        arrow = PhotoImage(file='arrow.png')
-
         self.date_clicked.set(self.date_entry[0])
         self.date_menu = tk.OptionMenu(self.window, self.date_clicked, *self.date_entry)
         self.date_menu.pack(pady=10)
