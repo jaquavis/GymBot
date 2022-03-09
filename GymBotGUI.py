@@ -540,6 +540,7 @@ class GymBotGUI:
 
     def create_terminal_instance(self):
         self.terminal_win = Toplevel(self.window)
+        #self.terminal_win.overrideredirect(True)
         self.terminal_win.withdraw()
         self.terminal_win.title("Terminal")
 
