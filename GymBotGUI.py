@@ -216,6 +216,7 @@ class GymBotGUI:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
         print(f"Desired date: {self.date_clicked.get()}")
         print(f"Desired time: {self.iac01bot.desired_time}")
+        print("Starting search...")
 
         while not self.time_available or not self.booking_successful:  # main loop
             # Refresh / login if timed out
@@ -278,7 +279,7 @@ class GymBotGUI:
 
     def loading_page(self):
         def cancel_search():
-            print("\nCancelling")
+            print("\nCancelling...")
             self.cancel = True
 
         self.window.withdraw()
@@ -583,11 +584,6 @@ class GymBotGUI:
         sys.stdout = self.old_stdout
 
         try:
-            if self.window:
-                self.window = self.window.destroy()
-        except _tkinter.TclError:
-            pass
-        try:
             if self.invalid_usr_win:
                 self.invalid_usr_win = self.invalid_usr_win.destroy()
         except _tkinter.TclError:
@@ -609,6 +605,12 @@ class GymBotGUI:
             pass
         try:
             if self.terminal_win:
+                time.sleep(10)
                 self.terminal_win = self.terminal_win.destroy()
+        except _tkinter.TclError:
+            pass
+        try:
+            if self.window:
+                self.window = self.window.destroy()
         except _tkinter.TclError:
             pass
