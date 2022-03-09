@@ -144,6 +144,7 @@ class GymBotGUI:
         tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=452)
         self.window.mainloop()
 
+
     def hover(self, arg, button, use, bg=None, fg=None, menu=False):
         if menu:
             if use == "over":
