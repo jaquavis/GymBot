@@ -100,12 +100,15 @@ class GymBotGUI:
         tk.Label(text="Ensure you do not currently have a booking.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(text="Select the date and hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
+        # arrow = PhotoImage(file='arrow.png')
+
         self.date_clicked.set(self.date_entry[0])
         self.date_menu = tk.OptionMenu(self.window, self.date_clicked, *self.date_entry)
+        # self.date_menu.image=arrow
         self.date_menu.pack(pady=10)
         self.date_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.background_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
         menu2 = self.window.nametowidget(self.date_menu.menuname)
-        menu2.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
+        menu2.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_gold, activeforeground=self.hover_fgcolour)  # Set the dropdown menu's font
 
         # no arrow?
         self.time_clicked.set(self.time_entry[0])
@@ -113,7 +116,7 @@ class GymBotGUI:
         self.time_menu.pack(pady=10)
         self.time_menu.config(font=self.option_menu_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.background_colour, activeforeground=self.font_colour, highlightbackground=self.background_colour)  # set the button font
         menu = self.window.nametowidget(self.time_menu.menuname)
-        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_blue, activeforeground=self.font_colour)  # Set the dropdown menu's font
+        menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_gold, activeforeground=self.hover_fgcolour)  # Set the dropdown menu's font
 
         tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Username:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
@@ -127,6 +130,10 @@ class GymBotGUI:
         self.settingsbutton.pack(pady=10)
 
         # Highlight button when hover
+        # menu doesn't work
+        self.date_menu.bind("<Enter>", lambda arg: self.hover(arg, button=self.date_menu, use="over", menu=True))
+        self.date_menu.bind("<Leave>", lambda arg: self.hover(arg, button=self.date_menu, use="leave", menu=True))
+
         self.loginbutton.bind("<Enter>", lambda arg: self.hover(arg, button=self.loginbutton, use="over"))
         self.loginbutton.bind("<Leave>", lambda arg: self.hover(arg, button=self.loginbutton, use="leave"))
 
@@ -137,13 +144,32 @@ class GymBotGUI:
         tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=452)
         self.window.mainloop()
 
-    def hover(self, arg, button, use):
+    def hover(self, arg, button, use, bg=None, fg=None, menu=False):
+        if menu:
+            if use == "over":
+                button.config(bg=self.hover_bgcolour, fg=self.hover_fgcolour)
+            if use == "leave":
+                button.config(bg=self.background_colour, fg=self.font_colour)
+        if bg == None:
+            if use == "over":
+                button["bg"] = self.hover_bgcolour
+                button["fg"] = self.hover_fgcolour
+            if use == "leave":
+                button["bg"] = self.background_colour
+                button["fg"] = self.font_colour
+        if fg == None:
+            if use == "over":
+                button["bg"] = self.hover_bgcolour
+                button["fg"] = self.hover_fgcolour
+            if use == "leave":
+                button["bg"] = self.background_colour
+                button["fg"] = self.font_colour
         if use == "over":
             button["bg"] = self.hover_bgcolour
             button["fg"] = self.hover_fgcolour
         if use == "leave":
-            button["bg"] = self.background_colour
-            button["fg"] = self.font_colour
+            button["bg"] = bg
+            button["fg"] = fg
 
     def get_creds(self):
         settings = self.settings.get_settings()
@@ -190,7 +216,11 @@ class GymBotGUI:
         self.invalid_usr_win.configure(bg=self.background_colour)
 
         tk.Label(self.invalid_usr_win, text="Invalid credentials, please try again.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Button(self.invalid_usr_win, text="Close", command=self.destroy_invalid_usr_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).pack(pady=10)
+        self.exit_inv_usr_win = tk.Button(self.invalid_usr_win, text="Close", command=self.destroy_invalid_usr_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        self.exit_inv_usr_win.pack(pady=10)
+        # Highlight button when hover
+        self.exit_inv_usr_win.bind("<Enter>", lambda arg: self.hover(arg, button=self.exit_inv_usr_win, use="over"))
+        self.exit_inv_usr_win.bind("<Leave>", lambda arg: self.hover(arg, button=self.exit_inv_usr_win, use="leave"))
 
     def destroy_invalid_usr_win(self):
         self.invalid_usr_win = self.invalid_usr_win.destroy()
@@ -279,21 +309,31 @@ class GymBotGUI:
             self.desired_time_str = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
         else:
             self.desired_time_str = f"{self.time_clicked.get()}:00 to {str(int(self.time_clicked.get()) + 1)}:00"
-        tk.Label(self.loading_window, text="We are currently looking for your gym time:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=0,column=0)
+        tk.Label(self.loading_window, text="We are currently looking for your gym time:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=0, column=0, columnspan=2)
         display_time_clicked = tk.Label(self.loading_window, bg=self.background_colour, fg=self.font_colour, font=self.font_type13)
         display_time_clicked.config(text=f"{self.date_clicked.get()} from {self.desired_time_str}")
-        display_time_clicked.grid(row=1, column=0)
+        display_time_clicked.grid(row=1, column=0, columnspan=2)
 
         # Progress bar
         bar_style = Style()
         bar_style.theme_use('default')
         bar_style.configure("blue.Horizontal.TProgressbar", foreground=self.gymbot_blue, background=self.gymbot_blue)
         self.bar = Progressbar(self.loading_window, style="blue.Horizontal.TProgressbar", orient=HORIZONTAL, length=600, mode='indeterminate')
-        self.bar.grid(pady=10, row=2,column=0)
+        self.bar.grid(pady=10, row=2, column=0, columnspan=2)
         self.bar.start()
 
-        tk.Button(self.loading_window, text="Cancel", command=cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=4, column=0)
-        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=5, column=0)
+        self.exit_loading_win = tk.Button(self.loading_window, text="Cancel", command=cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        self.exit_loading_win.grid(row=4, column=0, columnspan=2)
+        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=5, column=0, columnspan=2)
+
+        tk.Label(self.loading_window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).grid(row=6, column=0, columnspan=2)
+        tk.Label(self.loading_window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).grid(row=6,column=1, sticky='SE')
+
+        # Highlight button when hover
+        self.exit_loading_win.bind("<Enter>", lambda arg: self.hover(arg, button=self.exit_loading_win, use="over"))
+        self.exit_loading_win.bind("<Leave>", lambda arg: self.hover(arg, button=self.exit_loading_win, use="leave"))
+
+
 
         self.instance_loading_window.mainloop()
 
@@ -438,9 +478,12 @@ class GymBotGUI:
             auto_font_colour = self.font_colour
             dark_font_colour = self.font_colour
             light_font_colour = selected_button_text_colour
-        tk.Button(self.settings_win, text="AUTO", command=settings_win_auto, bg=auto_colour, activebackground=self.background_colour, fg=auto_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=3, column=1)
-        tk.Button(self.settings_win, text="Dark", command=settings_win_dark, bg=dark_colour, activebackground=self.background_colour, fg=dark_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=4, column=1)
-        tk.Button(self.settings_win, text="Light", command=settings_win_light, bg=light_colour, activebackground=self.background_colour, fg=light_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5).grid(row=5, column=1)
+        self.auto_button = tk.Button(self.settings_win, text="AUTO", command=settings_win_auto, bg=auto_colour, activebackground=self.background_colour, fg=auto_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.auto_button.grid(row=3, column=1)
+        self.dark_button = tk.Button(self.settings_win, text="Dark", command=settings_win_dark, bg=dark_colour, activebackground=self.background_colour, fg=dark_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.dark_button.grid(row=4, column=1)
+        self.light_button = tk.Button(self.settings_win, text="Light", command=settings_win_light, bg=light_colour, activebackground=self.background_colour, fg=light_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.light_button.grid(row=5, column=1)
 
         # Account removal
         settings = self.settings.get_settings()
@@ -459,10 +502,30 @@ class GymBotGUI:
 
         saved_username.grid(row=7, column=0)
         self.saved_password.grid(row=8, column=0)
-        tk.Button(self.settings_win, text="Remove", command=self.remove_creds, bg=self.background_colour, activebackground="#FF7F7F", fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(row=7, column=1, rowspan=2)
+        self.remove_button = tk.Button(self.settings_win, text="Remove", command=self.remove_creds, bg=self.background_colour, activebackground="#FF7F7F", fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        self.remove_button.grid(row=7, column=1, rowspan=2)
 
         # Close settings window button
-        tk.Button(self.settings_win, text="Close", command=self.destroy_settings_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour).grid(pady=10, row=11, column=0, columnspan=2)
+        self.close_settings_button = tk.Button(self.settings_win, text="Close", command=self.destroy_settings_win, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        self.close_settings_button.grid(pady=10, row=11, column=0, columnspan=2)
+
+        # Highlight button when hover
+        self.cal_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.cal_toggle_button, use="over"))
+        self.cal_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.cal_toggle_button, use="leave", bg=cal_button_colour, fg=cal_font_colour))
+        self.fil_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.fil_toggle_button, use="over"))
+        self.fil_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.fil_toggle_button, use="leave", bg=autofill_button_colour, fg=autofill_font_colour))
+        self.auto_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.auto_button, use="over"))
+        self.auto_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.auto_button, use="leave", bg=auto_colour, fg=auto_font_colour))
+        self.dark_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.dark_button, use="over"))
+        self.dark_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.dark_button, use="leave", bg=dark_colour, fg=dark_font_colour))
+        self.light_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.light_button, use="over"))
+        self.light_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.light_button, use="leave", bg=light_colour, fg=light_font_colour))
+        self.show_pass_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.show_pass_button, use="over"))
+        self.show_pass_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.show_pass_button, use="leave"))
+        self.remove_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.remove_button, use="over"))
+        self.remove_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.remove_button, use="leave"))
+        self.close_settings_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.close_settings_button, use="over"))
+        self.close_settings_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.close_settings_button, use="leave"))
 
     def show_pass_toggle(self):
         if self.show_pass_button.config('text')[-1] == 'Show password':
