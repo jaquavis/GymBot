@@ -10,13 +10,14 @@ import logging
 
 
 class Calendar:
-    def __init__(self, settings):
+    def __init__(self, settings, tokenFileName):
         self.SCOPES = ['https://www.googleapis.com/auth/calendar']  # If modifying these scopes, delete the file token.json
         self.creds = None
-        self.tokenFileName = None
+        self.tokenFileName = tokenFileName
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = tokenFileName
         self.credsFileName = None
         self.settings = settings
-
+        self.logger = logging.getLogger(__name__)
 
     def authenticate(self):
         if os.path.exists(self.tokenFileName):
@@ -61,6 +62,7 @@ class Calendar:
         except google.auth.exceptions.DefaultCredentialsError:
             print('Calendar booking failed')
             print("Token error: removing stored token")
+            self.logger.warning("Token error: removing stored token")
             print("Please restart the program and re-authenticate calendar")
             os.remove(self.tokenFileName)
             self.settings.set_settings(add_to_cal=False)

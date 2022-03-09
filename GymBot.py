@@ -75,9 +75,8 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)        # signal handler
     settings = Settings(version)                        # settings
     settings.config_path = configFileName               # settings: config
-    calendar = Calendar(settings)                       # calendar
+    calendar = Calendar(settings, tokenFileName)        # calendar
     calendar.credsFileName = credsFileName              # calendar: credentials
-    calendar.tokenFileName = tokenFileName              # calendar: token
     settings = Settings(version)                        # settings
     settings.config_path = configFileName               # settings: config
 
