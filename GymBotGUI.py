@@ -527,15 +527,21 @@ class GymBotGUI:
         self.auto_fill_prompt = self.auto_fill_prompt.destroy()
 
     def terminal_toggle(self):
-        if self.terminal_toggle_button.config('text')[-1] == 'Show Terminal':
-            self.terminal_toggle_button.config(text='Hide Terminal', bg=self.background_colour, fg=self.font_colour)
-            self.terminal_win.deiconify()
-        else:
-            self.terminal_toggle_button.config(text='Show Terminal', bg=self.background_colour, fg=self.font_colour)
-            self.terminal_win.withdraw()
+        try:
+            if self.terminal_toggle_button.config('text')[-1] == 'Show Terminal':
+                self.terminal_toggle_button.config(text='Hide Terminal', bg=self.background_colour, fg=self.font_colour)
+                self.terminal_win.deiconify()
+            else:
+                self.terminal_toggle_button.config(text='Show Terminal', bg=self.background_colour, fg=self.font_colour)
+                self.terminal_win.withdraw()
+        except TclError:
+            self.start_terminal()
 
     def start_terminal(self):
-        if not self.terminal_win:
+        try:
+            if not self.terminal_win.winfo_exists():
+                self.create_terminal_instance()
+        except AttributeError:
             self.create_terminal_instance()
 
     def create_terminal_instance(self):
@@ -543,11 +549,12 @@ class GymBotGUI:
         #self.terminal_win.overrideredirect(True)
         self.terminal_win.withdraw()
         self.terminal_win.title("Terminal")
+        self.terminal_win.configure(bg=self.background_colour)
 
-        frame = tk.Frame(self.terminal_win)
+        frame = tk.Frame(self.terminal_win, bg=self.background_colour)
         frame.pack(expand=True, fill='both')
 
-        text = tk.Text(frame)
+        text = tk.Text(frame, bg=self.background_colour, fg=self.font_colour)
         text.pack(side='left', fill='both', expand=True)
 
         scrollbar = tk.Scrollbar(frame)

@@ -11,5 +11,5 @@ class Redirect:
             self.widget.insert('end', text)
             if self.autoscroll:
                 self.widget.see("end")  # autoscroll
-        except AttributeError:
+        except TclError:
             pass
