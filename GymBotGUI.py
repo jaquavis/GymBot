@@ -11,6 +11,8 @@ from datetime import date
 import logging
 from tkinter import font as tk_font
 import time
+from Redirect import Redirect
+import sys
 
 
 class GymBotGUI:
@@ -26,6 +28,7 @@ class GymBotGUI:
         self.light_photo = None
         self.dark_photo = None
         self.logger = logging.getLogger(__name__)
+        logging.basicConfig(stream=sys.stdout)
         self.today = datetime.datetime.now()
 
         self.login_success = None
@@ -35,6 +38,8 @@ class GymBotGUI:
         self.instance_settings_win = None
         self.invalid_usr_win = None
         self.settings_win = None
+        self.terminal_win = None
+        self.instance_terminal_win = None
         self.bar = None
         self.time_available = False
         self.booking_successful = False
@@ -84,6 +89,32 @@ class GymBotGUI:
             if self.login_success:
                 self.loading_page()
 
+        def run():
+            threading.Thread(target=test).start()
+
+        def test():
+            print("Thread: start")
+
+        frame = tk.Frame(self.window)
+        frame.pack(expand=True, fill='both')
+
+        text = tk.Text(frame)
+        text.pack(side='left', fill='both', expand=True)
+
+        scrollbar = tk.Scrollbar(frame)
+        scrollbar.pack(side='right', fill='y')
+
+        text['yscrollcommand'] = scrollbar.set
+        scrollbar['command'] = text.yview
+
+        old_stdout = sys.stdout
+        sys.stdout = Redirect(text)
+
+        # - rest -
+
+        button = tk.Button(self.window, text='TEST', command=self.get_creds)
+        button.pack()
+
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
@@ -120,21 +151,28 @@ class GymBotGUI:
         tk.Entry(self.window, textvariable=self.username_login, bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
-        self.loginbutton = tk.Button(self.window, text="Login", command=lambda: cred_thread(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
-        self.loginbutton.pack(pady=10)
+        self.login_button = tk.Button(self.window, text="Login", command=lambda: cred_thread(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.login_button.pack(pady=10)
 
-        self.settingsbutton = tk.Button(self.window, text="Settings", command=lambda: self.open_settings_win(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
-        self.settingsbutton.pack(pady=10)
+        self.settings_button = tk.Button(self.window, text="Settings", command=lambda: self.open_settings_win(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        self.settings_button.pack(pady=10)
 
         # Highlight button when hover
-        self.loginbutton.bind("<Enter>", lambda arg: self.hover(arg, button=self.loginbutton, use="over"))
-        self.loginbutton.bind("<Leave>", lambda arg: self.hover(arg, button=self.loginbutton, use="leave"))
+        self.login_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.login_button, use="over"))
+        self.login_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.login_button, use="leave"))
 
-        self.settingsbutton.bind("<Enter>", lambda arg: self.hover(arg, button=self.settingsbutton, use="over"))
-        self.settingsbutton.bind("<Leave>", lambda arg: self.hover(arg, button=self.settingsbutton, use="leave"))
+        self.settings_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.settings_button, use="over"))
+        self.settings_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.settings_button, use="leave"))
 
         tk.Label(self.window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
         tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=452)
+        #self.terminal_button = tk.Button(self.window, text="Terminal", command=self.run, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        #self.terminal_button.pack(pady=10)
+
+
+
+
+
         self.window.mainloop()
 
     def hover(self, arg, button, use):
@@ -146,6 +184,7 @@ class GymBotGUI:
             button["fg"] = self.font_colour
 
     def get_creds(self):
+        print("Test")
         settings = self.settings.get_settings()
         if not settings['settings']['autofill']:
             self.iac01bot.username = self.username_login.get()
@@ -522,6 +561,40 @@ class GymBotGUI:
     def destroy_auto_fill_prompt(self):
         self.auto_fill_prompt = self.auto_fill_prompt.destroy()
         self.instance_auto_fill_prompt = self.instance_auto_fill_prompt.destroy()
+
+    def open_terminal_win(self):
+        if not self.terminal_win:
+            self.create_terminal_win()
+        else:
+            self.destroy_terminal_win()
+            self.create_terminal_win()
+
+    def create_terminal_win(self):
+        self.instance_terminal_win = tk.Tk()
+        self.instance_terminal_win.withdraw()
+        self.terminal_win = Toplevel(self.instance_terminal_win)
+        self.terminal_win.title("Terminal")
+
+        frame = tk.Frame(self.terminal_win)
+        frame.pack(expand=True, fill='both')
+
+        text = tk.Text(frame)
+        text.pack(side='left', fill='both', expand=True)
+
+        scrollbar = tk.Scrollbar(frame)
+        scrollbar.pack(side='right', fill='y')
+
+        text['yscrollcommand'] = scrollbar.set
+        scrollbar['command'] = text.yview
+
+        old_stdout = sys.stdout
+        redirect = Redirect(text)
+        sys.stdout = redirect
+
+        self.terminal_win.mainloop()
+
+    def run(self):
+        threading.Thread(target=self.open_terminal_win).start()
 
     def remove_creds(self):
         self.settings.set_settings(autofill=False)
