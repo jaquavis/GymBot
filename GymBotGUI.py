@@ -54,6 +54,11 @@ class GymBotGUI:
         self.font_type10 = ("Bahnschrift Light", 10)
         self.option_menu_font = tk_font.Font(family='Bahnschrift Light', size=13)
         self.dropdown_font = tk_font.Font(family='Bahnschrift Light', size=13)
+        self.selected_button_text_colour = '#000000'
+        self.cal_button_colour = None
+        self.cal_font_colour = None
+        self.fil_button_colour = None
+        self.fil_font_colour = None
 
         # Variables
         self.login_success = None
@@ -403,29 +408,6 @@ class GymBotGUI:
         if settings['settings']['theme'] == "Light":
             light_mode()
 
-    def cal_toggle(self):
-        if self.cal_toggle_button.config('text')[-1] == 'ON':
-            self.cal_toggle_button.config(text='OFF', bg=self.background_colour, fg=self.font_colour)
-            self.settings.set_settings(add_to_cal=False)
-        else:
-            self.cal_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#000000')
-            self.settings.set_settings(add_to_cal=True)
-            threading.Thread(target=self.calendar.authenticate(), daemon=True).start()
-
-    def fil_toggle(self):
-        settings = self.settings.get_settings()
-        if self.fil_toggle_button.config('text')[-1] == 'ON':
-            self.fil_toggle_button.config(text='OFF', bg=self.background_colour, fg=self.font_colour)
-            self.settings.set_settings(autofill=False)
-            if self.auto_fill_prompt:
-                self.destroy_auto_fill_prompt()
-        else:
-            if settings['user_profile']['username'] is None or settings['user_profile']['password'] is None:
-                self.open_auto_fill_prompt()
-            else:
-                self.fil_toggle_button.config(text='ON', bg=self.gymbot_gold, fg='#000000')
-                self.settings.set_settings(autofill=True)
-
     def open_settings_win(self):
         if not self.settings_win:
             self.create_settings_win()
@@ -467,10 +449,37 @@ class GymBotGUI:
                     stars += '*'
                 saved_password.config(text=stars)
 
-        settings = self.settings.get_settings()
-        selected_button_colour = self.gymbot_gold
-        selected_button_text_colour = '#000000'
+        def cal_toggle():
+            if self.cal_toggle_button.config('text')[-1] == 'ON':
+                self.cal_button_colour = self.background_colour
+                self.cal_font_colour = self.font_colour
+                self.cal_toggle_button.config(text='OFF', bg=self.cal_button_colour, fg=self.cal_font_colour)
+                self.settings.set_settings(add_to_cal=False)
+            else:
+                self.cal_button_colour = self.gymbot_gold
+                self.cal_font_colour = self.selected_button_text_colour
+                self.cal_toggle_button.config(text='ON', bg=self.cal_button_colour, fg=self.cal_font_colour)
+                self.settings.set_settings(add_to_cal=True)
+                threading.Thread(target=self.calendar.authenticate(), daemon=True).start()
 
+        def fil_toggle():
+            if self.fil_toggle_button.config('text')[-1] == 'ON':
+                self.fil_button_colour = self.background_colour
+                self.fil_font_colour = self.font_colour
+                self.fil_toggle_button.config(text='OFF', bg=self.fil_button_colour, fg=self.fil_font_colour)
+                self.settings.set_settings(autofill=False)
+                if self.auto_fill_prompt:
+                    self.destroy_auto_fill_prompt()
+            else:
+                if settings['user_profile']['username'] is None or settings['user_profile']['password'] is None:
+                    self.open_auto_fill_prompt()
+                else:
+                    self.fil_button_colour = self.gymbot_gold
+                    self.fil_font_colour = self.selected_button_text_colour
+                    self.fil_toggle_button.config(text='ON', bg=self.fil_button_colour, fg=self.fil_font_colour)
+                    self.settings.set_settings(autofill=True)
+
+        settings = self.settings.get_settings()
         self.settings_win = Toplevel(self.window)
         self.settings_win.title("Settings")
         self.settings_win.configure(bg=self.background_colour)
@@ -479,55 +488,55 @@ class GymBotGUI:
 
         # Add to calendar control
         if settings['settings']['add_to_cal']:
-            cal_button_colour = selected_button_colour
-            cal_font_colour = selected_button_text_colour
+            self.cal_button_colour = self.gymbot_gold
+            self.cal_font_colour = self.selected_button_text_colour
             cal_text = "ON"
         else:
-            cal_button_colour = self.background_colour
-            cal_font_colour = self.font_colour
+            self.cal_button_colour = self.background_colour
+            self.cal_font_colour = self.font_colour
             cal_text = "OFF"
 
         tk.Label(self.settings_win, text="Add to calendar:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=2, column=0)
-        self.cal_toggle_button = tk.Button(self.settings_win, text=cal_text, command=self.cal_toggle, bg=cal_button_colour, activebackground=self.background_colour, fg=cal_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.cal_toggle_button = tk.Button(self.settings_win, text=cal_text, command=cal_toggle, bg=self.cal_button_colour, activebackground=self.background_colour, fg=self.cal_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.cal_toggle_button.grid(row=3, column=0)
 
         # Autofill control
         if settings['settings']['autofill']:
-            autofill_button_colour = selected_button_colour
-            autofill_font_colour = selected_button_text_colour
+            self.fil_button_colour = self.gymbot_gold
+            self.fil_font_colour = self.selected_button_text_colour
             autofill_text = "ON"
         else:
-            autofill_button_colour = self.background_colour
-            autofill_font_colour = self.font_colour
+            self.fil_button_colour = self.background_colour
+            self.fil_font_colour = self.font_colour
             autofill_text = "OFF"
             
         tk.Label(self.settings_win, text="Autofill:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=4, column=0)
-        self.fil_toggle_button = tk.Button(self.settings_win, text=autofill_text, command=self.fil_toggle, bg=autofill_button_colour, activebackground=self.background_colour, fg=autofill_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
+        self.fil_toggle_button = tk.Button(self.settings_win, text=autofill_text, command=fil_toggle, bg=self.fil_button_colour, activebackground=self.background_colour, fg=self.fil_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         self.fil_toggle_button.grid(row=5, column=0)
 
         # Theme control
         tk.Label(self.settings_win, text="Select your preferred theme:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(pady=10, row=2, column=1)
         if settings['settings']['theme'] == "Auto":
-            auto_colour = selected_button_colour
+            auto_colour = self.gymbot_gold
             dark_colour = self.background_colour
             light_colour = self.background_colour
-            auto_font_colour = selected_button_text_colour
+            auto_font_colour = self.selected_button_text_colour
             dark_font_colour = self.font_colour
             light_font_colour = self.font_colour
         elif settings['settings']['theme'] == "Dark":
             auto_colour = self.background_colour
-            dark_colour = selected_button_colour
+            dark_colour = self.gymbot_gold
             light_colour = self.background_colour
             auto_font_colour = self.font_colour
-            dark_font_colour = selected_button_text_colour
+            dark_font_colour = self.selected_button_text_colour
             light_font_colour = self.font_colour
         else:  # Light
             auto_colour = self.background_colour
             dark_colour = self.background_colour
-            light_colour = selected_button_colour
+            light_colour = self.gymbot_gold
             auto_font_colour = self.font_colour
             dark_font_colour = self.font_colour
-            light_font_colour = selected_button_text_colour
+            light_font_colour = self.selected_button_text_colour
 
         auto_button = tk.Button(self.settings_win, text="AUTO", command=settings_win_auto, bg=auto_colour, activebackground=self.background_colour, fg=auto_font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         auto_button.grid(row=3, column=1)
@@ -562,9 +571,9 @@ class GymBotGUI:
 
         # Highlight buttons on hover
         self.cal_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.cal_toggle_button, use="over"))
-        self.cal_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.cal_toggle_button, use="leave", bg=cal_button_colour, fg=cal_font_colour))
+        self.cal_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.cal_toggle_button, use="leave", bg=self.cal_button_colour, fg=self.cal_font_colour))
         self.fil_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.fil_toggle_button, use="over"))
-        self.fil_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.fil_toggle_button, use="leave", bg=autofill_button_colour, fg=autofill_font_colour))
+        self.fil_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.fil_toggle_button, use="leave", bg=self.fil_button_colour, fg=self.fil_font_colour))
         if self.show_pass_toggle_button is not None:
             self.show_pass_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.show_pass_toggle_button, use="over"))
             self.show_pass_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.show_pass_toggle_button, use="leave"))
