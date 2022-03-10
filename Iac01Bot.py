@@ -2,7 +2,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import datetime
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
 
 
 class Iac01Bot:
@@ -23,11 +23,11 @@ class Iac01Bot:
             print("Site is down")
             return 'unavail'
 
-        un_field = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_UserName")))
-        pw_field = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_Password")))
+        un_field = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_UserName")))
+        pw_field = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_Password")))
         un_field.send_keys(self.username)
         pw_field.send_keys(self.password)
-        WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_LoginButton"))).click()
+        WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_LoginButton"))).click()
 
         if self.login_status():
             print("Logged in")
@@ -38,7 +38,7 @@ class Iac01Bot:
 
     def login_status(self):  # returns True if logged in, False if logged out
         try:
-            status = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_hyLogin")))
+            status = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.ID, "ctl00_hyLogin")))
             if status.text == "LOGOUT":
                 return True
             if status.text == "LOGIN":
@@ -53,7 +53,7 @@ class Iac01Bot:
             print("Already logged out")
         if self.login_status():
             WebDriverWait(self.driver, 5).until(
-                EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_LoginButton"))).click()
+                ec.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_logCamRec_LoginButton"))).click()
             print("Logged out")
 
     def check_slots(self):  # Returns True when timeslot is found
@@ -72,7 +72,7 @@ class Iac01Bot:
         return False
 
     def book_slot(self):
-        WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, self.slot_id))).click()
+        WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.ID, self.slot_id))).click()
         print(f"\nAttempting to book {self.time_slot_text[5:24]}")
 
     def booking_successful(self, date):  # Returns True if the booking was successful
@@ -88,7 +88,7 @@ class Iac01Bot:
                         booking_id = f"ctl00_ContentPlaceHolder1_ctl00_gvClientFitnessBookings_ctl0{index}_lblFCBooking"
                     else:
                         booking_id = f"ctl00_ContentPlaceHolder1_ctl00_gvClientFitnessBookings_ctl{index}_lblFCBooking"
-                    booking = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, f"//span[contains(@id,'{booking_id}')]")))
+                    booking = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.XPATH, f"//span[contains(@id,'{booking_id}')]")))
                     booking_text = booking.text
                     if booking_msg == booking_text:
                         print("Booking successful")
@@ -99,13 +99,13 @@ class Iac01Bot:
                     return False
 
     def next_page(self):
-        WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_lnkBtnNext"))).click()
+        WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_lnkBtnNext"))).click()
 
     def previous_page(self):
-        WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_lnkBtnPrev"))).click()
+        WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_lnkBtnPrev"))).click()
 
     def get_page_date(self):  # Returns a datetime object
-        page_date_obj = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_ctl00_lblAvailableFitness")))
+        page_date_obj = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_ctl00_lblAvailableFitness")))
         page_date = datetime.datetime.strptime(page_date_obj.text[12:].strip(), "%A, %B %d, %Y.")
         return page_date
 
