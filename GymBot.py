@@ -14,12 +14,13 @@ from tkinter import PhotoImage
 from Settings import Settings
 
 if __name__ == "__main__":
-    version = "v0.25"
+    version = "v1.0"
 
     # Determine running environment
     OS = platform.system()
     if OS == "Windows":
         from win10toast import ToastNotifier
+        from subprocess import CREATE_NO_WINDOW
 
     # Define exit signal
     def signal_handler(sig, frame):
@@ -65,6 +66,7 @@ if __name__ == "__main__":
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
+    ser.creationflags = CREATE_NO_WINDOW
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
     iac01bot = Iac01Bot(driver)                         # iac01bot
     iac01bot.login_url = login_url                      # iac01bot: login url

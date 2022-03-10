@@ -5,4 +5,5 @@ pyinstaller --onefile ^
 --add-binary "GymBot.png;files" ^
 --add-binary "chromedriver.exe;files" ^
 --add-binary "credentials.json;files" ^
--i GymBot.ico GymBot.py
+-i GymBot.ico GymBot.py ^
+--noconsole

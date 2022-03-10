@@ -42,7 +42,6 @@ class GymBotGUI:
         self.fil_toggle_button = None
 
         # Styles
-        self.gymbot_blue = '#245ec8'
         self.gymbot_gold = '#d8b824'
         self.hover_bgcolour = '#d1d0c6'
         self.hover_fgcolour = '#000000'
@@ -161,7 +160,6 @@ class GymBotGUI:
         # Start main window instance
         self.window.mainloop()
 
-
     def hover(self, arg, button, use, bg=None, fg=None, menu=False):
         if menu:
             if use == "over":
@@ -237,8 +235,8 @@ class GymBotGUI:
         exit_inv_usr_win.pack(pady=10)
 
         # Highlight button on hover
-        exit_inv_usr_win.bind("<Enter>", lambda arg: self.hover(arg, button=self.exit_inv_usr_win, use="over"))
-        exit_inv_usr_win.bind("<Leave>", lambda arg: self.hover(arg, button=self.exit_inv_usr_win, use="leave"))
+        exit_inv_usr_win.bind("<Enter>", lambda arg: self.hover(arg, button=exit_inv_usr_win, use="over"))
+        exit_inv_usr_win.bind("<Leave>", lambda arg: self.hover(arg, button=exit_inv_usr_win, use="leave"))
 
     def destroy_invalid_usr_win(self):
         self.invalid_usr_win = self.invalid_usr_win.destroy()
@@ -263,6 +261,7 @@ class GymBotGUI:
         print(f"Desired date: {self.date_clicked.get()}")
         print(f"Desired time: {self.iac01bot.desired_time}")
         print("Starting search...")
+        print("Searching")
 
         while not self.time_available or not self.booking_successful:  # main loop
             # Refresh / login if timed out
@@ -345,21 +344,29 @@ class GymBotGUI:
         # Progress bar
         progress_bar_style = Style()
         progress_bar_style.theme_use('default')
-        progress_bar_style.configure("blue.Horizontal.TProgressbar", foreground=self.gymbot_blue, background=self.gymbot_blue)
+        progress_bar_style.configure("blue.Horizontal.TProgressbar", foreground=self.gymbot_gold, background=self.gymbot_gold)
         progress_bar = Progressbar(self.loading_window, style="blue.Horizontal.TProgressbar", orient=HORIZONTAL, length=600, mode='indeterminate')
         progress_bar.grid(pady=10, row=2, column=0, columnspan=2)
         progress_bar.start()
 
         exit_loading_win = tk.Button(self.loading_window, text="Cancel", command=cancel_search, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
-        exit_loading_win.grid(row=4, column=0, columnspan=2)
-        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=5, column=0, columnspan=2)
+        exit_loading_win.grid(row=4, column=0, columnspan=1, sticky=E, padx=10)
 
+        if self.terminal_toggle_button["text"] == "Hide Terminal":
+            self.terminal_toggle_button = tk.Button(self.loading_window, text="Hide Terminal", command=self.terminal_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        else:
+            self.terminal_toggle_button = tk.Button(self.loading_window, text="Show Terminal", command=self.terminal_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
+        self.terminal_toggle_button.grid(row=4, column=1, columnspan=1, sticky=W, padx=10)
+
+        tk.Label(self.loading_window, text="Feel free to minimize this window, we will notify you when your appointment is booked!", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).grid(row=5, column=0, columnspan=2)
         tk.Label(self.loading_window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).grid(row=6, column=0, columnspan=2)
         tk.Label(self.loading_window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).grid(row=6,column=1, sticky='SE')
 
         # Highlight buttons on hover
         exit_loading_win.bind("<Enter>", lambda arg: self.hover(arg, button=exit_loading_win, use="over"))
         exit_loading_win.bind("<Leave>", lambda arg: self.hover(arg, button=exit_loading_win, use="leave"))
+        self.terminal_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.terminal_toggle_button, use="over"))
+        self.terminal_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.terminal_toggle_button, use="leave"))
 
     def set_theme_mode(self):
         settings = self.settings.get_settings()
@@ -558,8 +565,10 @@ class GymBotGUI:
         self.cal_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.cal_toggle_button, use="leave", bg=cal_button_colour, fg=cal_font_colour))
         self.fil_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.fil_toggle_button, use="over"))
         self.fil_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.fil_toggle_button, use="leave", bg=autofill_button_colour, fg=autofill_font_colour))
-        self.show_pass_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.show_pass_toggle_button, use="over"))
-        self.show_pass_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.show_pass_toggle_button, use="leave"))
+        if self.show_pass_toggle_button is not None:
+            self.show_pass_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.show_pass_toggle_button, use="over"))
+            self.show_pass_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.show_pass_toggle_button, use="leave"))
+
         auto_button.bind("<Enter>", lambda arg: self.hover(arg, button=auto_button, use="over"))
         auto_button.bind("<Leave>", lambda arg: self.hover(arg, button=auto_button, use="leave", bg=auto_colour, fg=auto_font_colour))
         dark_button.bind("<Enter>", lambda arg: self.hover(arg, button=dark_button, use="over"))
