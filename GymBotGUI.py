@@ -82,12 +82,26 @@ class GymBotGUI:
             if self.login_success:
                 self.loading_page()
 
+        # Start terminal process
+        self.start_terminal()
+        print(f"GymBot® {self.settings.version}")
+
+        # Version check for local data
+        self.settings.version_check()
+
+        # Authenticate calendar
+        if self.settings.get_settings()['settings']['add_to_cal']:
+            self.calendar.authenticate()
+
+        # Set theme
+        self.set_theme_mode()
+
+        # Configure main window
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
         self.window.title("GymBot®")
         self.window.configure(bg=self.background_colour)
 
-        # Allows use of enter button to login
-        self.window.bind('<Return>', main_on_click)
+        self.window.bind('<Return>', main_on_click)  # Allows use of enter button to login
 
         # Background image
         canvas = Canvas(bd=10, bg=self.background_colour, width=self.background_photo.width(), height=self.background_photo.height(), highlightbackground=self.background_colour)
@@ -124,20 +138,23 @@ class GymBotGUI:
         self.settings_button = tk.Button(self.window, text="Settings", command=lambda: self.open_settings_win(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
         self.settings_button.pack(pady=10)
 
-        # Highlight button when hover
-        self.login_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.login_button, use="over"))
-        self.login_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.login_button, use="leave"))
-
-        self.settings_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.settings_button, use="over"))
-        self.settings_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.settings_button, use="leave"))
-
         self.terminal_toggle_button = tk.Button(self.window, text="Show Terminal", command=self.terminal_toggle, bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour)
         self.terminal_toggle_button.pack(pady=10)
 
         tk.Label(self.window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
         tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=509)
 
-        self.start_terminal()
+        # Highlight buttons on hover
+        self.login_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.login_button, use="over"))
+        self.login_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.login_button, use="leave"))
+
+        self.settings_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.settings_button, use="over"))
+        self.settings_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.settings_button, use="leave"))
+
+        self.terminal_toggle_button.bind("<Enter>", lambda arg: self.hover(arg, button=self.terminal_toggle_button, use="over"))
+        self.terminal_toggle_button.bind("<Leave>", lambda arg: self.hover(arg, button=self.terminal_toggle_button, use="leave"))
+
+        # Start main window instance
         self.window.mainloop()
 
     def hover(self, arg, button, use):
@@ -535,7 +552,7 @@ class GymBotGUI:
                 self.terminal_toggle_button.config(text='Show Terminal', bg=self.background_colour, fg=self.font_colour)
                 self.terminal_win.withdraw()
         except TclError:
-            self.start_terminal()
+            self.start_terminal()  # Restart terminal if down
 
     def start_terminal(self):
         try:
