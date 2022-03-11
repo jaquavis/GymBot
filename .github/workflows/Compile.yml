@@ -18,12 +18,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      
+
       - name: setup python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9 #install the python needed
-      
+
       - name: Install dependencies
         run: |
           pip install pyinstaller
@@ -32,30 +32,30 @@ jobs:
           pip install win10toast
           pip install astral
           pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
-      
+
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
             import json
             with open('credentials.json', 'w+') as file:
                 file.write('${{ secrets.CREDENTIALS}}')
-      
+
       - name: Compile windows
         run: ./GymBot_Compile.bat
-        
+
       - name: Archive exe
         uses: actions/upload-artifact@v3
         with:
           name: GymBot.exe
           path: D:\a\GymBot\GymBot\dist\GymBot.exe
-          
+
       - name: Create release
         id: create-new-release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.run_number }}
+          tag_name: v1.${{ github.run_number }}
           release_name: v${{ github.run_number }}
           files: D:\a\GymBot\GymBot\dist\GymBot.exe
       - name: Upload to release
@@ -67,18 +67,18 @@ jobs:
           asset_path: D:\a\GymBot\GymBot\dist\GymBot.exe
           asset_name: Gymbot.exe
           asset_content_type: application/exe
-          
+
   build_linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      
+
       - name: setup python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9 #install the python needed
-      
+
       - name: Install dependencies
         run: |
           pip install pyinstaller
@@ -87,48 +87,48 @@ jobs:
           pip install win10toast
           pip install astral
           pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
-      
+
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
             import json
             with open('credentials.json', 'w+') as file:
                 file.write('${{ secrets.CREDENTIALS}}')
-      
+
       - name: Compile linux
         run: ./GymBot_Compile_Linux.sh
-        
+
       - name: Archive linux
         uses: actions/upload-artifact@v3
         with:
           name: GymBot_linux
           path: D:\a\GymBot\GymBot\dist\GymBot
-  
+
   build_mac:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      
+
       - name: setup python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9 #install the python needed
-      
+
       - name: Install dependencies
         run: |
           pip install pyinstaller
-      
+
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
             import json
             with open('credentials.json', 'w+') as file:
                 file.write('${{ secrets.CREDENTIALS}}')
-      
+
       - name: Compile mac
         run: ./GymBot_Compile_Mac.sh
-        
+
       - name: Archive mac
         uses: actions/upload-artifact@v3
         with:
