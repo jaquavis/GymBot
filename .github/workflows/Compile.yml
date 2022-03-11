@@ -33,3 +33,9 @@ jobs:
                 file.write('${{ secrets.CREDENTIALS}}')
       - name: Compile
         run: ./GymBot_Compile.bat
+        
+      - name: Archive exe
+        uses: actions/upload-artifact@v3
+        with:
+          name: exe
+          path: ./Gymbot.exe
