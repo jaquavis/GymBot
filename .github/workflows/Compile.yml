@@ -99,11 +99,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pyinstaller
-          pip install selenium
-          pip install tkinter
-          pip install win10toast
-          pip install astral
-          pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
       
       - uses: jannekem/run-python-script-action@v1
         with:
