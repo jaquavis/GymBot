@@ -66,7 +66,8 @@ if __name__ == "__main__":
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
-    ser.creationflags = CREATE_NO_WINDOW
+    if OS == "Windows":
+        ser.creationflags = CREATE_NO_WINDOW
     driver = webdriver.Chrome(service=ser, options=op)  # webdriver
     iac01bot = Iac01Bot(driver)                         # iac01bot
     iac01bot.login_url = login_url                      # iac01bot: login url
