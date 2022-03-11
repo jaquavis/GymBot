@@ -49,6 +49,13 @@ jobs:
           name: GymBot.exe
           path: D:\a\GymBot\GymBot\dist\GymBot.exe
           
+      - name: Release with Notes
+        uses: softprops/action-gh-release@v1
+        with:
+          files: D:\a\GymBot\GymBot\dist\GymBot.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
   build_linux:
     runs-on: ubuntu-latest
     steps:
