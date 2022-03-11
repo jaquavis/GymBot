@@ -2,7 +2,7 @@
 
 Never miss a gym day again. 
 
-Gymbot was devloped to help University of Calgary students stay active and consistent at the gym. Gymbot gives students the freedom to book into any gym appointment even if the desired time slot is full. Chock full of handy tools and featuring a clean UI, check out the newest Gymbot version under releases!
+GymBot was devloped to help University of Calgary students stay active and consistent at the gym. GymBot gives students the freedom to book into any gym appointment even if the desired time slot is full. Chock full of handy tools and featuring a clean UI, check out the newest GymBot version under releases!
 
 ## Windows
 Download the .exe from releases
@@ -19,7 +19,7 @@ Easy to use drop down menus to select desired date and time for quick gym bookin
 <img src="https://user-images.githubusercontent.com/48495712/157930115-50ecd877-c75b-4ed6-b30c-dd4a2543eb58.png" width="400" height="400" />
 
 ### Settings Page
-Features such as Google Calendar integration, light/dark/auto themes, and the ability to save your username and password locally for fast booking in the future.
+Features such as Google Calendar integration, light/dark/auto themes, and the ability to save your username and password locally for fast and secure booking in the future.
 
 <img src="https://user-images.githubusercontent.com/48495712/157930326-c3772f4b-193c-44e9-a4c4-8ecc26b08a01.png" width="600" height="400" />
 
