@@ -14,7 +14,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  build_win:
     # The type of runner that the job will run on
     runs-on: windows-latest
 
@@ -31,7 +31,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
+          import json
+          creds_json = ${{ secrets.CREDENTIALS}}
+          with open('credentials.json', 'w+') as file:
+              file.write(json_string)
+          pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py --noconsole
+          
 
       # Runs a single command using the runners shell
-      - name: Compile Windows
+      #- name: Compile Windows
         run: ./GymBot_Compile.bat
