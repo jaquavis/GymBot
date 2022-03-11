@@ -306,7 +306,7 @@ class GymBotGUI:
                             'Trying to not skip leg day...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
                             'Weights before dates...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
                             'Hustle for the muscle...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
-                            'It’s my workout and I’ll cry if I want to...' '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            'It’s my workout and I’ll cry if I want to...', '❚█══█❚', '❚█══█❚', '❚█══█❚'
                             ]
 
         def loading_wheel(w_index):
@@ -374,7 +374,7 @@ class GymBotGUI:
                 sys.stdout = redirect
                 motivation_time = datetime.datetime.now()
                 time_diff = motivation_time - loop_time
-                if time_diff.seconds > 2:
+                if time_diff.seconds > 7:
                     loop_time = motivation_time
                     print(f"\n{motivation_wheel[mwheel_index]}")
                     mwheel_index +=1
