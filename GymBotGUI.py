@@ -297,7 +297,6 @@ class GymBotGUI:
 
     def get_gym_time(self):
         # threading.Thread(target=self.loading_wheel(), daemon=True).start()
-        sys.stdout = self.redirect
         if int(self.time_clicked.get()) < 9:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
         else:
