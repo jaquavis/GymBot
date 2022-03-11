@@ -296,7 +296,28 @@ class GymBotGUI:
                 return False
 
     def get_gym_time(self):
-        # threading.Thread(target=self.loading_wheel(), daemon=True).start()
+        wheel_index = 0
+        mwheel_index = 0
+        loop_time = datetime.datetime.now()
+        motivation_wheel = ['Calculating gains...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            'Preparing creatine...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            'Snorting bathsalts...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            'Strapping up...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            'Trying to not skip leg day...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            'Weights before dates...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            'Hustle for the muscle...', '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            'It’s my workout and I’ll cry if I want to...' '❚█══█❚', '❚█══█❚', '❚█══█❚',
+                            ]
+
+        def loading_wheel(w_index):
+            loading_wheel = ['/', '─', "\\", '|']
+            sys.stdout = self.old_stdout  # Avoid printing this in the terminal
+            print(f'\rNot available - trying again   {loading_wheel[w_index]}', end="")
+            w_index = w_index + 1
+            if w_index == 4:
+                w_index = 0
+            return w_index
+
         if int(self.time_clicked.get()) < 9:
             self.iac01bot.desired_time = f"{self.time_clicked.get()}:00 to 0{str(int(self.time_clicked.get()) + 1)}:00"
         else:
@@ -305,8 +326,6 @@ class GymBotGUI:
         print(f"Desired time: {self.iac01bot.desired_time}")
         print("Starting search...")
         print("Searching")
-
-        mwheel_index = 1
 
         while not self.time_available or not self.booking_successful:  # main loop
             # Refresh / login if timed out
@@ -350,38 +369,17 @@ class GymBotGUI:
                 break
 
             if not self.time_available:
-                time.sleep(2)
-                motivation_wheel = ['Calculating gains...',
-                                    'Preparing creatine...',
-                                    'Snorting bathsalts...',
-                                    'Strapping up...',
-                                    'Trying to not skip leg day...',
-                                    'Weights before dates...',
-                                    'Hustle for the muscle...',
-                                    'It’s my workout and I’ll cry if I want to...'
-                                    ]
-                print(f'\n{motivation_wheel[mwheel_index]}')
-                time.sleep(2)
-                print("\n❚█══█❚")
-                time.sleep(2)
-                print("\n❚█══█❚")
-                time.sleep(2)
-                print("\n❚█══█❚")
-                mwheel_index += 1
-                if mwheel_index == len(motivation_wheel):
-                    mwheel_index = 0
-
-    def loading_wheel(self):
-        wheel_index = 0
-        while not self.time_available or not self.booking_successful:
-            time.sleep(1)
-            if not self.time_available:
-                loading_wheel = ['/', '─', "\\", '|']
-                sys.stdout = self.old_stdout  # Avoid printing this in the terminal
-                print(f'\rNot available - trying again   {loading_wheel[wheel_index]}', end="")
-                wheel_index = wheel_index + 1
-                if wheel_index == 4:
-                    wheel_index = 0
+                wheel_index = loading_wheel(wheel_index)
+                redirect = Redirect(self.text)
+                sys.stdout = redirect
+                motivation_time = datetime.datetime.now()
+                time_diff = motivation_time - loop_time
+                if time_diff.seconds > 2:
+                    loop_time = motivation_time
+                    print(f"\n{motivation_wheel[mwheel_index]}")
+                    mwheel_index +=1
+                    if mwheel_index == len(motivation_wheel):
+                        mwheel_index = 0
 
     def book_event(self):
         try:
@@ -782,19 +780,19 @@ class GymBotGUI:
         self.terminal_win.title("Terminal")
         self.terminal_win.configure(bg=self.background_colour)
 
-        frame = tk.Frame(self.terminal_win, bg=self.background_colour)
-        frame.pack(expand=True, fill='both')
+        self.frame = tk.Frame(self.terminal_win, bg=self.background_colour)
+        self.frame.pack(expand=True, fill='both')
 
-        text = tk.Text(frame, bg=self.background_colour, fg=self.font_colour)
-        text.pack(side='left', fill='both', expand=True)
+        self.text = tk.Text(self.frame, bg=self.background_colour, fg=self.font_colour)
+        self.text.pack(side='left', fill='both', expand=True)
 
-        scrollbar = tk.Scrollbar(frame)
-        scrollbar.pack(side='right', fill='y')
+        self.scrollbar = tk.Scrollbar(self.frame)
+        self.scrollbar.pack(side='right', fill='y')
 
-        text['yscrollcommand'] = scrollbar.set
-        scrollbar['command'] = text.yview
+        self.text['yscrollcommand'] = self.scrollbar.set
+        self.scrollbar['command'] = self.text.yview
 
-        redirect = Redirect(text)
+        redirect = Redirect(self.text)
         sys.stdout = redirect
 
     def remove_creds(self):
