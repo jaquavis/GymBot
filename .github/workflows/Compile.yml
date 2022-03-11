@@ -40,4 +40,4 @@ jobs:
 
       # Runs a single command using the runners shell
       #- name: Compile Windows
-        run: ./GymBot_Compile.bat
+      #  run: ./GymBot_Compile.bat
