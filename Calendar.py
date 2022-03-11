@@ -6,6 +6,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import google.auth
 from google.auth.exceptions import DefaultCredentialsError
+from google.auth.exceptions import RefreshError
 import logging
 
 
@@ -20,18 +21,24 @@ class Calendar:
         self.logger = logging.getLogger(__name__)
 
     def authenticate(self):
-        if os.path.exists(self.tokenFileName):
-            self.creds = Credentials.from_authorized_user_file(self.tokenFileName, self.SCOPES)
-        # If there are no (valid) credentials available, let the user log in.
-        if not self.creds or not self.creds.valid:
-            if self.creds and self.creds.expired and self.creds.refresh_token:
-                self.creds.refresh(Request())
-            else:
-                flow = InstalledAppFlow.from_client_secrets_file(self.credsFileName, self.SCOPES)
-                self.creds = flow.run_local_server(port=0)
-            # Save the credentials for the next run
-            with open(self.tokenFileName, 'w') as token:
-                token.write(self.creds.to_json())
+        try:
+            if os.path.exists(self.tokenFileName):
+                self.creds = Credentials.from_authorized_user_file(self.tokenFileName, self.SCOPES)
+            # If there are no (valid) credentials available, let the user log in.
+            if not self.creds or not self.creds.valid:
+                if self.creds and self.creds.expired and self.creds.refresh_token:
+                    self.creds.refresh(Request())
+                else:
+                    flow = InstalledAppFlow.from_client_secrets_file(self.credsFileName, self.SCOPES)
+                    self.creds = flow.run_local_server(port=0)
+                # Save the credentials for the next run
+                with open(self.tokenFileName, 'w') as token:
+                    token.write(self.creds.to_json())
+        except RefreshError:
+            self.logger.warning("Token error: removing stored token")
+            print("Please restart the program")
+            os.remove(self.tokenFileName)
+            self.settings.set_settings(add_to_cal=False)
 
     def book_event(self, start_time, end_time):
         try:
@@ -63,6 +70,6 @@ class Calendar:
             print('Calendar booking failed')
             print("Token error: removing stored token")
             self.logger.warning("Token error: removing stored token")
-            print("Please restart the program and re-authenticate calendar")
+            print("Please restart the program")
             os.remove(self.tokenFileName)
             self.settings.set_settings(add_to_cal=False)

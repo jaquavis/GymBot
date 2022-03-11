@@ -117,7 +117,7 @@ class GymBotGUI:
         canvas.create_image(0, 0, anchor=NW, image=self.background_photo)
 
         tk.Label(text="Welcome to GymBot®!", bg=self.background_colour, fg=self.font_colour, font=self.font_type20).pack()
-        tk.Label(text="Ensure you do not currently have a booking.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
+        tk.Label(text="Ensure you do not currently have a booking for the day you are searching.", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(text="Select the date and hour of desired appointment start time (24 hour clock):", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
 
         self.date_clicked.set(self.date_entry[0])
@@ -150,7 +150,7 @@ class GymBotGUI:
         self.terminal_toggle_button.pack(pady=10)
 
         tk.Label(self.window, text="Created with love, by Lukas Morrison and Nathan Tham", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).pack()
-        tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=480, y=509)
+        tk.Label(self.window, text=f"GymBot® {self.settings.version}", bg=self.background_colour, fg=self.font_colour, font=self.font_type10).place(x=486, y=509)
 
         # Highlight buttons on hover
         login_button.bind("<Enter>", lambda arg: self.hover(arg, button=login_button, use="over"))
