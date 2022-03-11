@@ -49,12 +49,24 @@ jobs:
           name: GymBot.exe
           path: D:\a\GymBot\GymBot\dist\GymBot.exe
           
-      - name: Release with Notes
-        uses: softprops/action-gh-release@v1
-        with:
-          files: D:\a\GymBot\GymBot\dist\GymBot.exe
+      - name: Create release
+        id: create-new-release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: v${{ github.run_number }}
+          files: D:\a\GymBot\GymBot\dist\GymBot.exe
+      - name: Upload to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+          asset_path: D:\a\GymBot\GymBot\dist\GymBot.exe
+          asset_name: Gymbot.exe
+          asset_content_type: application/exe
           
   build_linux:
     runs-on: ubuntu-latest
