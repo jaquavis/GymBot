@@ -85,3 +85,38 @@ jobs:
           name: GymBot_linux
           path: D:\a\GymBot\GymBot\dist\GymBot
   
+  build_mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9 #install the python needed
+      
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller
+          pip install selenium
+          pip install tkinter
+          pip install win10toast
+          pip install astral
+          pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+      
+      - uses: jannekem/run-python-script-action@v1
+        with:
+          script: |
+            import json
+            with open('credentials.json', 'w+') as file:
+                file.write('${{ secrets.CREDENTIALS}}')
+      
+      - name: Compile mac
+        run: ./GymBot_Compile_Mac.sh
+        
+      - name: Archive mac
+        uses: actions/upload-artifact@v3
+        with:
+          name: GymBot_mac
+          path: D:\a\GymBot\GymBot\dist\GymBot.app
