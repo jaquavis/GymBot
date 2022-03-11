@@ -101,8 +101,8 @@ class GymBotGUI:
         self.settings.version_check()
 
         # Authenticate calendar
-        #if self.settings.get_settings()['settings']['add_to_cal']:
-            #self.calendar.authenticate()
+        # if self.settings.get_settings()['settings']['add_to_cal']:
+        #     self.calendar.authenticate()
 
         # Configure main window
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
