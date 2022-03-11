@@ -24,7 +24,8 @@ jobs:
           python-version: 3.9 #install the python needed
       - name: Install dependencies
         run: |
-          pip install pyinstaller
+          pip install pyinstaller selenium tkinter win10toast astral
+          pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
@@ -37,5 +38,5 @@ jobs:
       - name: Archive exe
         uses: actions/upload-artifact@v3
         with:
-          name: exe
+          name: GymBot.exe
           path: D:\a\GymBot\GymBot\dist\GymBot.exe
