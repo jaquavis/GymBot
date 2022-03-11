@@ -38,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: exe
-          path: ./Gymbot.exe
+          path: Gymbot.exe
