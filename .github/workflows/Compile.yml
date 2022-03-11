@@ -24,7 +24,6 @@ jobs:
           python-version: 3.9 #install the python needed
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install pyinstaller
       - uses: jannekem/run-python-script-action@v1
         with:
@@ -32,4 +31,4 @@ jobs:
             import json
             with open('credentials.json', 'w+') as file:
                 file.write('${{ secrets.CREDENTIALS}}')
-            python pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py --noconsole
+            pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py --noconsole
