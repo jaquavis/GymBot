@@ -37,8 +37,8 @@ jobs:
         run: |
           python import json
           python creds_json = '${{ secrets.CREDENTIALS}}'
-          with open('credentials.json', 'w+') as file:
-              file.write(json_string)
-          pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py --noconsole
+          python with open('credentials.json', 'w+') as file:
+          python     file.write(json_string)
+          python pyinstaller --onefile --add-binary "GymBot.ico;files" --add-binary "GymBot_light.png;files" --add-binary "GymBot_dark.png;files" --add-binary "GymBot.png;files" --add-binary "chromedriver.exe;files" --add-binary "credentials.json;files" -i GymBot.ico GymBot.py --noconsole
 
         #./GymBot_Compile.bat
