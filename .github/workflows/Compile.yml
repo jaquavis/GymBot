@@ -25,4 +25,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile linux
-        run: GymBot_Compile_Linux.sh
+        run: ./GymBot_Compile_Linux.sh
