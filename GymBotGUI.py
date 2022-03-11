@@ -101,8 +101,8 @@ class GymBotGUI:
         self.settings.version_check()
 
         # Authenticate calendar
-        if self.settings.get_settings()['settings']['add_to_cal']:
-            self.calendar.authenticate()
+        #if self.settings.get_settings()['settings']['add_to_cal']:
+            #self.calendar.authenticate()
 
         # Configure main window
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
@@ -135,11 +135,18 @@ class GymBotGUI:
         menu = self.window.nametowidget(time_menu.menuname)
         menu.config(font=self.dropdown_font, fg=self.font_colour, bg=self.background_colour, activebackground=self.gymbot_gold, activeforeground=self.hover_fgcolour)  # Set the dropdown menu's font
 
+        settings = self.settings.get_settings()
         tk.Label(text="Please enter U of C credentials below to login:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
         tk.Label(self.window, text="Username:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Entry(self.window, textvariable=self.username_login, bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
+        username_entry = tk.Entry(self.window, textvariable=self.username_login, bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13)
+        if settings['settings']['autofill']:
+            username_entry.insert(0, settings['user_profile']['username'])
+        username_entry.pack()
         tk.Label(self.window, text="Password:", bg=self.background_colour, fg=self.font_colour, font=self.font_type13).pack()
-        tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13).pack()
+        password_entry = tk.Entry(self.window, textvariable=self.password_login, show="*", bg=self.entry_colour, fg=self.entry_font_colour, font=self.font_type13)
+        if settings['settings']['autofill']:
+            password_entry.insert(0, settings['user_profile']['password'])
+        password_entry.pack()
         login_button = tk.Button(self.window, text="Login", command=lambda: cred_thread(), bg=self.background_colour, activebackground=self.background_colour, fg=self.font_colour, font=self.font_type13, activeforeground=self.font_colour, width=5)
         login_button.pack(pady=10)
 
