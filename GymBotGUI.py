@@ -11,6 +11,7 @@ from tkinter import font as tk_font
 import time
 from Redirect import Redirect
 import sys
+import os
 
 
 class GymBotGUI:
@@ -102,7 +103,11 @@ class GymBotGUI:
 
         # Authenticate calendar
         if self.settings.get_settings()['settings']['add_to_cal']:
-            self.calendar.authenticate()
+            if not os.path.exists(self.calendar.tokenFileName):  # Turn add to cal off if token doesn't exist on startup
+                self.settings.set_settings(add_to_cal=False)
+                print("No token: add to calendar option has been disabled, please re-authenticate")
+            else:
+                self.calendar.authenticate()
 
         # Configure main window
         self.window.iconphoto(True, self.icon_photo)  # Taskbar icon
