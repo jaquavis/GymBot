@@ -2,7 +2,7 @@
 
 Never miss a gym day again. 
 
-GymBot was devloped to help University of Calgary students stay active and consistent at the gym. GymBot gives students the freedom to book into any gym appointment even if the desired time slot is full. Chock full of handy tools and featuring a clean UI, check out the newest GymBot version under releases!
+GymBot was devloped to help University of Calgary students and faculty stay active and consistent at the gym. GymBot gives students the freedom to book into any gym appointment even if the desired time slot is full. Chock full of handy tools and featuring a clean UI, check out the newest GymBot version under releases!
 
 ## Windows
 Download the .exe from releases
@@ -17,7 +17,7 @@ pip install tkinter
 pip install astral
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
-Download all .py files, run Gymbot .py
+Download the chromedriver for your platform, and all .py files. Run Gymbot .py
 
 Note: Ensure all required libraries are installed
 
