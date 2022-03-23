@@ -8,8 +8,18 @@ GymBot was devloped to help University of Calgary students stay active and consi
 Download the .exe from releases
 
 ## Mac / Linux
-Download all .py files, run Gymbot .py in python 3.x<br>
-Note: All required libraries must be installed
+Download python 3.9
+
+In the command window run the following to install all libraries:
+```
+pip install selenium
+pip install tkinter
+pip install astral
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+```
+Download all .py files, run Gymbot .py
+
+Note: Ensure all required libraries are installed
 
 ## Showcase and Features
 
