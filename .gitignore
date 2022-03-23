@@ -6,3 +6,5 @@
 /build
 /archive/
 /dist/
+/GymBot_Compile_Linux.sh
+/GymBot_Compile_Mac.sh
