@@ -11,10 +11,12 @@ Google Chrome v98 or newer must be downloaded and installed for GymBot to run.
 
 ### Windows
 Download the .exe from releases
+
 <ins>Note</ins>: The app may cause a popup preventing the app from opening, in this case select Run Anyways.
 
 ### Mac / Linux
 Download the .app from releases
+
 <ins>Note</ins>: The app may cause a popup preventing the app from opening, right click the .app file and select Open.
 
 ## Showcase and Features
