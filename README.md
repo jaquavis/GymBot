@@ -13,11 +13,18 @@ Download python 3.9
 In the command window run the following to install all libraries:
 ```
 pip install selenium
-pip install tkinter
+pip install tk
 pip install astral
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
-Download the chromedriver for your platform, and all .py files. Run Gymbot .py
+Install PyInstaller:
+```
+pip install pyinstaller
+```
+cd to the GymBot folder and compile GymBot.py using the following command (replace chromedriver input with appropriate version):
+```
+pyinstaller --onefile --add-binary "GymBot.ico:files" --add-binary "GymBot_light.png:files" --add-binary "GymBot_dark.png:files" --add-binary "GymBot.png:files" --add-binary "chromedriver_mac64_m1:files" --add-binary "credentials.json:files" -i GymBot.ico GymBot.py --noconsole
+```
 
 Note: Ensure all required libraries are installed
 
