@@ -14,7 +14,7 @@ Download the .exe from releases
 
 <ins>Note</ins>: The app may cause a popup preventing the app from opening, in this case select Run Anyways.
 
-### Mac / Linux
+### Mac
 Download the .app from releases
 
 <ins>Note</ins>: The app may cause a popup preventing the app from opening, right click the .app file and select Open.
