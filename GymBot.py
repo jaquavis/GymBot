@@ -43,7 +43,7 @@ if __name__ == "__main__":
     if OS == "Linux":
         driverFileName = running_dir + 'chromedriver_linux64'
     elif OS == "Darwin":
-        driverFileName = running_dir + 'chromedriver_mac64'
+        driverFileName = running_dir + 'chromedriver_mac64_m1'
     else:
         driverFileName = running_dir + 'chromedriver.exe'
 
@@ -63,6 +63,8 @@ if __name__ == "__main__":
     # Define objects
     ser = Service(driverFileName)
     op = webdriver.ChromeOptions()
+    if OS == "Darwin":
+        op.binary_location = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     op.add_argument("--headless")
     op.add_argument('--log-level=3')
     op.add_experimental_option('excludeSwitches', ['enable-logging'])
