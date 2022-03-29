@@ -13,7 +13,7 @@ Download python 3.9
 In the command window run the following to install all libraries:
 ```
 pip install selenium
-pip install tkinter
+pip install tk
 pip install astral
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
