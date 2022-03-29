@@ -10,6 +10,9 @@ Download the .exe from releases
 ## Mac / Linux
 Download the .app from releases
 
+## Requirements
+Google Chrome v98 or newer must be downloaded and installed for GymBot to run.
+
 ## Showcase and Features
 
 ### Main Login Page
