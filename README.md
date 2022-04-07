@@ -7,7 +7,7 @@ GymBot was devloped to help University of Calgary students and faculty stay acti
 ## Installation
 
 ### Requirements
-Google Chrome v98 or newer must be downloaded and installed for GymBot to run.
+Google Chrome version 100 or newer must be downloaded and installed for GymBot to run.
 
 ### Windows
 Download the .exe from releases
