@@ -2,12 +2,13 @@
 
 Never miss a gym day again. 
 
-GymBot was devloped to help University of Calgary students and faculty stay active and consistent at the gym. GymBot gives students the freedom to book into any gym appointment even if the desired time slot is full. Chock full of handy tools and featuring a clean UI, check out the newest GymBot version under releases!
+GymBot was developed to help University of Calgary students and faculty stay active and consistent at the gym. GymBot gives students the freedom to book into any gym appointment even if the desired time slot is full. Chock full of handy tools and featuring a clean UI, check out the newest GymBot version under releases!
 
 ## Installation
 
 ### Requirements
-Google Chrome v98 or newer must be downloaded and installed for GymBot to run.
+Google Chrome version 100 or newer must be downloaded and installed for GymBot to run.
+You can download the Chrome Driver from here: https://chromedriver.chromium.org/downloads
 
 ### Windows
 Download the .exe from releases
