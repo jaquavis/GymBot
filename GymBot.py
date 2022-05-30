@@ -14,7 +14,7 @@ from tkinter import PhotoImage
 from Settings import Settings
 
 if __name__ == "__main__":
-    version = "v1.7"
+    version = "v1.8"
 
     # Determine running environment
     OS = platform.system()
